@@ -1,0 +1,29 @@
+
+<div class="parent">
+    <div class="container">
+        <div class="login-box">
+            <h2>Login</h2>
+            <form action="#">
+                <div>
+                    <select [(ngModel)]="loginObj.tipo_usuario" name="tipo_usuario" required>
+                        <option value="estudiante">Estudiante</option>
+                        <option value="especialista">Especialista</option>
+                    </select>
+                </div>
+                <div class="input-box">
+                    <input type="email" [(ngModel)]="loginObj.email" name="EmailId" required>
+                    <label>Email</label>
+                </div>
+                <div class="input-box">
+                    <input type="password" [(ngModel)]="loginObj.clave" name="Password" required>
+                    <label>Password</label>
+                </div>
+
+                
+                <button type="button" class="btn" (click)="onLogin()" >Login</button>
+                 
+            </form>
+        </div>
+        
+    </div>
+</div>
