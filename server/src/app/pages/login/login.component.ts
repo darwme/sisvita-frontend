@@ -3,7 +3,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HttpErrorResponse } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import Swal from 'sweetalert2';
+import { RegisterComponent } from '../register/register.component';
 
 enum Tipo_usuario {
   Estudiante = 'estudiante',
@@ -13,7 +15,7 @@ enum Tipo_usuario {
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, HttpClientModule],
+  imports: [FormsModule, HttpClientModule, RegisterComponent, RouterModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })

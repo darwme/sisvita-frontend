@@ -58,12 +58,11 @@ main {
 .input-box {
   display: flex;
   flex-direction: column;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .input-box label {
   font-size: 1.5rem;
-  margin-bottom: 0.5rem;
 }
 
 .input-box input {
@@ -90,4 +89,17 @@ button:hover {
   background-color: #fff;
   color: #3b4c89;
   border: 1px solid #3b4c89;
+}
+
+.link {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.link-registro {
+  font-size: 1.5rem;
+  color: #3b4c89;
+  margin-top: 1rem;
 }
