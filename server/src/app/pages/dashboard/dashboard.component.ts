@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css',
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
   tests: any[] = [];
   constructor(private http: HttpClient) {}
 
@@ -25,6 +25,7 @@ export class DashboardComponent {
       .subscribe(
         (res: any) => {
           this.tests = res.data;
+          console.log('Tests: ', this.tests);
         },
         (error) => {
           console.log('Error: ', error);
