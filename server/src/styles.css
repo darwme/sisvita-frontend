@@ -1,75 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
 /* You can add global styles to this file, and also import other style files */
+html,
 body {
-  font-family: 'Poppins', sans-serif;
-  margin: 0;
-  padding: 0;
-}
-.home-slider .swiper-slide {
-  position: relative;
-}
-.home-slider .slick-dots {
-  bottom: 55px;
-}
-.slick-dots li {
-  height: 6px;
-  width: 9px;
-}
-.slick-dots li button::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 12px;
-  height: 12px;
-  line-height: 20px;
-  text-align: center;
-  border-radius: 3px;
-  transform: rotate(40deg);
-  background-color: rgba(63, 142, 252, 0.9);
-  opacity: 0.6;
-}
-.slick-dots li.slick-active button::before {
-  background-color: rgba(63, 142, 252, );
-}
-#ecommerceHero .slick-prev, #ecommerceHero .slick-next {
-  font-family: remixicon;
-  opacity: 0;
-  height: 44px;
-  width: 44px;
-  background-color: #fff;
-  top: 50%;
-  border-radius: 50%;
-  font-size: 30px;
-  color: white;
-}
-#ecommerceHero .slick-prev i, #ecommerceHero .slick-next i {
-  transform: rotate(-45deg);
-}
-#ecommerceHero .slick-next {
-  right: 10px;
-  z-index: 1;
-  opacity: 0.85;
-  background-color: #3f8efc !important;
-}
-#ecommerceHero .slick-prev {
-  left: 10px;
-  z-index: 1;
-  opacity: 0.85;
-  background-color: #3f8efc !important;
-}
-#ecommerceHero .slick-prev:before {
-  content: "\f31c" !important;
-  position: absolute;
-  inset: 0;
-  margin: auto;
-}
-#ecommerceHero .slick-next:before {
-  content: "\ea6e" !important;
-  position: absolute;
-  inset: 0;
-  margin: auto;
+  width: 100%;
+  height: 100%;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: #f6f9ff;
+}
+
+/**
+  *Global Colors
+*/
+:root {
+  --color-primary: #3b4c89;
+  --color-secondary: #8ceba1;
+  --color-accent: #f3c729;
+  --color-background: #fdfdfd;
+  color-scheme: light dark;
+}

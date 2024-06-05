@@ -1,0 +1,93 @@
+main {
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#contenedor {
+  background-color: #fff;
+  max-width: 1100px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+}
+
+.image-column {
+  width: 500px;
+  background-color: #888;
+}
+
+.form-column {
+  background-color: #fff;
+  padding: 5rem;
+  min-width: 600px;
+  height: 100%;
+}
+
+.form-column h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.form-column p {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.selector {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.selector select {
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  border: 1px solid #888;
+  border-radius: 4px;
+}
+
+.input-box {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.input-box label {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.input-box input {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 1rem;
+  font-size: 1.5rem;
+  border: 1px solid #888;
+  border-radius: 4px;
+}
+
+button {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.5rem;
+  border: 1px solid #3b4c89;
+  border-radius: 4px;
+  background-color: #3b4c89;
+  color: #fff;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #fff;
+  color: #3b4c89;
+  border: 1px solid #3b4c89;
+}

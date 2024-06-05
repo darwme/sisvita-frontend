@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HttpErrorResponse } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 enum Tipo_usuario {
   Estudiante = 'estudiante',
@@ -24,6 +25,23 @@ export class LoginComponent {
     this.loginObj = new Login('', '', Tipo_usuario.Estudiante);
   }
 
+  onSuccessfulLogin() {
+    Swal.fire({
+      title: 'Good job!',
+      text: 'You are logged in!',
+      icon: 'success',
+    });
+  }
+
+  onErrorMessage(error: string = '') {
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: error,
+      footer: '<a href="#">Why do I have this issue?</a>',
+    });
+  }
+
   onLogin() {
     this.http
       .post(
@@ -34,20 +52,19 @@ export class LoginComponent {
         next: (res: any) => {
           console.log('Response from server: ', res);
           if (res.status === 200) {
-            alert('Login Success');
+            this.onSuccessfulLogin();
             console.log(res);
             localStorage.setItem('token', res.data.token);
             this.route.navigateByUrl('/dashboard');
           } else {
             this.errorMessage = res.message || 'Login Failed';
-            alert('Login Failed: ' + this.errorMessage);
+            this.onErrorMessage(res.message);
           }
         },
         error: (err: HttpErrorResponse) => {
           console.log('Error: ', err);
-          this.errorMessage =
-            err.error.message || 'Error al loguear el usuario';
-          alert('Login Failed: ' + this.errorMessage);
+          this.errorMessage = err.error.error;
+          this.onErrorMessage(this.errorMessage);
         },
       });
   }
