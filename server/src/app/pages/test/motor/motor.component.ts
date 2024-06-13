@@ -24,3 +24,4 @@ export class MotorComponent {
   completeIndexTest() {
     this.pogressService.markPartAsCompleted('motor');
   }
+}
