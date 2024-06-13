@@ -1,36 +1,60 @@
-<div class="container" *ngIf="indiceActual < datosCognitivos.length">
-    <h2 class="seccion">PREGUNTAS COGNITIVAS</h2>
-  
-    <div class="situacion-nombre">{{ datosCognitivos[indiceActual].situacionNombre }}</div>
-    <p class="situacion">{{ datosCognitivos[indiceActual].situacion }}</p>
-  
-    <p class="pregunta">{{ datosCognitivos[indiceActual].pregunta }}</p>
-    <div class="options">
-      <div class="option">
-        <input type="radio" id="casi-nunca" name="respuesta" class="radio" [(ngModel)]="respuestaSeleccionada" [value]="0">
-        <label for="casi-nunca">Casi nunca</label>
+<body>
+  <div class="container">
+      <h2 class="seccion">PREGUNTAS COGNITIVAS</h2>
+
+      <div class="situacion-nombre">Situación:</div>
+      <p class="situacion">
+          Ante un examen en el que me juego mucho o si voy a ser entrevistado para un trabajo importante.
+      </p>
+
+      <p class="pregunta">Me preocupo fácilmente.</p>
+      <div class="options">
+          <div class="option">
+              <input type="radio" id="casi-nunca-2" name="preocupacion-2" class="radio">
+              <label for="casi-nunca-2">Casi nunca</label>
+          </div>
+          <div class="option">
+              <input type="radio" id="pocas-veces-2" name="preocupacion-2" class="radio">
+              <label for="pocas-veces-2">Pocas veces</label>
+          </div>
+          <div class="option">
+              <input type="radio" id="unas-veces-2" name="preocupacion-2" class="radio">
+              <label for="unas-veces-2">Unas veces sí</label>
+          </div>
+          <div class="option">
+              <input type="radio" id="muchas-veces-2" name="preocupacion-2" class="radio">
+              <label for="muchas-veces-2">Muchas veces</label>
+          </div>
+          <div class="option">
+              <input type="radio" id="casi-siempre-2" name="preocupacion-2" class="radio">
+              <label for="casi-siempre-2">Casi siempre</label>
+          </div>
       </div>
-      <div class="option">
-        <input type="radio" id="pocas-veces" name="respuesta" class="radio" [(ngModel)]="respuestaSeleccionada" [value]="1">
-        <label for="pocas-veces">Pocas veces</label>
+
+      <p class="pregunta">Me cuesta concentrarme.</p>
+      <div class="options">
+          <div class="option">
+              <input type="radio" id="casi-nunca-3" name="concentracion" class="radio">
+              <label for="casi-nunca-3">Casi nunca</label>
+          </div>
+          <div class="option">
+              <input type="radio" id="pocas-veces-3" name="concentracion" class="radio">
+              <label for="pocas-veces-3">Pocas veces</label>
+          </div>
+          <div class="option">
+              <input type="radio" id="unas-veces-3" name="concentracion" class="radio">
+              <label for="unas-veces-3">Unas veces sí</label>
+          </div>
+          <div class="option">
+              <input type="radio" id="muchas-veces-3" name="concentracion" class="radio">
+              <label for="muchas-veces-3">Muchas veces</label>
+          </div>
+          <div class="option">
+              <input type="radio" id="casi-siempre-3" name="concentracion" class="radio">
+              <label for="casi-siempre-3">Casi siempre</label>
+          </div>
       </div>
-      <div class="option">
-        <input type="radio" id="unas-veces" name="respuesta" class="radio" [(ngModel)]="respuestaSeleccionada" [value]="2">
-        <label for="unas-veces">Unas veces sí</label>
-      </div>
-      <div class="option">
-        <input type="radio" id="muchas-veces" name="respuesta" class="radio" [(ngModel)]="respuestaSeleccionada" [value]="3">
-        <label for="muchas-veces">Muchas veces</label>
-      </div>
-      <div class="option">
-        <input type="radio" id="casi-siempre" name="respuesta" class="radio" [(ngModel)]="respuestaSeleccionada" [value]="4">
-        <label for="casi-siempre">Casi siempre</label>
-      </div>
-    </div>
-  
-    <button type="button" (click)="onContinuar()" [disabled]="respuestaSeleccionada === null">Continuar</button>
+
+      <button type="submit">Continuar</button>
   </div>
-  <div *ngIf="indiceActual >= datosCognitivos.length">
-    <p>¡Has terminado todas las preguntas!</p>
-  </div>
-  
+</body>
