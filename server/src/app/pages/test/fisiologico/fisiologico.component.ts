@@ -23,3 +23,4 @@ export class FisiologicoComponent {
   completeIndexTest() {
     this.pogressService.markPartAsCompleted('fisiologico');
   }
+}
