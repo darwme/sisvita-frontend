@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import { Router } from '@angular/router';
 import { ProgressService } from '../../../service/progress/progress.service';
 
@@ -23,4 +24,3 @@ export class MotorComponent {
   completeIndexTest() {
     this.pogressService.markPartAsCompleted('motor');
   }
-}
