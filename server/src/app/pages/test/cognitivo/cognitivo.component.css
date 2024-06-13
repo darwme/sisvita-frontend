@@ -1,4 +1,4 @@
-/* cognitivo.component.css */
+/* Estilos generales para el contenedor */
 .container {
     width: 100%;
     max-width: 650px;
@@ -6,53 +6,58 @@
     background-color: #fff;
     border: 1px solid #ddd;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px; /* Espacio inferior entre formularios */
   }
   
+  /* Estilos para la sección */
   .seccion {
-    font-size: 15px;
+    font-size: 20px;
     font-weight: bold;
-    margin-bottom: 20px;
     color: rgb(255, 192, 74);
-  }
-  
-  .situacion-nombre {
-    font-size: 15px;
     margin-bottom: 10px;
-    color: #251ca7;
-    font-weight: 600;
   }
   
+  /* Estilos para la descripción de la situación */
   .situacion {
-    font-size: 18px;
-    margin-bottom: 20px;
+    font-size: 16px;
     color: rgb(70, 62, 175);
+    margin-bottom: 10px;
   }
   
+  /* Estilos para las preguntas */
   .pregunta {
-    font-size: 16px;
+    font-size: 18px;
+    font-weight: bold;
     margin-bottom: 10px;
     color: rgb(64, 226, 64);
-    font-weight: 600;
   }
   
+  /* Estilos para las opciones de respuesta */
   .options {
-    margin-bottom: 20px;
     display: flex;
     flex-wrap: wrap;
+    margin-bottom: 20px;
   }
   
   .option {
-    margin-right: 10px;
+    margin-right: 15px; /* Espacio entre opciones */
     margin-bottom: 10px;
     display: flex;
     align-items: center;
   }
   
+  /* Estilos para los radios */
   .radio {
     margin-right: 5px;
     flex: 0 0 auto;
-    width: 12px;
-    height: 12px;
+  }
+  
+  .radio[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 18px; /* Tamaño del botón de radio */
+    height: 18px;
     border: 1px solid #ccc;
     border-radius: 50%;
     cursor: pointer;
@@ -62,25 +67,28 @@
     box-shadow: 0 0 0 1px #ccc;
   }
   
+  /* Estilo cuando el botón de radio está seleccionado */
   .radio[type="radio"]:checked {
     background-color: #0f0f96;
     border-color: transparent;
     box-shadow: 0 0 0 1px #ffffff, 0 0 0 3px #0f0f96;
   }
   
+  /* Cambiar el color del texto de la etiqueta cuando el radio está seleccionado */
   .radio[type="radio"]:checked + label {
     color: #1d1818;
   }
   
+  /* Estilos para las etiquetas de las opciones */
   label {
     display: inline-block;
     margin-left: 5px;
-    font-size: 12px;
+    font-size: 16px;
     cursor: pointer;
     color: rgb(19, 19, 172);
-    font-weight: 550;
   }
   
+  /* Estilos para el botón "Continuar" */
   button[type="submit"] {
     background-color: rgb(233, 182, 17);
     color: #2b339e;
@@ -92,10 +100,9 @@
     transition: background-color 0.3s;
     display: block;
     margin-top: 20px;
-    width: 80%;
-    margin: 0 auto;
-    font-weight: 600;
-    text-align: center;
+    width: 100%;
+    max-width: none;
+    font-weight: bold;
   }
   
   button[type="submit"]:hover {
