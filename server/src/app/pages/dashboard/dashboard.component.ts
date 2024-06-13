@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,11 +11,26 @@ import { HttpClient } from '@angular/common/http';
   styleUrl: './dashboard.component.css',
 })
 export class DashboardComponent implements OnInit {
+  token: string = localStorage.getItem('token') || '';
   tests: any[] = [];
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private route: Router) {}
 
   ngOnInit(): void {
-    this.getAllTests();
+    if (!this.token) {
+      this.onNoTokenMessage('No token found, please login again');
+      this.route.navigateByUrl('/login');
+      //window.location.href = '/login';
+    } else {
+      this.getAllTests();
+    }
+  }
+
+  onNoTokenMessage(error: string = '') {
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops... 401 Unauthorized',
+      text: error,
+    });
   }
 
   getAllTests() {
@@ -21,7 +38,11 @@ export class DashboardComponent implements OnInit {
     const url = ``;
 
     this.http
-      .get('https://sisvita-backend-gow8.onrender.com/estudiante/v1/tests/1')
+      .get('http://localhost:5000/estudiante/v1/tests/1', {
+        headers: {
+          Authorization: `Bearer ${this.token}`,
+        },
+      })
       .subscribe(
         (res: any) => {
           this.tests = res.data;

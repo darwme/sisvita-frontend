@@ -1,0 +1,121 @@
+/* Estilos generales */
+main {
+  font-size: 0.95em;
+  padding: 3em 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  color: #444;
+}
+
+.sub {
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid #ddd;
+}
+
+.cont {
+  border-radius: 0.5em;
+  max-width: 600px;
+  background-color: #fff;
+  padding: 2em;
+}
+
+.input-label {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5em;
+  justify-content: flex-start;
+  margin-bottom: 0.5em;
+  width: 100%;
+}
+
+label > span {
+  font-size: 0.8em;
+}
+
+label > input,
+label > select {
+  padding: 0.3em 0.5em;
+  border-radius: 0.2em;
+  border: 1px solid #ddd;
+}
+
+label > input:focus,
+label > select:focus {
+  outline: none;
+  border-color: #00a400;
+}
+
+label > input:hover,
+label > select:hover {
+  border-color: #00a400;
+}
+
+select > option {
+  padding: 0.3em;
+  border-radius: 0;
+}
+
+.col-1 {
+  max-width: 280px;
+  width: 100%;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1em;
+}
+
+button {
+  padding: 0.5em 1em;
+  border-radius: 0.2em;
+  border: 1px solid #00a400;
+  background-color: #00a400;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 500;
+  width: 120px;
+}
+
+button:hover {
+  background-color: #008c00;
+}
+
+button:focus {
+  outline: none;
+  border-color: #008c00;
+}
+
+/* Estilos para campos no válidos después de perder el foco */
+label > input:required:invalid:focus,
+label > select:required:invalid:focus {
+  outline: none;
+  border-color: red; /* Verde mientras el campo tiene foco */
+}
+
+label > input:required:invalid:focus:invalid,
+label > select:required:invalid:focus:invalid {
+  outline: none;
+  border-color: red; /* Verde mientras el campo tiene foco */
+}
+
+label > input:required:invalid:blur:invalid,
+label > select:required:invalid:blur:invalid {
+  outline: none;
+  border-color: red; /* Rojo después de perder el foco si el campo está vacío */
+}
+
+label > input:required:valid,
+label > select:required:valid {
+  border-color: #00a400; /* Verde si el campo es válido */
+}
+
+.privacy-poly {
+  font-size: 0.8em;
+  margin-top: 1em;
+  max-width: 320px;
+}

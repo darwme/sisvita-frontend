@@ -11,16 +11,6 @@
       <p>Te damos la bienvenida de nuevo</p>
       <h2>Iniciar Sesión</h2>
       <form action="#">
-        <div class="selector">
-          <select
-            [(ngModel)]="loginObj.tipo_usuario"
-            name="tipo_usuario"
-            required
-          >
-            <option value="estudiante">Estudiante</option>
-            <option value="especialista">Especialista</option>
-          </select>
-        </div>
         <div class="input-box">
           <label>
             Email<br />
@@ -48,6 +38,7 @@
         <div class="link">
           <a routerLink="/forgot-password">¿Olvidaste tu contraseña?</a>
         </div>
+
         <button type="button" class="btn" (click)="onLogin()">Login</button>
       </form>
       <div class="link-registro">

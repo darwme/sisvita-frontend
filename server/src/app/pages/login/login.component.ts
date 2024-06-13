@@ -1,30 +1,36 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HttpErrorResponse } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { RouterModule } from '@angular/router';
+import { IndexComponent } from '../test/index/index.component';
 import Swal from 'sweetalert2';
-import { RegisterComponent } from '../register/register.component';
-
-enum Tipo_usuario {
-  Estudiante = 'estudiante',
-  Especialista = 'especialista',
-}
+import { DataService } from '../../service/data/data.service';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, HttpClientModule, RegisterComponent, RouterModule],
+  imports: [FormsModule, HttpClientModule, RouterModule, IndexComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
 export class LoginComponent {
+  data: any = {};
   loginObj: Login;
   errorMessage: string = '';
 
-  constructor(private http: HttpClient, private route: Router) {
-    this.loginObj = new Login('', '', Tipo_usuario.Estudiante);
+  constructor(
+    private http: HttpClient,
+    private route: Router,
+    private datService: DataService
+  ) {
+    this.loginObj = new Login();
+  }
+
+  getData(data: any) {
+    this.datService.setData(data);
+    console.log(data);
   }
 
   onSuccessfulLogin() {
@@ -46,25 +52,22 @@ export class LoginComponent {
 
   onLogin() {
     this.http
-      .post(
-        'https://sisvita-backend-gow8.onrender.com/auth/v1/login',
-        this.loginObj
-      )
+      .post('http://localhost:5000/auth/v1/login', this.loginObj)
       .subscribe({
         next: (res: any) => {
-          console.log('Response from server: ', res);
           if (res.status === 200) {
+            this.getData(res.data);
             this.onSuccessfulLogin();
-            console.log(res);
             localStorage.setItem('token', res.data.token);
-            this.route.navigateByUrl('/dashboard');
+            this.data = res.data;
+            console.log(this.data);
+            this.route.navigateByUrl(`${res.data.codigo_estudiante}/test`);
           } else {
             this.errorMessage = res.message || 'Login Failed';
             this.onErrorMessage(res.message);
           }
         },
         error: (err: HttpErrorResponse) => {
-          console.log('Error: ', err);
           this.errorMessage = err.error.error;
           this.onErrorMessage(this.errorMessage);
         },
@@ -74,15 +77,9 @@ export class LoginComponent {
 export class Login {
   email: string = '';
   clave: string = '';
-  tipo_usuario: Tipo_usuario = Tipo_usuario.Estudiante;
 
-  constructor(
-    email: string = '',
-    clave: string = '',
-    tipo_usuario: Tipo_usuario
-  ) {
+  constructor(email: string = '', clave: string = '') {
     this.email = email;
     this.clave = clave;
-    this.tipo_usuario = tipo_usuario;
   }
 }

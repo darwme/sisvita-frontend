@@ -1,0 +1,28 @@
+<main>
+  <div class="container">
+    <h1>Bienvenido al Test ISRA</h1>
+    <p>
+      El Test ISRA es una evaluación diseñada para medir diferentes aspectos
+      relacionados con la personalidad y el comportamiento.
+    </p>
+    <p>
+      A lo largo de este test, responderás una serie de preguntas que nos
+      ayudarán a entender mejor tu forma de ser y cómo interactúas con el mundo
+      que te rodea.
+    </p>
+    <p>
+      Antes de comenzar, por favor, asegúrate de tener un ambiente tranquilo y
+      libre de distracciones.
+    </p>
+
+    <h2>Datos del Estudiante</h2>
+    <p>
+      Nombre: {{ estudiante.usuario.nombre }} {{ estudiante.usuario.apellido }}
+    </p>
+    <p>Email: {{ estudiante.usuario.email }}</p>
+    <p>Estado Civil: {{ estudiante.usuario.estado_civil }}</p>
+    <p>Fecha de Nacimiento: {{ estudiante.usuario.fecha_nacimiento }}</p>
+    <p>Código de Estudiante: {{ estudiante.codigo_estudiante }}</p>
+    <button class="btn" (click)="test()">Empezar Test</button>
+  </div>
+</main>

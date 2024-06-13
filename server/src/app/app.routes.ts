@@ -3,11 +3,17 @@ import { LoginComponent } from './pages/login/login.component';
 import { LayoutComponent } from './pages/layout/layout.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { IndexComponent } from './pages/test/index/index.component';
+import { CognitivoComponent } from './pages/test/cognitivo/cognitivo.component';
+import { FisiologicoComponent } from './pages/test/fisiologico/fisiologico.component';
+import { MotorComponent } from './pages/test/motor/motor.component';
+import { completeGuard } from './service/guards/complete.guard';
+import { EndComponent } from './pages/test/end/end.component';
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'index',
     pathMatch: 'full',
   },
   {
@@ -19,8 +25,8 @@ export const routes: Routes = [
     component: LayoutComponent,
     children: [
       {
-        path: 'dashboard',
-        component: DashboardComponent,
+        path: ':codigo_estudiante/test',
+        component: IndexComponent,
       },
     ],
   },
@@ -29,8 +35,23 @@ export const routes: Routes = [
     component: RegisterComponent,
   },
   {
-    path: '**',
-    redirectTo: 'login',
-    pathMatch: 'full',
+    path: ':codigo_estudiante/test/cognitivo',
+    component: CognitivoComponent,
+    canActivate: [completeGuard],
+  },
+  {
+    path: ':codigo_estudiante/test/fisiologico',
+    component: FisiologicoComponent,
+    canActivate: [completeGuard],
+  },
+  {
+    path: ':codigo_estudiante/test/motor',
+    component: MotorComponent,
+    canActivate: [completeGuard],
+  },
+
+  {
+    path: ':codigo_estudiante/test/end',
+    component: EndComponent,
   },
 ];
