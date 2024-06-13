@@ -1,0 +1,105 @@
+/* cognitivo.component.css */
+.container {
+    width: 100%;
+    max-width: 650px;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .seccion {
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: rgb(255, 192, 74);
+  }
+  
+  .situacion-nombre {
+    font-size: 15px;
+    margin-bottom: 10px;
+    color: #251ca7;
+    font-weight: 600;
+  }
+  
+  .situacion {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: rgb(70, 62, 175);
+  }
+  
+  .pregunta {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: rgb(64, 226, 64);
+    font-weight: 600;
+  }
+  
+  .options {
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .option {
+    margin-right: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .radio {
+    margin-right: 5px;
+    flex: 0 0 auto;
+    width: 12px;
+    height: 12px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    vertical-align: middle;
+    position: relative;
+    outline: none;
+    box-shadow: 0 0 0 1px #ccc;
+  }
+  
+  .radio[type="radio"]:checked {
+    background-color: #0f0f96;
+    border-color: transparent;
+    box-shadow: 0 0 0 1px #ffffff, 0 0 0 3px #0f0f96;
+  }
+  
+  .radio[type="radio"]:checked + label {
+    color: #1d1818;
+  }
+  
+  label {
+    display: inline-block;
+    margin-left: 5px;
+    font-size: 12px;
+    cursor: pointer;
+    color: rgb(19, 19, 172);
+    font-weight: 550;
+  }
+  
+  button[type="submit"] {
+    background-color: rgb(233, 182, 17);
+    color: #2b339e;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    display: block;
+    margin-top: 20px;
+    width: 80%;
+    margin: 0 auto;
+    font-weight: 600;
+    text-align: center;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: rgb(211, 144, 19);
+    color: #232bc4;
+  }
+  
