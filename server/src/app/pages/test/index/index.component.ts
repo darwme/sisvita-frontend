@@ -28,6 +28,11 @@ export class IndexComponent implements OnInit {
     this.dato = this.dataService.datoEstudiante$;
   }
 
+  getData(data: any) {
+    this.dataService.setData(data);
+    console.log(data);
+  }
+
   ngOnInit(): void {
     this.dato.subscribe((data: any) => {
       this.dato = data;
@@ -36,8 +41,9 @@ export class IndexComponent implements OnInit {
   }
 
   test() {
+    this.getData(this.dato);
     this.completeIndexTest();
-    this.router.navigateByUrl('/test/cognitivo');
+    this.router.navigateByUrl(`${this.dato.codigo_estudiante}/test/cognitivo`);
   }
 
   completeIndexTest() {

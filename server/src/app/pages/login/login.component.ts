@@ -23,13 +23,13 @@ export class LoginComponent {
   constructor(
     private http: HttpClient,
     private route: Router,
-    private datService: DataService
+    private dataService: DataService
   ) {
     this.loginObj = new Login();
   }
 
   getData(data: any) {
-    this.datService.setData(data);
+    this.dataService.setData(data);
     console.log(data);
   }
 
