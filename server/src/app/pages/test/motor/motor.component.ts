@@ -39,6 +39,8 @@ export class MotorComponent implements OnInit, OnDestroy {
   
   data: any = {};
   private dataSubscription: Subscription | undefined;
+  mostrarAdvertencia: boolean = false;
+
 
   constructor(
     private progressService: ProgressService,
@@ -216,14 +218,17 @@ export class MotorComponent implements OnInit, OnDestroy {
   }
 
   registrarRespuesta(situacionId: number, preguntaIndex: number, opcionValor: number) {
-    // Obtain the current situation
+    // Obtener la situación actual
     const situacion = this.situaciones.find(s => s.id === situacionId);
     
     if (situacion) {
-      // Obtain the current question
+      // Obtener la pregunta actual
       const pregunta = situacion.preguntas[preguntaIndex];
       
       if (pregunta) {
+        // Actualizar respuestas
+        this.respuestas[pregunta.numero] = opcionValor;
+        
         console.log(`Situación: ${situacion.descripcion}`);
         console.log(`Pregunta: ${pregunta.pregunta}`);
         console.log(`Respuesta: ${opcionValor}`);
@@ -231,21 +236,40 @@ export class MotorComponent implements OnInit, OnDestroy {
     }
   }
   
-  testEnd(): void {
-    // Save responses before navigating to the next part of the test
-    this.saveRespuestas();
-    // Mark the motor section as completed
-    this.completeIndexTest();
-    // Navigate to the next part of the test using the router
-    this.router.navigateByUrl(`${this.data.codigo_estudiante}/test/end`);
-  }
 
+  testEnd(): void {
+    if (this.formularioCompleto()) {
+      // Guardar respuestas antes de navegar a la siguiente parte del test
+      this.saveRespuestas();
+      // Marcar la sección cognitiva como completada
+      this.completeIndexTest();
+      // Navegar a la siguiente parte del test usando router
+      this.router.navigateByUrl(`${this.data.codigo_estudiante}/test/end`);
+
+      this.mostrarAdvertencia = false;
+      console.log("se logro terminar el test")
+    } else {
+      // Mostrar mensaje de advertencia porque el formulario no está completo
+      this.mostrarAdvertencia = true;
+    }
+  }
   saveRespuestas(): void {
-    // Here you should send the responses to your service or do what's needed with them
+    // Aquí deberías enviar las respuestas a tu servicio o hacer lo necesario con ellas
     console.log('Respuestas guardadas:', this.respuestas);
   }
 
   completeIndexTest(): void {
     this.progressService.markPartAsCompleted('motor');
   }
+  formularioCompleto(): boolean {
+    for (const situacion of this.situaciones) {
+      for (const pregunta of situacion.preguntas) {
+        if (!(pregunta.numero in this.respuestas)) {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+
 }

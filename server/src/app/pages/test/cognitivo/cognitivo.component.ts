@@ -236,13 +236,14 @@ export class CognitivoComponent implements OnInit, OnDestroy {
   
   testFisiologico(): void {
     if (this.formularioCompleto()) {
+      console.log("se logro ir a fisiologico")
       // Guardar respuestas antes de navegar a la siguiente parte del test
       this.saveRespuestas();
       // Marcar la sección cognitiva como completada
       this.completeIndexTest();
       // Navegar a la siguiente parte del test usando router
       this.router.navigateByUrl(`${this.data.codigo_estudiante}/test/fisiologico`);
-
+      console.log("se logro ir a fisiologico")
       this.mostrarAdvertencia = false;
     } else {
       // Mostrar mensaje de advertencia porque el formulario no está completo
@@ -271,16 +272,4 @@ export class CognitivoComponent implements OnInit, OnDestroy {
     return true;
   }
   
-  onContinuarClick(): void {
-    if (this.formularioCompleto()) {
-      this.saveRespuestas();
-      this.completeIndexTest();
-      this.router.navigateByUrl(`${this.data.codigo_estudiante}/test/fisiologico`);
-      this.mostrarAdvertencia = false;
-    } else {
-      // Mostrar mensaje de advertencia
-      this.mostrarAdvertencia = true;
-    }
-  }
-
 }
