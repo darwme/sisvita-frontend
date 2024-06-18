@@ -120,3 +120,9 @@ main {
 .botons:hover {
   background-color: rgb(161, 112, 20);
 }
+
+.mensaje-advertencia {
+  text-align: center;
+  color: rgb(182, 6, 6);
+  font-weight: 700;
+}

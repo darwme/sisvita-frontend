@@ -30,6 +30,12 @@
     <hr class="separator">
   </div>
 
+  <!-- Mensaje de advertencia -->
+  <p class="mensaje-advertencia" [hidden]="formularioCompleto() || !mostrarAdvertencia">
+    Complete todas las preguntas antes de continuar por favor
+  </p>
+  
+
   <!-- Botón para continuar al test fisiológico -->
   <button class="botons" (click)="testFisiologico()">
     CONTINUAR

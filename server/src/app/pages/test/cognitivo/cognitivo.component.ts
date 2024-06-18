@@ -40,6 +40,7 @@ export class CognitivoComponent implements OnInit, OnDestroy {
   
   data: any = {};
   private dataSubscription: Subscription | undefined;
+  mostrarAdvertencia: boolean = false;
 
   constructor(
     private progressService: ProgressService,
@@ -222,6 +223,9 @@ export class CognitivoComponent implements OnInit, OnDestroy {
       const pregunta = situacion.preguntas[preguntaIndex];
       
       if (pregunta) {
+        // Actualizar respuestas
+        this.respuestas[pregunta.numero] = opcionValor;
+        
         console.log(`Situación: ${situacion.descripcion}`);
         console.log(`Pregunta: ${pregunta.pregunta}`);
         console.log(`Respuesta: ${opcionValor}`);
@@ -229,14 +233,23 @@ export class CognitivoComponent implements OnInit, OnDestroy {
     }
   }
   
+  
   testFisiologico(): void {
-    // Guardar respuestas antes de navegar a la siguiente parte del test
-    this.saveRespuestas();
-    // Marcar la sección cognitiva como completada
-    this.completeIndexTest();
-    // Navegar a la siguiente parte del test usando router
-    this.router.navigateByUrl(`${this.data.codigo_estudiante}/test/fisiologico`);
+    if (this.formularioCompleto()) {
+      // Guardar respuestas antes de navegar a la siguiente parte del test
+      this.saveRespuestas();
+      // Marcar la sección cognitiva como completada
+      this.completeIndexTest();
+      // Navegar a la siguiente parte del test usando router
+      this.router.navigateByUrl(`${this.data.codigo_estudiante}/test/fisiologico`);
+
+      this.mostrarAdvertencia = false;
+    } else {
+      // Mostrar mensaje de advertencia porque el formulario no está completo
+      this.mostrarAdvertencia = true;
+    }
   }
+  
 
   saveRespuestas(): void {
     // Aquí deberías enviar las respuestas a tu servicio o hacer lo necesario con ellas
@@ -246,4 +259,28 @@ export class CognitivoComponent implements OnInit, OnDestroy {
   completeIndexTest(): void {
     this.progressService.markPartAsCompleted('cognitivo');
   }
+
+  formularioCompleto(): boolean {
+    for (const situacion of this.situaciones) {
+      for (const pregunta of situacion.preguntas) {
+        if (!(pregunta.numero in this.respuestas)) {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+  
+  onContinuarClick(): void {
+    if (this.formularioCompleto()) {
+      this.saveRespuestas();
+      this.completeIndexTest();
+      this.router.navigateByUrl(`${this.data.codigo_estudiante}/test/fisiologico`);
+      this.mostrarAdvertencia = false;
+    } else {
+      // Mostrar mensaje de advertencia
+      this.mostrarAdvertencia = true;
+    }
+  }
+
 }
