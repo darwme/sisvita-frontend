@@ -1,0 +1,42 @@
+.container-fluid {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center; 
+  background-color: rgb(17, 0, 79);
+  color: white;
+  font-weight: 600;
+}
+
+.nav-item {
+  padding: 0.8rem;
+  font-size: x-large;
+}
+
+.btn-sm-square {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  font-weight: normal;
+}
+
+.text-center {
+  text-align: center; 
+}
+
+.text-md-start {
+  text-align: start; 
+}
+
+.fs-5 {
+  font-size: 3.0rem; 
+}
+
+.mb-4 {
+  margin-bottom: 1.5rem; 
+}
+
+  

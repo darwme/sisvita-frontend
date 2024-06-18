@@ -1,0 +1,60 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <!-- Logo (puedes usar ng-src para enlazar la URL del logo desde tu componente) -->
+    <a class="navbar-brand" href="#">
+      <img [src]="logoUrl" alt="Logo" height="30">
+    </a>
+
+    <!-- Botón de colapso para dispositivos móviles -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Contenido del menú -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Realizar Test</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Registro</a>
+        </li>
+      </ul>
+
+      <!-- Formulario de búsqueda -->
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar">
+        <button class="btn btn-outline-success" type="submit">Buscar</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<!-- Contenido principal con imagen y bienvenida -->
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-6">
+      <img src="assets/images/ansiedad.jpg" class="img-fluid" alt="Imagen de bienvenida">
+    </div>
+    <div class="col-md-6 text-center text-md-start"> <!-- Alineación centrada en dispositivos pequeños y izquierda en dispositivos medianos -->
+      <h2 class="mb-4">Bienvenido a la realización de Test</h2> <!-- Espaciado inferior adicional -->
+      <p class="fs-5"> <!-- Tamaño de fuente más grande -->
+        ¡Bienvenido a Sisvita, tu plataforma especializada en pruebas de psicología para casos de ansiedad! 
+        En Sisvita, entendemos la importancia de tu bienestar emocional. Nuestra misión es brindarte herramientas 
+        efectivas y accesibles para evaluar y gestionar la ansiedad de manera positiva. A través de nuestros tests 
+        diseñados por profesionales, podrás explorar y comprender mejor tus emociones, identificar áreas de preocupación 
+        y acceder a recursos personalizados para tu bienestar mental. Da el primer paso hacia una vida más equilibrada 
+        y saludable. ¡Estamos aquí para apoyarte en cada paso del camino!
+      </p>
+    </div>
+  </div>
+</div>
+
+
