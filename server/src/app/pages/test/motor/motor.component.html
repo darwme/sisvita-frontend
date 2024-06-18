@@ -1,6 +1,39 @@
 <app-header></app-header>
-<p>motor works!</p>
 
-<button (click)="testEnd()">Test</button>
+<main>
+  <h2 class="seccion">PREGUNTAS MOTORAS</h2>
+
+  <!-- Iteración sobre las situaciones -->
+  <div *ngFor="let situacion of situaciones; let i = index" class="situacion-container">
+    <h3 class="num_situacion">Situación {{i + 1}}:</h3>
+    <h3 class="descripcion_situacion">{{ situacion.descripcion }}</h3>
+    
+    <!-- Iteración sobre las preguntas de cada situación -->
+    <div class="preguntas-container">
+      <div class="question" *ngFor="let pregunta of situacion.preguntas; let j = index">
+        <h4>{{ pregunta.pregunta }}</h4>
+        
+        <!-- Iteración sobre las opciones de respuesta de cada pregunta -->
+        <div class="options">
+          <label *ngFor="let opcion of pregunta.opciones; let k = index">
+            <input type="radio"
+                   [name]="'situacion' + situacion.id + 'pregunta' + (j + 1)"
+                   [value]="opcion.valor.toString()"
+                   (change)="registrarRespuesta(situacion.id, j, opcion.valor)">
+            {{ opcion.texto }}
+          </label>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Línea separadora -->
+    <hr class="separator">
+  </div>
+
+  <!-- Botón para continuar al test fisiológico -->
+  <button class="botons" (click)="testEnd()">
+    FINALIZAR
+  </button>
+</main>
 
 <app-footer></app-footer>

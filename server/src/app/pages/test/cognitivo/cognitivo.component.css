@@ -5,117 +5,104 @@
   padding: 0;
 }
 
-main {
-  margin: 50px;
+body {
   font-family: Arial, sans-serif;
   background-color: #f9f9f9;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+main {
+  margin: 50px auto;
   width: 100%;
-  max-width: 650px;
-  padding: 50px 20px;
+  max-width: 800px; /* Ancho máximo ajustable según tus necesidades */
+  padding: 30px;
   background-color: #fff;
   border: 1px solid #ddd;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Estilos para la sección de preguntas cognitivas */
 .seccion {
+  text-align: start;
+  color: rgb(243, 185, 78);
+  margin-bottom: 30px;
+  font-size: 16px;
+}
+
+.situacion-container {
+  margin-bottom: 30px;
+}
+
+.num_situacion {
   font-size: 15px;
   font-weight: bold;
-  margin-bottom: 20px;
-  color: rgb(255, 192, 74);
-}
-
-.pregunta {
-  font-size: 16px;
-  margin-bottom: 10px;
-  color: rgb(64, 226, 64);
-  font-weight: 600;
-}
-
-.situacion-nombre {
-  font-size: 15px;
-  margin-bottom: 10px;
-  color: #251ca7;
-  font-weight: 600;
-}
-
-.situacion {
-  font-size: 18px;
-  margin-bottom: 20px;
   color: rgb(70, 62, 175);
+  margin-bottom: 10px;
 }
 
-/* Estilos para las opciones */
-.options {
+.descripcion_situacion {
+  font-size: 16px;
+  color: rgb(70, 62, 175);
+  margin-bottom: 15px;
+}
+
+.preguntas-container {
+  margin-left: 20px; /* Indentación para las preguntas */
+}
+
+.question {
   margin-bottom: 20px;
+}
+
+.question h4 {
+  font-size: 16px;
+  font-weight: 500;
+  color: rgb(90, 185, 90);
+  margin-bottom: 10px;
+}
+
+.options {
   display: flex;
   flex-wrap: wrap;
 }
 
-.option {
-  margin-right: 10px; /* Reduce el espacio entre opciones */
-  margin-bottom: 10px;
+.options label {
   display: flex;
   align-items: center;
+  margin-right: 15px;
+  margin-bottom: 10px;
 }
 
-/* Estilos para los radios */
-.radio {
-  margin-right: 5px;
-  flex: 0 0 auto; /* Para que el tamaño no cambie */
-}
-
-.radio[type="radio"] {
+.options input[type="radio"] {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  width: 12px; /* Reduce el ancho del botón de radio */
-  height: 12px; /* Reduce la altura del botón de radio */
-  border: 1px solid #ccc; /* Borde inicial más delgado */
-  border-radius: 50%; /* Botón de radio circular */
+  width: 16px;
+  height: 16px;
+  border: 1px solid #ccc;
+  border-radius: 50%;
   cursor: pointer;
+  margin-right: 5px;
   vertical-align: middle;
-  position: relative; /* Necesario para el pseudo-elemento */
-  outline: none;
-  box-shadow: 0 0 0 1px #ccc; /* Borde inicial más delgado */
 }
 
-/* Estilo cuando el botón de radio está seleccionado */
-.radio[type="radio"]:checked {
-  background-color: #0f0f96; /* Fondo azul */
-  border-color: transparent; /* Sin borde, manejamos con box-shadow */
-  box-shadow: 0 0 0 1px #ffffff, 0 0 0 3px #0f0f96; /* Borde blanco seguido de otro borde azul */
+.options input[type="radio"]:checked {
+  background-color: #0f0f96;
+  border-color: transparent;
+  box-shadow: 0 0 0 1px #ffffff, 0 0 0 3px #0f0f96;
 }
 
-/* Cambiar el color del texto de la etiqueta cuando el radio está seleccionado */
-.radio[type="radio"]:checked + label {
-  color: #1d1818;
-}
-
-/* Estilos para los labels */
-label {
-  display: inline-block;
-  margin-left: 5px; /* Reduce el espacio entre el botón de radio y la etiqueta */
-  font-size: 12px; /* Reduce el tamaño del texto de las etiquetas */
-  cursor: pointer;
-  color: rgb(19, 19, 172);
+.options label {
+  font-size: 14px;
+  color: rgb(70, 62, 175);
   font-weight: 550;
+  cursor: pointer;
 }
 
 /* Estilos para el botón */
 .botons {
-  background-color: rgb(233, 182, 17); /* Color de fondo */
-  color: #11154d; /* Color del texto */
-  padding: 12px 30px; /* Ajuste del padding horizontal */
+  background-color: rgb(233, 182, 17);
+  color: #11154d;
+  padding: 12px 30px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -123,13 +110,13 @@ label {
   transition: background-color 0.3s;
   display: block;
   margin-top: 20px;
-  width: 80%; /* Ocupa el 80% del ancho del contenedor */
-  max-width: none; /* Desactiva el límite de ancho máximo específico */
-  margin: 0 auto; /* Centra el botón */
+  width: 80%;
+  max-width: none; /* Si no quieres limitar el ancho máximo */
+  margin: 0 auto; /* Alinear al centro */
   font-weight: 600;
   text-align: center;
 }
 
 .botons:hover {
-  background-color: rgb(161, 112, 20); /* Cambio de color al pasar el cursor */
+  background-color: rgb(161, 112, 20);
 }
