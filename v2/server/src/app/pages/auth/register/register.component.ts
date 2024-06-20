@@ -78,6 +78,8 @@ export class RegisterComponent {
       ]),
       clave: ['', Validators.required],
       confirmClave: ['', Validators.required],
+      antecedentes: 'ninguna',
+      codigo_paciente: 'RANDOM',
     });
   }
 
@@ -135,8 +137,8 @@ export class RegisterComponent {
         Swal.close();
         Swal.fire({
           icon: 'success',
-          title: 'registrarPersona....',
-          text: '!Se registro exitosamente los datos de la persona!',
+          title: 'registrarPaciente....',
+          text: '!Se registro exitosamente los datos!',
         });
       },
     });
@@ -145,6 +147,7 @@ export class RegisterComponent {
   clickRegister() {
     this.paciente = this.pacienteForm.value as Paciente;
     console.log('paciente', this.paciente);
+    this.registrarPaciente();
   }
 }
 export const crossPasswordMatchValidator: ValidatorFn = (

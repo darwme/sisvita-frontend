@@ -20,6 +20,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { AuthServiceService } from '../../../services/auth-service.service';
 import Swal from 'sweetalert2';
+import { DataService } from '../../../services/data.service';
 
 @Component({
   selector: 'app-login',
@@ -41,14 +42,17 @@ import Swal from 'sweetalert2';
   styleUrl: './login.component.css',
 })
 export class LoginComponent {
+  data: any = {};
   loginForm: FormGroup;
   private readonly _formBuilder: FormBuilder;
   usuario!: Usuario;
   isEdited: boolean = false;
+  errorMessage: any;
 
   constructor(
     private http: HttpClient,
     private authService: AuthServiceService,
+    private dataService: DataService,
     formBuilder: FormBuilder
   ) {
     this._formBuilder = formBuilder;
@@ -61,11 +65,36 @@ export class LoginComponent {
     });
   }
 
+  getData(data: any) {
+    this.dataService.setData(data);
+    console.log(data);
+  }
+
   loginUsuario(): void {
     this.usuario = this.loginForm.value as Usuario;
     console.log(this.usuario);
     this.authService.login(this.usuario).subscribe({
-      next: () => {
+      next: (res: any) => {
+        if (res.status === 200) {
+          Swal.close();
+          this.getData(res.data);
+          localStorage.setItem('token', res.data.token);
+          this.data = res.data;
+
+          Swal.fire({
+            icon: 'success',
+            title: 'Bienvenido',
+            text: 'Inicio de sesión exitoso',
+          });
+        } else {
+          this.errorMessage = res.message || 'Login Failed';
+          Swal.close();
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: res.message,
+          });
+        }
         console.log(this.usuario);
       },
       error: () => {
@@ -74,14 +103,6 @@ export class LoginComponent {
           icon: 'error',
           title: 'Error',
           text: 'Usuario o contraseña incorrectos',
-        });
-      },
-      complete: () => {
-        Swal.close();
-        Swal.fire({
-          icon: 'success',
-          title: 'Bienvenido',
-          text: 'Inicio de sesión exitoso',
         });
       },
     });

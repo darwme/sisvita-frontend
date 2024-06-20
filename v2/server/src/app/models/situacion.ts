@@ -1,7 +1,6 @@
-import { Seccion } from './seccion';
+import { Pregunta } from './pregunta';
 
 export interface Situacion {
   descripcion: string;
-  cant_preguntas: number;
-  seccion: Seccion;
+  preguntas: Pregunta[];
 }
