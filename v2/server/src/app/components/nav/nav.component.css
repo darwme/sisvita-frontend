@@ -1,0 +1,29 @@
+nav ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+nav li {
+  margin-left: 1rem;
+  text-decoration: none;
+  list-style-type: none;
+  color: #fff;
+}
+li > a {
+  font-size: 1rem;
+  color: #fff;
+  text-decoration: none;
+  text-transform: none;
+}
+
+li > a:hover,
+li > a:active {
+  color: rgb(99, 215, 188);
+  transition: color 0.3s ease;
+  text-decoration: underline;
+}
+
+nav {
+  color: #fff;
+}

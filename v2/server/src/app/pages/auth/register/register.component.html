@@ -1,0 +1,101 @@
+<div class="container">
+  <app-logo style="margin-bottom: 1rem"></app-logo>
+  <mat-card class="card">
+    <mat-card-header class="card__title">
+      <mat-card-title>Register</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form class="form" [formGroup]="pacienteForm">
+        <div class="row">
+          <mat-form-field>
+            <mat-label>Nombres</mat-label>
+            <input type="text" matInput formControlName="nombres" />
+            @if (pacienteForm.controls['nombres'].hasError('required')) {
+            <mat-error>Error al ingresar los nombres</mat-error>
+            }
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Apellidos</mat-label>
+            <input type="text" matInput formControlName="apellidos" />
+            @if (pacienteForm.controls['apellidos'].hasError('required')) {
+            <mat-error>Error al ingresar los apellidos</mat-error>
+            }
+          </mat-form-field>
+        </div>
+        <div class="row">
+          <mat-form-field>
+            <mat-label>Celular</mat-label>
+            <input type="text" matInput formControlName="celular" />
+            @if (pacienteForm.controls['celular'].hasError('required')) {
+            <mat-error>Error al ingresar el celular</mat-error>
+            }
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Fecha de nacimiento</mat-label>
+            <input type="date" matInput formControlName="fecha_nacimiento" />
+            @if (pacienteForm.controls['fecha_nacimiento'].hasError('required'))
+            {
+            <mat-error>Error al ingresar la fecha de nacimiento</mat-error>
+            }
+          </mat-form-field>
+        </div>
+        <div class="row">
+          <mat-form-field>
+            <mat-label>Sexo</mat-label>
+            <mat-select formControlName="sexo">
+              <mat-option value="masculino">Masculino</mat-option>
+              <mat-option value="femenino">Femenino</mat-option>
+            </mat-select>
+            @if (pacienteForm.controls['sexo'].hasError('required')) {
+            <mat-error>Error al ingresar el genero</mat-error>
+            }
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Estado civil</mat-label>
+            <mat-select formControlName="estado_civil">
+              <mat-option value="soltero">Soltero</mat-option>
+              <mat-option value="casado">Casado</mat-option>
+              <mat-option value="divorciado">Divorciado</mat-option>
+              <mat-option value="viudo">Viudo</mat-option>
+            </mat-select>
+            @if (pacienteForm.controls['estado_civil'].hasError('required')) {
+            <mat-error>Error al ingresar el estado civil</mat-error>
+            }
+          </mat-form-field>
+        </div>
+        <div class="row email">
+          <mat-form-field class="email" appearance="outline">
+            <mat-label>E-mail</mat-label>
+            <input type="email" matInput formControlName="email" />
+            @if (pacienteForm.controls['email'].hasError('required')) {
+            <mat-error>Error al ingresar el email</mat-error>}
+          </mat-form-field>
+        </div>
+        <div class="row">
+          <mat-form-field appearance="outline">
+            <mat-label>Clave</mat-label>
+            <input type="password" matInput formControlName="clave" />
+            @if (pacienteForm.controls['clave'].hasError('required')) {
+            <mat-error>Error al ingresar la clave</mat-error>
+            }
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Confirmar clave</mat-label>
+            <input type="password" matInput formControlName="confirmClave" />
+            @if (pacienteForm.controls['confirmClave'].hasError('required')) {
+            <mat-error>Error al confirmar la clave</mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+        <button mat-raised-button color="primary" (click)="clickRegister()">
+          Registrar
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
