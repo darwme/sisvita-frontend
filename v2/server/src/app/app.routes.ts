@@ -4,6 +4,7 @@ import { LayoutComponent } from './pages/layout/layout.component';
 import { IndexComponent } from './pages/index/index.component';
 import { LoginComponent } from './pages/auth/login/login.component';
 import { RegisterComponent } from './pages/auth/register/register.component';
+import { TestComponent } from './pages/test/test.component';
 export const routes: Routes = [
   {
     path: '',
@@ -26,5 +27,9 @@ export const routes: Routes = [
   {
     path: 'auth/register',
     component: RegisterComponent,
+  },
+  {
+    path: 'test',
+    component: TestComponent,
   },
 ];

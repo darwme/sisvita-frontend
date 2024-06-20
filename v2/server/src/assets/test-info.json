@@ -1,0 +1,196 @@
+{
+  "test": {
+    "ISRA": {
+      "secciones": {
+        "cognitivo": {
+          "situaciones": [
+            {
+              "situacion": "Ante un examen en el que me juego mucho, o si voy a ser entrevistado para un trabajo importante",
+              "preguntas": ["Me preocupo fácilmente", "Me cuesta concentrarme"]
+            },
+            {
+              "situacion": "Cuando voy a llegar tarde a una cita",
+              "preguntas": ["Me preocupo fácilmente"]
+            },
+            {
+              "situacion": "Cuando pienso en las muchas cosas que tengo que hacer",
+              "preguntas": [
+                "Doy demasiadas vueltas a las cosas sin llegar a decidirme",
+                "Me cuesta concentrarme",
+                "¿Te sientes abrumado/a por tus responsabilidades?"
+              ]
+            },
+            {
+              "situacion": "A la hora de tomar una decisión o resolver un problema difícil",
+              "preguntas": ["Me preocupo fácilmente", "Me cuesta concentrarme"]
+            },
+            {
+              "situacion": "En mi trabajo o cuando estudio",
+              "preguntas": [
+                "Me siento inseguro o insegura de mi mismo.",
+                "Doy demasiadas vueltas a las cosas sin llegar a decidirme"
+              ]
+            }
+          ]
+        },
+        "fisiologico": {
+          "situaciones": [
+            {
+              "situacion": "Ante un examen en el que me juego mucho, o si voy a ser entrevistado para un trabajo importante",
+              "preguntas": [
+                "Me tiemblan las manos o las piernas.",
+                "Me duele la cabeza",
+                "Mi cuerpo está en tensión.",
+                "Me falta el aire y mi respiración es agitada."
+              ]
+            },
+            {
+              "situacion": "Cuando voy a llegar tarde a una cita",
+              "preguntas": [
+                "Siento náuseas o mareos.",
+                "Se me seca la boca y tengo dificultades para tragar.",
+                "Tengo escalofríos y tirito aunque no haga mucho frío."
+              ]
+            },
+            {
+              "situacion": "Cuando pienso en las muchas cosas que tengo que hacer",
+              "preguntas": [
+                "Me tiemblan las manos o las piernas.",
+                "Siento molestias en el estómago",
+                "Me tiemblan las manos o las piernas"
+              ]
+            },
+            {
+              "situacion": "A la hora de tomar una decisión o resolver un problema difícil",
+              "preguntas": [
+                "Siento náuseas o mareos.",
+                "Se me seca la boca y tengo dificultades para tragar.",
+                "Tengo palpitaciones, el corazón me late muy deprisa.",
+                "Tengo escalofríos y tirito aunque no haga mucho frío"
+              ]
+            },
+            {
+              "situacion": "En mi trabajo o cuando estudio",
+              "preguntas": [
+                "Mi cuerpo está en tensión.",
+                "Siento náuseas o mareos.",
+                "Se me seca la boca y tengo dificultades para tragar."
+              ]
+            }
+          ]
+        },
+        "motor": {
+          "situaciones": [
+            {
+              "situacion": "Ante un examen en el que me juego mucho, o si voy a ser entrevistado para un trabajo importante",
+              "preguntas": [
+                "Me libro con facilidad.",
+                "Fumo, como o bebo demasiado.",
+                "Trato de evitar o rehuir la situación"
+              ]
+            },
+            {
+              "situacion": "Cuando voy a llegar tarde a una cita",
+              "preguntas": [
+                "Realizo movimientos repetitivos con alguna parte de mi cuerpo (rascarme, tocarme, manos, etc)",
+                "Me muevo y hago cosas sin una finalidad concreta.",
+                "Quedo paralizado o mis movimientos son torpes."
+              ]
+            },
+            {
+              "situacion": "Cuando pienso en las muchas cosas que tengo que hacer",
+              "preguntas": [
+                "Quedo paralizado o mis movimientos son torpes.",
+                "Tartamudeo o tengo otras dificultades de expresión verbal",
+                "Lloro con facilidad."
+              ]
+            },
+            {
+              "situacion": "A la hora de tomar una decisión o resolver un problema difícil",
+              "preguntas": [
+                "Trato de evitar o rehuir la situación",
+                "Me muevo y hago cosas sin una finalidad concreta."
+              ]
+            },
+            {
+              "situacion": "En mi trabajo o cuando estudio",
+              "preguntas": [
+                "Realizo movimientos repetitivos con alguna parte de mi cuerpo (rascarme, tocarme, manos, etc)",
+                "Trato de evitar o rehuir la situación",
+                "Quedo paralizado o mis movimientos son torpes.",
+                "Tartamudeo o tengo otras dificultades de expresión verbal"
+              ]
+            }
+          ]
+        }
+      },
+      "opciones": [
+        "Casi nunca",
+        "Pocas veces",
+        "Unas veces sí, otras veces no",
+        "Muchas veces",
+        "Casi siempre"
+      ]
+    },
+    "ZUNG": {
+      "secciones": {
+        "eaa": {
+          "situacion": "Situación que me describe",
+          "preguntas": [
+            "Me siento más nervioso y ansioso que de costumbre",
+            "Me siento con temor sin razón",
+            "Despierto con facilidad o siento pánico",
+            "Me siento como si fuera a reventar y partirme en pedazos",
+            "Siento quetodo está bien y que nada malo puede sucederme",
+            "Me tiemblan los brazos y las piernas",
+            "Me mortifican dolores de cabeza, cuello o cintura",
+            "Me siento débil y me canso fácilmente",
+            "Me siento tranquilo y puedo permanecer en calma fácilmente",
+            "Puedo sentir que me late muy rápido el corazón",
+            "Sufro de mareos",
+            "Sufro de desmayos o siento que me voy a desmayar",
+            "Puedo inspirar y expirar fácilmente",
+            "Se me adormecen o hincan los dedos de las manos y pies",
+            "Sufro de molestias estomacales o indigestión",
+            "Orino con mucha frecuencia",
+            "Generalmente mis manos están secas y calientes",
+            "Siento bochornos",
+            "Me quedo dormido con facilidad y descanso bien durante la noche",
+            "Tengo pesadillas"
+          ]
+        },
+        "eamd": {
+          "situacion": "Situación que me describe",
+          "preguntas": [
+            "Me siento triste y decaído",
+            "Por las mañanas me siento mejor",
+            "Tengo ganas dellorar y a veces lloro",
+            "Me cuesta mucho dormir en la noche",
+            "Como igual que antes",
+            "Aún tengo deseos sexuales",
+            "Noto que estoy adelgazando",
+            "Estoy extreñido (a)",
+            "El corazón me late más rápido que antes",
+            "Me canso sin motivo",
+            "Mi mente está tan despejada como antes",
+            "Hago las cosas con la misma facilidad",
+            "Me siento intraquilo y no puedo respirar",
+            "Tengo confianza en el futuro",
+            "Estoy más irritable que antes",
+            "Encuentro fácil tomar decisiones",
+            "Siento que soy útil y necesario (a)",
+            "Encuentro agradable vivir",
+            "Creo que sería mejor para los demás si estuviera muerto (a)",
+            "Me gustan las mismas cosas que antes"
+          ]
+        }
+      },
+      "opciones": [
+        "Nunca o raras veces",
+        "Algunas veces",
+        "Buen numero de veces",
+        "La mayoría de veces"
+      ]
+    }
+  }
+}

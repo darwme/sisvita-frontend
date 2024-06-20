@@ -78,6 +78,8 @@ export class RegisterComponent {
       ]),
       clave: ['', Validators.required],
       confirmClave: ['', Validators.required],
+      antecedentes: undefined,
+      codigo_paciente: 'RANDOM',
     });
   }
 
@@ -145,6 +147,7 @@ export class RegisterComponent {
   clickRegister() {
     this.paciente = this.pacienteForm.value as Paciente;
     console.log('paciente', this.paciente);
+    this.registrarPaciente();
   }
 }
 export const crossPasswordMatchValidator: ValidatorFn = (
