@@ -1,5 +1,76 @@
-{
-  "test": {
+[
+  {
+    "ZUNG": {
+      "secciones": {
+        "eaa": {
+          "situaciones": [
+            {
+              "situacion": "Situación que me describe",
+              "preguntas": [
+                "Me siento más nervioso y ansioso que de costumbre",
+                "Me siento con temor sin razón",
+                "Despierto con facilidad o siento pánico",
+                "Me siento como si fuera a reventar y partirme en pedazos",
+                "Siento quetodo está bien y que nada malo puede sucederme",
+                "Me tiemblan los brazos y las piernas",
+                "Me mortifican dolores de cabeza, cuello o cintura",
+                "Me siento débil y me canso fácilmente",
+                "Me siento tranquilo y puedo permanecer en calma fácilmente",
+                "Puedo sentir que me late muy rápido el corazón",
+                "Sufro de mareos",
+                "Sufro de desmayos o siento que me voy a desmayar",
+                "Puedo inspirar y expirar fácilmente",
+                "Se me adormecen o hincan los dedos de las manos y pies",
+                "Sufro de molestias estomacales o indigestión",
+                "Orino con mucha frecuencia",
+                "Generalmente mis manos están secas y calientes",
+                "Siento bochornos",
+                "Me quedo dormido con facilidad y descanso bien durante la noche",
+                "Tengo pesadillas"
+              ]
+            }
+          ]
+        },
+
+        "eamd": {
+          "situaciones": [
+            {
+              "situacion": "Situación que me describe",
+              "preguntas": [
+                "Me siento triste y decaído",
+                "Por las mañanas me siento mejor",
+                "Tengo ganas dellorar y a veces lloro",
+                "Me cuesta mucho dormir en la noche",
+                "Como igual que antes",
+                "Aún tengo deseos sexuales",
+                "Noto que estoy adelgazando",
+                "Estoy extreñido (a)",
+                "El corazón me late más rápido que antes",
+                "Me canso sin motivo",
+                "Mi mente está tan despejada como antes",
+                "Hago las cosas con la misma facilidad",
+                "Me siento intraquilo y no puedo respirar",
+                "Tengo confianza en el futuro",
+                "Estoy más irritable que antes",
+                "Encuentro fácil tomar decisiones",
+                "Siento que soy útil y necesario (a)",
+                "Encuentro agradable vivir",
+                "Creo que sería mejor para los demás si estuviera muerto (a)",
+                "Me gustan las mismas cosas que antes"
+              ]
+            }
+          ]
+        }
+      },
+      "opciones": [
+        "Nunca o raras veces",
+        "Algunas veces",
+        "Buen numero de veces",
+        "La mayoría de veces"
+      ]
+    }
+  },
+  {
     "ISRA": {
       "secciones": {
         "cognitivo": {
@@ -131,66 +202,6 @@
         "Muchas veces",
         "Casi siempre"
       ]
-    },
-    "ZUNG": {
-      "secciones": {
-        "eaa": {
-          "situacion": "Situación que me describe",
-          "preguntas": [
-            "Me siento más nervioso y ansioso que de costumbre",
-            "Me siento con temor sin razón",
-            "Despierto con facilidad o siento pánico",
-            "Me siento como si fuera a reventar y partirme en pedazos",
-            "Siento quetodo está bien y que nada malo puede sucederme",
-            "Me tiemblan los brazos y las piernas",
-            "Me mortifican dolores de cabeza, cuello o cintura",
-            "Me siento débil y me canso fácilmente",
-            "Me siento tranquilo y puedo permanecer en calma fácilmente",
-            "Puedo sentir que me late muy rápido el corazón",
-            "Sufro de mareos",
-            "Sufro de desmayos o siento que me voy a desmayar",
-            "Puedo inspirar y expirar fácilmente",
-            "Se me adormecen o hincan los dedos de las manos y pies",
-            "Sufro de molestias estomacales o indigestión",
-            "Orino con mucha frecuencia",
-            "Generalmente mis manos están secas y calientes",
-            "Siento bochornos",
-            "Me quedo dormido con facilidad y descanso bien durante la noche",
-            "Tengo pesadillas"
-          ]
-        },
-        "eamd": {
-          "situacion": "Situación que me describe",
-          "preguntas": [
-            "Me siento triste y decaído",
-            "Por las mañanas me siento mejor",
-            "Tengo ganas dellorar y a veces lloro",
-            "Me cuesta mucho dormir en la noche",
-            "Como igual que antes",
-            "Aún tengo deseos sexuales",
-            "Noto que estoy adelgazando",
-            "Estoy extreñido (a)",
-            "El corazón me late más rápido que antes",
-            "Me canso sin motivo",
-            "Mi mente está tan despejada como antes",
-            "Hago las cosas con la misma facilidad",
-            "Me siento intraquilo y no puedo respirar",
-            "Tengo confianza en el futuro",
-            "Estoy más irritable que antes",
-            "Encuentro fácil tomar decisiones",
-            "Siento que soy útil y necesario (a)",
-            "Encuentro agradable vivir",
-            "Creo que sería mejor para los demás si estuviera muerto (a)",
-            "Me gustan las mismas cosas que antes"
-          ]
-        }
-      },
-      "opciones": [
-        "Nunca o raras veces",
-        "Algunas veces",
-        "Buen numero de veces",
-        "La mayoría de veces"
-      ]
     }
   }
-}
+]

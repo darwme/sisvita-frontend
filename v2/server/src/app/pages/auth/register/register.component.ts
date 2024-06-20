@@ -78,7 +78,7 @@ export class RegisterComponent {
       ]),
       clave: ['', Validators.required],
       confirmClave: ['', Validators.required],
-      antecedentes: undefined,
+      antecedentes: 'ninguna',
       codigo_paciente: 'RANDOM',
     });
   }
@@ -137,8 +137,8 @@ export class RegisterComponent {
         Swal.close();
         Swal.fire({
           icon: 'success',
-          title: 'registrarPersona....',
-          text: '!Se registro exitosamente los datos de la persona!',
+          title: 'registrarPaciente....',
+          text: '!Se registro exitosamente los datos!',
         });
       },
     });

@@ -29,6 +29,11 @@ export class TestService {
 
   ///test/<int:id_test>
 
+  getTestsAdmin(): Observable<Test[]> {
+    const url = getConexionBackend('administrar');
+    return this.http.get<Test[]>(`${url}/enviar/test`);
+  }
+
   getTests(): Observable<Test[]> {
     const url = getConexionBackend(this.service[0]);
     return this.http.get<Test[]>(`${url}/listar`);
