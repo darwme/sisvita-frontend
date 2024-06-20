@@ -1,7 +1,6 @@
 import { Usuario } from './usuario';
 
 export interface Administrador {
-  id_administrador: number;
-  nombre_administrador: string;
+  nombre_admin: string;
   usuario: Usuario;
 }

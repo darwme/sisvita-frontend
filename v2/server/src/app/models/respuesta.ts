@@ -1,8 +1,6 @@
-import { Test } from './test';
+import { Pregunta } from './pregunta';
 
 export interface Respuesta {
-  id_respuesta: number;
-  opcion: number;
-  puntaje_respuesta: number;
-  test: Test;
+  valor: number;
+  pregunta: Pregunta;
 }

@@ -8,7 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { RouterOutlet } from '@angular/router';
-import { NavComponent } from '../../../components/nav/nav.component';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -22,7 +22,6 @@ import { NavComponent } from '../../../components/nav/nav.component';
     MatButtonModule,
     MatCardModule,
     RouterOutlet,
-    NavComponent,
   ],
 })
 export class DashboardComponent {

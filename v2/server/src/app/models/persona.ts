@@ -1,11 +1,11 @@
 import { Usuario } from './usuario';
 
-enum Sexo {
+export enum Sexo {
   M = 'masculino',
   F = 'femenino',
 }
 
-enum EstadoCivil {
+export enum EstadoCivil {
   S = 'soltero',
   C = 'casado',
   D = 'divorciado',
@@ -13,11 +13,11 @@ enum EstadoCivil {
 }
 
 export interface Persona {
-  id_persona: number;
   nombres: string;
   apellidos: string;
   fecha_nacimiento: Date;
   sexo: Sexo;
   estado_civil: EstadoCivil;
+  celular: string;
   usuario: Usuario;
 }
