@@ -4,7 +4,9 @@ import { LayoutComponent } from './pages/layout/layout.component';
 import { IndexComponent } from './pages/index/index.component';
 import { LoginComponent } from './pages/auth/login/login.component';
 import { RegisterComponent } from './pages/auth/register/register.component';
-import { TestComponent } from './pages/test/test.component';
+import { TestsComponent } from './components/tests/tests.component';
+import { ErrorComponent } from './components/error/error.component';
+import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard.component';
 export const routes: Routes = [
   {
     path: '',
@@ -29,7 +31,15 @@ export const routes: Routes = [
     component: RegisterComponent,
   },
   {
-    path: 'test',
-    component: TestComponent,
+    path: 'tests',
+    component: TestsComponent,
+  },
+  {
+    path: 'error',
+    component: ErrorComponent,
+  },
+  {
+    path: '**',
+    redirectTo: 'error',
   },
 ];
