@@ -1,0 +1,23 @@
+<header class="sidenav-header">
+  <img
+    [width]="profilePicSize()"
+    [height]="profilePicSize()"
+    src="https://github.com/darwme.png"
+    alt="profile image"
+    class="profile"
+  />
+  <div class="header-text" [class.hide-header-text]="sidenavCollapsed()">
+    <h2>Your channel</h2>
+    <p>Your Name</p>
+  </div>
+</header>
+<mat-nav-list>
+  @for (item of menuItems(); track $index) {
+  <a mat-list-item>
+    <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
+    @if (!sidenavCollapsed()) {
+    <span matListItemTitle>{{ item.label }}</span>
+    }
+  </a>
+  }
+</mat-nav-list>
