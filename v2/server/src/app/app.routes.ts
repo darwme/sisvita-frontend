@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import { Router, Routes } from '@angular/router';
 import { LayoutComponent } from './pages/layout/layout.component';
 import { IndexComponent } from './pages/index/index.component';
 import { LoginComponent } from './pages/auth/login/login.component';
@@ -18,8 +18,11 @@ import { GestionarEspecialistasComponent } from './pages/admin/gestionar-especia
 import { GestionarTestsComponent } from './pages/admin/gestionar-tests/gestionar-tests.component';
 import { AgendarCitaComponent } from './pages/especialista/agendar-cita/agendar-cita.component';
 import { VisualizarTestsRealizadosComponent } from './pages/especialista/visualizar-tests-realizados/visualizar-tests-realizados.component';
-import { userTypeGuard } from './guards/user-type.guard';
+import { UserTypeGuard } from './guards/user-type.guard';
+
 import { AuthGuard } from './guards/auth.guard';
+import { Component } from '@angular/core';
+import { TestComponent } from './components/test/test.component';
 
 export const routes: Routes = [
   {
@@ -37,6 +40,10 @@ export const routes: Routes = [
         path: 'register',
         component: RegisterComponent,
       },
+      {
+        path: 'logout',
+        component: LogoutComponent,
+      },
     ],
   },
   {
@@ -46,13 +53,14 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'login',
+        redirectTo: 'auth/login',
         pathMatch: 'full',
       },
+
       {
         path: 'admin',
         component: AdminComponent,
-        canActivate: [userTypeGuard],
+        canActivate: [UserTypeGuard],
         children: [
           {
             path: 'gestionar-pacientes',
@@ -71,7 +79,7 @@ export const routes: Routes = [
       {
         path: 'especialista',
         component: EspecialistaComponent,
-        canActivate: [userTypeGuard],
+        canActivate: [UserTypeGuard],
         children: [
           {
             path: 'visualizar-tests-realizados',
@@ -82,16 +90,20 @@ export const routes: Routes = [
             component: AgendarCitaComponent,
           },
           {
-            path: 'logout',
-            component: LogoutComponent,
+            path: 'profile',
+            component: ProfileComponent,
           },
         ],
       },
       {
         path: 'paciente',
-        component: PacienteComponent,
-        canActivate: [userTypeGuard],
+        canActivate: [UserTypeGuard],
         children: [
+          {
+            path: '',
+            redirectTo: 'profile',
+            pathMatch: 'full',
+          },
           {
             path: 'realizar-test',
             component: TestsComponent,
@@ -99,10 +111,6 @@ export const routes: Routes = [
           {
             path: 'profile',
             component: ProfileComponent,
-          },
-          {
-            path: 'logout',
-            component: LogoutComponent,
           },
           {
             path: 'visualizar-cita',

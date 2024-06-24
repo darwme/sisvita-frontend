@@ -3,24 +3,71 @@ import {
   ActivatedRouteSnapshot,
   UrlTree,
   Router,
+  CanActivate,
+  RouterStateSnapshot,
+  GuardResult,
+  MaybeAsync,
 } from '@angular/router';
 import { Observable } from 'rxjs';
+import { LoginResponse } from './../models/loginResponse';
+import { DataService } from '../services/data.service';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 
-export const userTypeGuard: CanActivateFn = (route, state) => {
-  const token = localStorage.getItem('token');
-  if (!token) {
-    return new Router().parseUrl('/auth/login');
-  }
-  const decodedToken = JSON.parse(atob(token.split('.')[1]));
-  console.log('Token decoded: ', decodedToken);
-  const userType = decodedToken?.usertype;
-  if (userType === 'admin') {
-    return true;
-  } else if (userType === 'especialista') {
-    return true;
-  } else if (userType === 'paciente') {
-    return true;
-  }
+@Injectable({
+  providedIn: 'root',
+})
+export class UserTypeGuard implements CanActivate {
+  constructor(private router: Router) {}
 
-  return false;
-};
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): boolean {
+    const personaType = localStorage.getItem('personaType');
+    const userType = localStorage.getItem('userType');
+    console.log('Data from usertype: ', personaType);
+    const token = localStorage.getItem('token');
+    if (!token) {
+      this.router.navigate(['auth/login'], {
+        queryParams: { returnUrl: state.url },
+      });
+      return false;
+    }
+
+    if (userType !== 'admin') {
+      switch (personaType) {
+        case 'paciente' || 'mixto':
+          if (state.url.includes('paciente')) {
+            return true;
+          } else {
+            this.router.navigate(['auth/login'], {
+              queryParams: { returnUrl: state.url },
+            });
+            return false;
+          }
+        case 'especialista' || 'mixto':
+          if (state.url.includes('especialista')) {
+            return true;
+          } else {
+            this.router.navigate(['auth/login'], {
+              queryParams: { returnUrl: state.url },
+            });
+            return false;
+          }
+        default:
+          this.router.navigate(['auth/login'], {
+            queryParams: { returnUrl: state.url },
+          });
+          return false;
+      }
+    } else if (userType === 'admin') {
+      return true;
+    } else {
+      this.router.navigate(['auth/login'], {
+        queryParams: { returnUrl: state.url },
+      });
+      return false;
+    }
+  }
+}

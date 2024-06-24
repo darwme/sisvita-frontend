@@ -4,6 +4,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterOutlet } from '@angular/router';
 import { RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
 
 export type MenuItem = {
   icon: string;
@@ -42,12 +43,12 @@ export class CustomSidenavComponent {
         {
           icon: 'profile',
           label: 'Profile',
-          route: 'dashboard/paciente/profile',
+          route: 'paciente/profile',
         },
         {
           icon: 'dashboard',
           label: 'Dashboard',
-          route: 'dashboard/paciente',
+          route: 'paciente',
         },
         {
           icon: 'logout',
@@ -57,12 +58,12 @@ export class CustomSidenavComponent {
         {
           icon: 'test',
           label: 'Realizar Test',
-          route: '/paciente/realizar-test',
+          route: 'paciente/realizar-test',
         },
         {
           icon: 'appointment',
           label: 'Visualizar Cita',
-          route: '/paciente/visualizar-cita',
+          route: 'paciente/visualizar-cita',
         },
       ]);
     } else if (usertype === 'especialista') {
