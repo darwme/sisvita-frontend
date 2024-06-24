@@ -41,6 +41,45 @@
             }
           </mat-form-field>
         </div>
+
+        <div class="row">
+          <mat-form-field>
+            <mat-label>Provincia</mat-label>
+
+            <mat-select
+              formControlName="provincia"
+              #opcionSeleccionada
+              (selectionChange)="
+                this.onProvinciaChange(opcionSeleccionada.value)
+              "
+            >
+              @for (ubicacion of ubicaciones; track $index) {
+              <mat-option [value]="ubicacion.nombre">{{
+                ubicacion.nombre
+              }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Distrito</mat-label>
+            <mat-select
+              formControlName="distrito"
+              #distritoSelected
+              (selectionChange)="this.onDistritoChange(distritoSelected.value)"
+            >
+              @if (selectedProvincia) { @for (distrito of
+              distritosOfSelectedProvincia; track $index) {
+              <mat-option [value]="distrito.nombre">{{
+                distrito.nombre
+              }}</mat-option>
+              } }@else {
+              <mat-option value="0">Seleccione una provincia</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
+
         <div class="row">
           <mat-form-field>
             <mat-label>Sexo</mat-label>

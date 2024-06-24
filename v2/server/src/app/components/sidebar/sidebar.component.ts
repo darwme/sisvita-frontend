@@ -19,22 +19,7 @@ import { CustomSidenavComponent } from '../custom-sidenav/custom-sidenav.compone
     MatSidenavModule,
     CustomSidenavComponent,
   ],
-  //templateUrl: './sidebar.component.html',
-  template: `
-    <mat-toolbar color="primary" class="mat-elevation-z3">
-      <button mat-icon-button (click)="collapsed.set(!collapsed())">
-        <mat-icon>menu</mat-icon>
-      </button>
-    </mat-toolbar>
-    <mat-sidenav-container>
-      <mat-sidenav opened mode="side" [style.width]="sidenavWidth()">
-        <app-custom-sidenav [collapsed]="collapsed()" />
-      </mat-sidenav>
-      <mat-sidenav-content class="content" [style.margin-left]="sidenavWidth()">
-        <router-outlet></router-outlet>
-      </mat-sidenav-content>
-    </mat-sidenav-container>
-  `,
+  templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css',
 })
 export class SidebarComponent {
