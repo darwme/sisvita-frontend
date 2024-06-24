@@ -5,6 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { RouterOutlet } from '@angular/router';
 import { RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
+import { Paciente } from '../../models/paciente';
 
 export type MenuItem = {
   icon: string;
@@ -25,20 +26,22 @@ export type MenuItem = {
   styleUrl: './custom-sidenav.component.css',
 })
 export class CustomSidenavComponent {
+  type?: string;
   sidenavCollapsed = signal(false);
   @Input() set collapsed(value: boolean) {
     this.sidenavCollapsed.set(value);
   }
-  @Input({ required: true }) usertype?: string;
+  @Input({ required: true }) typeOf?: any;
 
   menuItems = signal<MenuItem[]>([]);
 
   ngOnInit() {
-    this.getDashboardLink(this.usertype || '');
+    this.getDashboardLink(this.typeOf?.persona?.tipo_persona || '');
   }
 
   getDashboardLink(usertype: string) {
     if (usertype === 'paciente') {
+      this.type = 'paciente';
       this.menuItems.set([
         {
           icon: 'profile',
@@ -67,6 +70,7 @@ export class CustomSidenavComponent {
         },
       ]);
     } else if (usertype === 'especialista') {
+      this.type = 'especialista';
       this.menuItems.set([
         {
           icon: 'test',
@@ -90,6 +94,7 @@ export class CustomSidenavComponent {
         },
       ]);
     } else if (usertype === 'admin') {
+      this.type = 'administrador';
       this.menuItems.set([
         {
           icon: 'manage-specialist',

@@ -245,7 +245,6 @@ export class RegisterComponent implements OnInit {
 
     console.log('paciente', this.paciente);
     this.registrarPaciente();
-    window.location.assign('/auth/login');
   }
 }
 export const crossPasswordMatchValidator: ValidatorFn = (
