@@ -1,0 +1,60 @@
+.mat-form-field {
+  width: 100%;
+  min-width: 300px;
+}
+mat-form-field {
+  margin-bottom: 0.3rem;
+  margin-left: 0.3rem;
+}
+
+mat-card-title,
+mat-card-content {
+  display: flex;
+  justify-content: center;
+}
+.email {
+  width: 100%;
+}
+
+.error {
+  padding: 16px;
+  width: 300px;
+  color: white;
+  background-color: red;
+}
+
+.button {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.container {
+  padding: 4rem 2rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+  height: 100vh;
+  flex-direction: column;
+}
+
+.card {
+  background-color: #f7f7f7;
+  padding: 2rem 4rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.card__title {
+  text-align: center;
+}
+
+.row {
+  gap: 1rem;
+}

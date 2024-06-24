@@ -1,0 +1,10 @@
+{
+  "administrador": {
+    "id_administrador": "1",
+    "nombre_admin": "admin",
+    "usuario": {
+      "email": "dadsa@gamil.com",
+      "clave": "12345"
+    }
+  }
+}

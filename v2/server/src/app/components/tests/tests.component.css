@@ -1,0 +1,61 @@
+.main {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-content: center;
+  align-items: center;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  align-items: flex-start;
+  margin-top: 20px;
+}
+
+mat-list {
+  background-color: #fafafa;
+  padding: 0.5rem;
+  width: 200px;
+  max-width: 300px;
+  transition: background-color 1s ease;
+}
+
+mat-list:hover {
+  background-color: #fff;
+}
+
+mat-list-item {
+  padding: 1rem;
+  transition: background-color 1s ease;
+}
+
+mat-list-item:hover {
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+mat-list-item:active {
+  background-color: #c5c5c5;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+mat-divider {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

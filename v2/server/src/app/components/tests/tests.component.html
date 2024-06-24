@@ -1,0 +1,24 @@
+<div class="main">
+  <div class="info">
+    <h2>Test Listados en el Sistema</h2>
+  </div>
+  <div class="container">
+    <mat-list>
+      @for (test of tests; track $index) {
+      <mat-list-item (click)="this.getTestSelected(test)">
+        <span matListItemTitle>{{ test.nombre }}</span>
+        <span matListItemLine>Secciones: {{ test.secciones.length }}</span>
+        <span matListItemLine
+          >Situaciones: {{ this.getTotalSituaciones(test) }}</span
+        >
+        <span matListItemLine
+          >Preguntas: {{ this.getTotalPreguntas(test) }}</span
+        >
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      }
+    </mat-list>
+
+    <app-test [test]="testSelected" />
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<nav>
+  @for(keypar of this.client | keyvalue; track keypar.key) {
+  <ul class="ul">
+    @for(item of keypar.value; let i = $index; track i){
+    <li>
+      <a href="{{ item.path }}">{{
+        item.name.toUpperCase().replace("-", " ")
+      }}</a>
+    </li>
+    }
+  </ul>
+  }
+</nav>
