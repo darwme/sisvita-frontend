@@ -8,6 +8,7 @@ import { TestComponent } from '../test/test.component';
 import { Component } from '@angular/core';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { MatDividerModule } from '@angular/material/divider';
+import { RouterOutlet } from '@angular/router';
 
 import Swal from 'sweetalert2';
 @Component({
@@ -21,6 +22,7 @@ import Swal from 'sweetalert2';
     MatCardModule,
     CommonModule,
     TestComponent,
+    RouterOutlet,
   ],
   templateUrl: './tests.component.html',
   styleUrl: './tests.component.css',

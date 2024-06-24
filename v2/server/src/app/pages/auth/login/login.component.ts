@@ -21,6 +21,8 @@ import { HttpClient } from '@angular/common/http';
 import { AuthServiceService } from '../../../services/auth-service.service';
 import Swal from 'sweetalert2';
 import { DataService } from '../../../services/data.service';
+import { Router } from '@angular/router';
+import { LoginResponse } from '../../../models/loginResponse';
 
 @Component({
   selector: 'app-login',
@@ -42,7 +44,7 @@ import { DataService } from '../../../services/data.service';
   styleUrl: './login.component.css',
 })
 export class LoginComponent {
-  data: any = {};
+  data?: LoginResponse;
   loginForm: FormGroup;
   private readonly _formBuilder: FormBuilder;
   usuario!: Usuario;
@@ -51,6 +53,7 @@ export class LoginComponent {
 
   constructor(
     private http: HttpClient,
+    private route: Router,
     private authService: AuthServiceService,
     private dataService: DataService,
     formBuilder: FormBuilder
@@ -65,9 +68,25 @@ export class LoginComponent {
     });
   }
 
-  getData(data: any) {
+  getData(data: LoginResponse) {
     this.dataService.setData(data);
     console.log(data);
+  }
+
+  redirectToDashboard(tipo_persona: string) {
+    if (tipo_persona === 'admin') {
+      this.route.navigate(['/dashboard/admin']);
+    } else if (tipo_persona === 'especialista') {
+      this.route.navigate(['/dashboard/especialista']);
+    } else if (tipo_persona === 'paciente') {
+      this.route.navigate(['/dashboard/paciente']);
+    } else {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Tipo de usuario no válido',
+      });
+    }
   }
 
   loginUsuario(): void {
@@ -80,12 +99,17 @@ export class LoginComponent {
           this.getData(res.data);
           localStorage.setItem('token', res.data.token);
           this.data = res.data;
-
+          const tipo_usuario = res.data.paciente.persona.usuario.tipo_usuario;
+          const tipo_persona = res.data.paciente.persona.tipo_persona;
           Swal.fire({
             icon: 'success',
             title: 'Bienvenido',
             text: 'Inicio de sesión exitoso',
           });
+          localStorage.setItem('userType', tipo_usuario);
+          localStorage.setItem('personaType', tipo_persona);
+
+          this.redirectToDashboard(tipo_persona);
         } else {
           this.errorMessage = res.message || 'Login Failed';
           Swal.close();

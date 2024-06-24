@@ -20,4 +20,5 @@ export interface Persona {
   estado_civil: EstadoCivil;
   celular: string;
   usuario: Usuario;
+  ubigeo: string;
 }

@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-paciente',
+  selector: 'app-logout',
   standalone: true,
   imports: [RouterOutlet, CommonModule],
-  templateUrl: './paciente.component.html',
-  styleUrl: './paciente.component.css',
+  templateUrl: './logout.component.html',
+  styleUrl: './logout.component.css',
 })
-export class PacienteComponent {}
+export class LogoutComponent {}

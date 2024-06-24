@@ -13,6 +13,8 @@ import { Pregunta } from '../../models/pregunta';
 import { Situacion } from '../../models/situacion';
 import { Seccion } from '../../models/seccion';
 import { RespuestasSeccion } from '../../models/respuestas_seccion';
+import { CommonModule } from '@angular/common';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-test',
@@ -25,6 +27,8 @@ import { RespuestasSeccion } from '../../models/respuestas_seccion';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    CommonModule,
+    RouterOutlet,
   ],
   templateUrl: './test.component.html',
   styleUrl: './test.component.css',

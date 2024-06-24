@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-paciente',
+  selector: 'app-visualizar-cita',
   standalone: true,
   imports: [RouterOutlet, CommonModule],
-  templateUrl: './paciente.component.html',
-  styleUrl: './paciente.component.css',
+  templateUrl: './visualizar-cita.component.html',
+  styleUrl: './visualizar-cita.component.css',
 })
-export class PacienteComponent {}
+export class VisualizarCitaComponent {}

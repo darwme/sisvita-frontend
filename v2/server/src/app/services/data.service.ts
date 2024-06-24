@@ -11,4 +11,12 @@ export class DataService {
   setData(data: any) {
     this.dataSubject.next(data);
   }
+
+  getData() {
+    return this.dataSubject.value;
+  }
+
+  clearData() {
+    this.dataSubject.next(null);
+  }
 }

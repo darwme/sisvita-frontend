@@ -1,13 +1,14 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
+  FormsModule,
   FormControl,
   FormGroup,
   ReactiveFormsModule,
   ValidationErrors,
   ValidatorFn,
-  Validators, // Add this line
+  Validators,
 } from '@angular/forms';
 import { Paciente } from '../../../models/paciente';
 import { Persona, Sexo, EstadoCivil } from '../../../models/persona';
@@ -30,11 +31,30 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { LogoComponent } from '../../../components/logo/logo.component';
+import { Observable } from 'rxjs';
+import { startWith, map } from 'rxjs/operators';
+import { AsyncPipe } from '@angular/common';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { UbicacionService } from '../../../services/ubicacion.service';
+import { Distrito, Ubicacion } from '../../../models/ubicacion';
+import { MatSelectionList } from '@angular/material/list';
+
+export interface StateGroup {
+  letter: string;
+  names: string[];
+}
+
+export const _filter = (opt: string[], value: string): string[] => {
+  const filterValue = value.toLowerCase();
+
+  return opt.filter((item) => item.toLowerCase().includes(filterValue));
+};
 
 @Component({
   selector: 'app-register',
   standalone: true,
   imports: [
+    MatSelectionList,
     ReactiveFormsModule,
     MatCard,
     MatCardTitle,
@@ -49,25 +69,38 @@ import { LogoComponent } from '../../../components/logo/logo.component';
     HttpClientModule,
     RouterModule,
     LogoComponent,
+    FormsModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule,
   ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css',
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit {
   pacienteForm: FormGroup;
   private readonly _formBuilder: FormBuilder;
+  ubicaciones: Ubicacion[] = [];
+  provincias: string[] = [];
+  selectedDistrito: string = '';
+  selectedProvincia: string = '';
+  distritosOfSelectedProvincia: Distrito[] = [];
+  selectedOption?: Ubicacion;
   paciente!: Paciente;
   isEdited: boolean = false;
 
   constructor(
     private http: HttpClient,
     private authService: AuthServiceService,
+    private ubicacionService: UbicacionService,
     formBuilder: FormBuilder
   ) {
+    this.getAllUbicaciones();
     this._formBuilder = formBuilder;
     this.pacienteForm = this._formBuilder.group({
       nombres: ['', Validators.required],
       apellidos: ['', Validators.required],
+      ubigeo: '',
       celular: ['', Validators.required],
       fecha_nacimiento: ['', Validators.required],
       sexo: Sexo.M,
@@ -80,7 +113,34 @@ export class RegisterComponent {
       confirmClave: ['', Validators.required],
       antecedentes: 'ninguna',
       codigo_paciente: 'RANDOM',
+      tipo_persona: 'paciente',
     });
+  }
+
+  onProvinciaChange(data: string) {
+    this.selectedDistrito = '';
+    console.log('Distrito anterior seleccionado: ', this.selectedDistrito);
+    this.selectedProvincia = data;
+    this.distritosOfSelectedProvincia = this.ubicaciones.find(
+      (ubicacion) => ubicacion.nombre === data
+    )?.distritos as Distrito[];
+    console.log('Distritos: ', this.distritosOfSelectedProvincia);
+  }
+
+  onDistritoChange(data: string) {
+    console.log('Distrito: ', data);
+    this.selectedDistrito = data;
+    console.log('Selected distrito: ', this.selectedDistrito);
+  }
+
+  findIdUbicacion(provincia: string, distrito: string): string {
+    const ubicacion = this.ubicaciones.find(
+      (ubicacion) => ubicacion.nombre === provincia
+    );
+    const distritoObj = ubicacion?.distritos.find(
+      (distritoObj) => distritoObj.nombre === distrito
+    );
+    return distritoObj?.ubigeo as string;
   }
 
   onSuceessfulRegister() {
@@ -99,23 +159,52 @@ export class RegisterComponent {
     });
   }
 
-  /*onRegister() {
-    this.http
-      .post('http://localhost:5000/auth/v1/register', this.registerObj)
-      .subscribe({
-        next: (res: any) => {
-          if (res.status === 201) {
-            this.onSuccessfulRegister();
-            this.route.navigateByUrl('/login');
-          } else {
-            this.onErrorMessage(res.message || 'Register Failed');
-          }
-        },
-        error: (err: HttpErrorResponse) => {
-          this.onErrorMessage(err.error.error);
-        },
-      });
-  }*/
+  ngOnInit() {
+    /*
+    this.stateGroupOptions = this.stateForm.get('stateGroup')!.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filterGroup(value || '')),
+    );*/
+  }
+
+  /*
+  private _filterGroup(value: string): StateGroup[] {
+    if (value) {
+      return this.stateGroups
+        .map(group => ({letter: group.letter, names: _filter(group.names, value)}))
+        .filter(group => group.names.length > 0);
+    }
+
+    return this.stateGroups;
+  }
+    */
+
+  getAllUbicaciones() {
+    this.ubicacionService.getAllUbicaciones().subscribe(
+      (result: any) => {
+        this.ubicaciones = result;
+        console.log('Ubicaciones: ', this.ubicaciones);
+        this.getProvincias();
+        console.log('Provincias: ', this.provincias);
+        this.getProvincias();
+      },
+      (err: any) => {
+        Swal.close();
+        Swal.fire({
+          icon: 'error',
+          title: 'Error al cargar las ubicaciones',
+          text: err.error.message,
+        });
+      }
+    );
+  }
+
+  getProvincias() {
+    this.provincias = [
+      ...new Set(this.ubicaciones.map((ubicacion) => ubicacion.nombre)),
+    ];
+    console.log('Provincias: ', this.provincias);
+  }
 
   registrarPaciente(): void {
     this.paciente = this.pacienteForm.value as Paciente;
@@ -125,12 +214,12 @@ export class RegisterComponent {
         //this.personaForm.reset();
         //this.getPersonas();
       },
-      error: () => {
+      error: (error: any) => {
         Swal.close();
         Swal.fire({
           icon: 'error',
           title: 'Advertencia....',
-          text: '!Ah ocurrido un error al registrar!',
+          text: error,
         });
       },
       complete: () => {
@@ -145,9 +234,18 @@ export class RegisterComponent {
   }
 
   clickRegister() {
+    console.log('provincia', this.selectedProvincia);
+    console.log('distrito', this.selectedDistrito);
+    this.pacienteForm.value.ubigeo = this.findIdUbicacion(
+      this.selectedProvincia,
+      this.selectedDistrito
+    );
+    console.log('paciente form: ', this.pacienteForm.value);
     this.paciente = this.pacienteForm.value as Paciente;
+
     console.log('paciente', this.paciente);
     this.registrarPaciente();
+    window.location.assign('/auth/login');
   }
 }
 export const crossPasswordMatchValidator: ValidatorFn = (
