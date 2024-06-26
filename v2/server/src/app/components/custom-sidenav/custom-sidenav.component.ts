@@ -1,4 +1,4 @@
-import { Component, computed, Input, signal } from '@angular/core';
+import { Component, computed, Input, signal, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
@@ -6,6 +6,7 @@ import { RouterOutlet } from '@angular/router';
 import { RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
 import { Paciente } from '../../models/paciente';
+import { DeacoderService } from '../../services/deacoder.service';
 
 export type MenuItem = {
   icon: string;
@@ -27,16 +28,47 @@ export type MenuItem = {
 })
 export class CustomSidenavComponent {
   type?: string;
+  personaType?: string;
   sidenavCollapsed = signal(false);
+  dataDecrypt?: any;
+  user?: any;
   @Input() set collapsed(value: boolean) {
     this.sidenavCollapsed.set(value);
   }
   @Input({ required: true }) typeOf?: any;
-
   menuItems = signal<MenuItem[]>([]);
 
+  constructor(private router: Router, private deacoder: DeacoderService) {
+    this.onDecrypt();
+  }
+
   ngOnInit() {
-    this.getDashboardLink(this.typeOf?.persona?.tipo_persona || '');
+    this.onDecrypt();
+  }
+
+  onDecrypt() {
+    this.dataDecrypt = this.deacoder.decrypt(localStorage.getItem('data'));
+    this.type = localStorage.getItem('userType') || undefined;
+    this.user = this.dataDecrypt;
+
+    if (!this.type) {
+      console.log('No userType found in localStorage');
+    } else {
+      this.personaType = localStorage.getItem('personaType') || undefined;
+      if (!this.personaType) {
+        this.router.navigate(['/auth/logout']);
+      } else if (this.personaType === 'paciente') {
+        this.user = this.user.paciente;
+      } else if (this.personaType === 'especialista') {
+        this.user = this.user.especialista;
+      } else {
+        this.user = this.user.administrador;
+      }
+    }
+
+    console.log('User:', this.user);
+
+    this.getDashboardLink(this.personaType || '');
   }
 
   getDashboardLink(usertype: string) {
@@ -44,7 +76,7 @@ export class CustomSidenavComponent {
       this.type = 'paciente';
       this.menuItems.set([
         {
-          icon: 'profile',
+          icon: 'account_circle',
           label: 'Profile',
           route: 'paciente/profile',
         },
@@ -59,12 +91,12 @@ export class CustomSidenavComponent {
           route: '/auth/logout',
         },
         {
-          icon: 'test',
+          icon: 'alarm',
           label: 'Realizar Test',
           route: 'paciente/realizar-test',
         },
         {
-          icon: 'appointment',
+          icon: 'calendar_today',
           label: 'Visualizar Cita',
           route: 'paciente/visualizar-cita',
         },

@@ -1,22 +1,13 @@
 import { CommonModule } from '@angular/common';
-import {
-  Component,
-  computed,
-  EventEmitter,
-  inject,
-  signal,
-} from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterOutlet } from '@angular/router';
-import { MatSidenavModule } from '@angular/material/sidenav'; // Add this import
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { CustomSidenavComponent } from '../custom-sidenav/custom-sidenav.component';
 import { DataService } from '../../services/data.service';
-import { LoginResponse } from '../../models/loginResponse';
-import { Output } from '@angular/core';
 import { DeacoderService } from '../../services/deacoder.service';
-import { Paciente } from '../../models/paciente';
 
 @Component({
   selector: 'app-sidebar',
@@ -68,18 +59,5 @@ export class SidebarComponent {
     console.log('PersonaType:', this.personaType);
     this.userType = this.data?.paciente?.persona?.usuario?.tipo_usuario;
     console.log('UserType:', this.userType);
-
-    if (this.userType !== 'administrador') {
-      switch (this.personaType) {
-        case 'especialista':
-          this.types = ['especialista'];
-          break;
-        default:
-          this.types = ['paciente'];
-          break;
-      }
-    } else {
-      this.types = ['administrador'];
-    }
   }
 }

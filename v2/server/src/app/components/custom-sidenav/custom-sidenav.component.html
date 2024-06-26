@@ -7,8 +7,8 @@
     class="profile"
   />
   <div class="header-text" [class.hide-header-text]="sidenavCollapsed()">
-    <h2>{{ this.type?.toUpperCase() }}</h2>
-    <p>Your Name</p>
+    <h2>{{ this.user.persona.tipo_persona.toUpperCase() }}</h2>
+    <p>{{ this.user.persona.nombres }}</p>
   </div>
 </header>
 <mat-nav-list>

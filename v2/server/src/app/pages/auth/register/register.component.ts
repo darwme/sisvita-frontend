@@ -112,7 +112,7 @@ export class RegisterComponent implements OnInit {
       clave: ['', Validators.required],
       confirmClave: ['', Validators.required],
       antecedentes: 'ninguna',
-      codigo_paciente: 'RANDOM',
+      codigo_paciente: '',
       tipo_persona: 'paciente',
     });
   }
