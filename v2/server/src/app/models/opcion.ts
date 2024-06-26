@@ -1,8 +1,6 @@
-import { Test } from './test';
-
 export interface Opcion {
-  id_opcion: number;
-  test: Test;
   descripcion: string;
+  id_opcion: number;
+  id_test: number;
   valor_opcion: number;
 }

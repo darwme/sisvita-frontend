@@ -21,4 +21,5 @@ export interface Persona {
   celular: string;
   usuario: Usuario;
   ubigeo: string;
+  tipo_persona: string;
 }
