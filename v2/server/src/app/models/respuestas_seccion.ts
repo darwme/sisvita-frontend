@@ -1,5 +1,6 @@
 export interface RespuestasSeccion {
-  respuestas: number[];
+  respuestas: any[];
   id_seccion: number;
   id_test: number;
+  id_usuario: any;
 }

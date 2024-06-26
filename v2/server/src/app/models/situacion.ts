@@ -1,7 +1,8 @@
 import { Pregunta } from './pregunta';
 
 export interface Situacion {
-  id_situacion: number;
   descripcion: string;
+  id_seccion: number;
+  id_situacion: number;
   preguntas: Pregunta[];
 }

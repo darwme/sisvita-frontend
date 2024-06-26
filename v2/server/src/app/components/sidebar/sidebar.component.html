@@ -5,7 +5,7 @@
 </mat-toolbar>
 <mat-sidenav-container>
   <mat-sidenav opened mode="side" [style.width]="sidenavWidth()">
-    <app-custom-sidenav [usertype]="'paciente'" [collapsed]="collapsed()" />
+    <app-custom-sidenav [typeOf]="this.typeOf" [collapsed]="collapsed()" />
   </mat-sidenav>
   <mat-sidenav-content class="content" [style.margin-left]="sidenavWidth()">
     <router-outlet></router-outlet>

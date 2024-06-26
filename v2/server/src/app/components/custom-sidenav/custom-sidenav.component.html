@@ -2,20 +2,16 @@
   <img
     [width]="profilePicSize()"
     [height]="profilePicSize()"
-    src="https://github.com/darwme.png"
+    src="https://i.pravatar.cc/150"
     alt="profile image"
     class="profile"
   />
   <div class="header-text" [class.hide-header-text]="sidenavCollapsed()">
-    <h2>Your channel</h2>
-    <p>Your Name</p>
+    <h2>{{ this.user.persona.tipo_persona.toUpperCase() }}</h2>
+    <p>{{ this.user.persona.nombres }}</p>
   </div>
 </header>
 <mat-nav-list>
-  @if (usertype) { }@else {
-  <p>Hubo un error</p>
-  }
-
   <ng-container *ngFor="let item of menuItems(); let $index = index">
     <a [routerLink]="'paciente' !== null ? item.route : 'error'" mat-list-item>
       <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>

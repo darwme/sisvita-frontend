@@ -103,6 +103,8 @@ export class RegisterComponent implements OnInit {
       ubigeo: '',
       celular: ['', Validators.required],
       fecha_nacimiento: ['', Validators.required],
+      provincia: ['', Validators.required],
+      distrito: ['', Validators.required],
       sexo: Sexo.M,
       estado_civil: EstadoCivil.S,
       email: new FormControl<string>('', [
@@ -112,7 +114,7 @@ export class RegisterComponent implements OnInit {
       clave: ['', Validators.required],
       confirmClave: ['', Validators.required],
       antecedentes: 'ninguna',
-      codigo_paciente: 'RANDOM',
+      codigo_paciente: '',
       tipo_persona: 'paciente',
     });
   }
@@ -245,7 +247,6 @@ export class RegisterComponent implements OnInit {
 
     console.log('paciente', this.paciente);
     this.registrarPaciente();
-    window.location.assign('/auth/login');
   }
 }
 export const crossPasswordMatchValidator: ValidatorFn = (

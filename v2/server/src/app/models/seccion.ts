@@ -1,7 +1,8 @@
 import { Situacion } from './situacion';
 
 export interface Seccion {
-  id_seccion: number;
   descripcion: string;
+  id_seccion: number;
+  id_test: number;
   situaciones: Situacion[];
 }

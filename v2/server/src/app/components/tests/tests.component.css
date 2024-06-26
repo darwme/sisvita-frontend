@@ -6,6 +6,7 @@
   justify-content: flex-start;
   align-content: center;
   align-items: center;
+  padding: 50px 0px;
 }
 
 .info {
@@ -26,7 +27,7 @@
   margin-top: 20px;
 }
 
-mat-list {
+.lista-test {
   background-color: #fafafa;
   padding: 0.5rem;
   width: 200px;
@@ -34,22 +35,22 @@ mat-list {
   transition: background-color 1s ease;
 }
 
-mat-list:hover {
+.lista-test:hover {
   background-color: #fff;
 }
 
-mat-list-item {
+.test-item {
   padding: 1rem;
   transition: background-color 1s ease;
 }
 
-mat-list-item:hover {
+.test-item:hover {
   background-color: #f0f0f0;
   border-radius: 8px;
   cursor: pointer;
 }
 
-mat-list-item:active {
+.test-item:active {
   background-color: #c5c5c5;
   border-radius: 8px;
   cursor: pointer;
@@ -58,4 +59,16 @@ mat-list-item:active {
 mat-divider {
   margin-top: 10px;
   margin-bottom: 10px;
+}
+.mat-mdc-radio-button ~ .mat-mdc-radio-button {
+  margin-left: 16px;
+}
+
+.main-encuesta {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  width: 900px;
 }
