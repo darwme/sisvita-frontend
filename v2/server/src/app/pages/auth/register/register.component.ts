@@ -103,6 +103,8 @@ export class RegisterComponent implements OnInit {
       ubigeo: '',
       celular: ['', Validators.required],
       fecha_nacimiento: ['', Validators.required],
+      provincia: ['', Validators.required],
+      distrito: ['', Validators.required],
       sexo: Sexo.M,
       estado_civil: EstadoCivil.S,
       email: new FormControl<string>('', [

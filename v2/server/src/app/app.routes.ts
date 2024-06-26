@@ -21,8 +21,6 @@ import { VisualizarTestsRealizadosComponent } from './pages/especialista/visuali
 import { UserTypeGuard } from './guards/user-type.guard';
 
 import { AuthGuard } from './guards/auth.guard';
-import { Component } from '@angular/core';
-import { TestComponent } from './components/test/test.component';
 
 export const routes: Routes = [
   {

@@ -3,9 +3,9 @@
     <h2>Test Listados en el Sistema</h2>
   </div>
   <div class="container">
-    <mat-list>
+    <mat-list class="lista-test">
       @for (test of tests; track $index) {
-      <mat-list-item (click)="this.getTestSelected(test)">
+      <mat-list-item class="test-item" (click)="this.getTestSelected(test)">
         <span matListItemTitle>{{ test.nombre }}</span>
         <span matListItemLine>Secciones: {{ test.secciones.length }}</span>
         <span matListItemLine
@@ -19,6 +19,107 @@
       }
     </mat-list>
 
-    <app-test [test]="testSelected" />
+    <main class="main-encuesta">
+      <div class="main-content">
+        @if (testSelected != null && testSelected != undefined) {
+        <form [formGroup]="testsForm">
+          <mat-accordion
+            formArrayName="secciones"
+            class="example-headers-align"
+          >
+            @for (seccion of testSelected.secciones; track $index) {
+            <mat-expansion-panel
+              [expanded]="step === $index"
+              [disabled]="step !== $index"
+              (opened)="setStep($index)"
+              hideToggle
+            >
+              <mat-expansion-panel-header>
+                <mat-panel-title>Secciones</mat-panel-title>
+                <mat-panel-description>
+                  Secciones del Test
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <mat-list>
+                <mat-divider></mat-divider>
+                @for (situacion of seccion.situaciones; track $index) {
+                <mat-list-item>
+                  <span mat-line>{{ situacion.descripcion }}</span>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                @for (pregunta of situacion.preguntas; track $index) {
+                <mat-list-item>
+                  <span mat-line>{{ pregunta.descripcion }}</span>
+                  <mat-divider></mat-divider>
+                </mat-list-item>
+                <mat-selection-list
+                  #opcionSeleccionada
+                  [multiple]="false"
+                  (selectionChange)="
+                    this.onSelectionChange(
+                      opcionSeleccionada.selectedOptions.hasValue()
+                        ? opcionSeleccionada.selectedOptions.selected[0].value
+                        : null,
+                      testSelected.id_test,
+                      seccion.id_seccion,
+                      situacion.id_situacion,
+                      pregunta.id_pregunta
+                    )
+                  "
+                >
+                  @for (opcion of testSelected.opciones; track $index) {
+                  <mat-list-option [value]="opcion.valor_opcion"
+                    >{{ opcion.descripcion }}
+                  </mat-list-option>
+                  }
+                </mat-selection-list>
+                } }
+              </mat-list>
+
+              <!--BOTONES-->
+              <mat-action-row>
+                @if($index < testSelected.secciones.length-1){
+
+                <button
+                  mat-button
+                  color="primary"
+                  (click)="
+                    nextStep(
+                      testSelected.id_test,
+                      seccion.id_seccion,
+                      testSelected.secciones.length
+                    )
+                  "
+                >
+                  Next
+                </button>
+
+                } @if ($index === testSelected.secciones.length-1) {
+                <button
+                  mat-button
+                  color="primary"
+                  (click)="
+                    nextStep(
+                      testSelected.id_test,
+                      seccion.id_seccion,
+                      testSelected.secciones.length
+                    )
+                  "
+                >
+                  End
+                </button>
+                }
+              </mat-action-row>
+            </mat-expansion-panel>
+            }
+          </mat-accordion>
+        </form>
+        }@else{
+
+        <p>No se ha seleccionado ningún test.</p>
+
+        }
+      </div>
+    </main>
   </div>
 </div>

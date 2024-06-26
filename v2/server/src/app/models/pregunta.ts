@@ -1,4 +1,5 @@
 export interface Pregunta {
-  id_pregunta: number;
   descripcion: string;
+  id_pregunta: number;
+  id_situacion: number;
 }
