@@ -10,6 +10,7 @@ import { Rango } from '../models/rango';
 
 import { getConexionBackend } from '../utils/constants';
 import { RespuestasSeccion } from '../models/respuestas_seccion';
+import { Response } from '../models/seccion-b';
 
 @Injectable({
   providedIn: 'root',
@@ -32,14 +33,14 @@ export class TestService {
   ///test/<int:id_test>
 
   postResponse(
-    sendResponse: RespuestasSeccion[],
+    sendResponse: Response,
     id_usuario: number
-  ): Observable<RespuestasSeccion> {
+  ): Observable<Response> {
     const url = getConexionBackend(this.service[6]);
     return this.http.post(
       `${url}/realizar_test/${id_usuario}`,
       sendResponse
-    ) as Observable<RespuestasSeccion>;
+    ) as Observable<Response>;
   }
 
   getTestsAdmin(): Observable<Test[]> {

@@ -30,6 +30,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { DeacoderService } from '../../services/deacoder.service';
 import { RespuestasSeccion } from '../../models/respuestas_seccion';
 import { reduce } from 'rxjs';
+import { Response, seccionb } from '../../models/seccion-b';
 
 @Component({
   selector: 'app-tests',
@@ -70,6 +71,11 @@ export class TestsComponent implements OnInit {
   testsForm: FormGroup;
   token: any;
   deacoderToken: any;
+  preguntasz: number[] = [];
+  seccion: seccionb = {} as seccionb;
+  secciones_b: seccionb[] = [];
+  respuesta_b: Response = {} as Response;
+
   constructor(
     private testService: TestService,
     private http: HttpClient,
@@ -114,6 +120,10 @@ export class TestsComponent implements OnInit {
       id_pregunta: preguntaIndex,
       id_usuario: id_usuario,
     };
+
+    this.preguntasz.push(valor_seleccionado);
+
+    console.log('Seccionz: ', this.preguntasz);
 
     const indiceExistente = this.respuestas.findIndex(
       (r) =>
@@ -267,10 +277,17 @@ export class TestsComponent implements OnInit {
 
   nextStep(id_test: number, id_seccion: number, last_seccion: number) {
     console.log('Step: ', this.step, 'last-seccion: ', last_seccion);
-
+    const preg = this.preguntasz;
+    this.preguntasz = [];
     const isValid = this.validateSeccion(this.step);
     if (isValid) {
       this.filtrarRespuestas(id_test, id_seccion);
+
+      this.secciones_b.push({
+        id_seccion: id_seccion,
+        respuestas: preg,
+      });
+      console.log('Secciones b: ', this.secciones_b);
 
       this.respuestas.length = 0;
       console.log('Respuestas reseteadas: ', this.respuestas);
@@ -283,8 +300,14 @@ export class TestsComponent implements OnInit {
       console.log('Id usuario: ', id_usuario);
 
       if (this.step === last_seccion) {
-        this.send(this.sendResponse, id_usuario);
-        this.sendResponse.length = 0;
+        this.respuesta_b = {
+          id_test: id_test,
+          secciones: this.secciones_b,
+        };
+        console.log('Respuesta b: ', this.respuesta_b);
+        const respuesta = this.respuesta_b;
+        this.send(respuesta, id_usuario);
+        this.respuesta_b = {} as Response;
       }
     } else {
       Swal.fire({
@@ -295,7 +318,7 @@ export class TestsComponent implements OnInit {
     }
   }
 
-  send(respuestas: RespuestasSeccion[], id_usuario: number) {
+  send(respuestas: Response, id_usuario: number) {
     console.log('Respuestas a enviar: ', respuestas);
     this.testService.postResponse(respuestas, id_usuario).subscribe(
       (result: any) => {
