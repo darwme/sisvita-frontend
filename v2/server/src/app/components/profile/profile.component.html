@@ -1,40 +1,43 @@
+<header class="profile-header">
+  <div class="profile-text" [class.hide-profile-text]="sidenavCollapsed()">
+    <p class="profile-label">Nombre: </p>
+    <p class="profile-dato">{{ user.persona.nombres }}</p>
+    
+    <p class="profile-label">Email: </p>
+    <p class="profile-dato">{{ user.persona.usuario.email }}</p>
+    
+    <p class="profile-label">Ubigeo: </p>
+    <p class="profile-dato">{{ user.persona.ubigeo }}</p>
+    
+    <p class="profile-label">Fecha de Nacimiento: </p>
+    <p class="profile-dato">{{ user.persona.fecha_nacimiento | date }}</p>
+    
+    <p class="profile-label">Sexo: </p>
+    <p class="profile-dato">{{ user.persona.sexo }}</p>
+    
+    <p class="profile-label">Estado Civil: </p>
+    <p class="profile-dato">{{ user.persona.estado_civil }}</p>
+    
+    <p class="profile-label">Celular: </p>
+    <p class="profile-dato">{{ user.persona.celular }}</p>
 
-<div class="profile-container" *ngIf="user">
-  <!-- Información específica del tipo de usuario -->
-  <div *ngIf="personaType === 'paciente'">
-    <h3>Detalles del Paciente</h3>
-    <p><strong>Nombres:</strong> {{ user.nombres }}</p>
-    <p><strong>Apellidos:</strong> {{ user.apellidos }}</p>
-    <p><strong>Fecha de Nacimiento:</strong> {{ user.fecha_nacimiento }}</p>
-    <p><strong>Sexo:</strong> {{ user.sexo }}</p>
-    <p><strong>Estado Civil:</strong> {{ user.estado_civil }}</p>
-    <p><strong>Celular:</strong> {{ user.celular }}</p>
-    <p><strong>Ubigeo:</strong> {{ user.ubigeo }}</p>
-    <p><strong>Tipo de Persona:</strong> {{ user.tipo_persona }}</p>
-    <p><strong>Email:</strong> {{ user.usuario.email }}</p>
-    <p><strong>Tipo de Usuario:</strong> {{ user.usuario.tipo_usuario }}</p>
-  </div>
+    <div *ngIf="user.persona.tipo_persona === 'paciente'" class="profile-specific">
+      <p class="profile-label">Antecedentes: </p>
+      <p class="profile-dato">{{ user.antecedentes }}</p>
+    </div>
 
-  <div *ngIf="personaType === 'especialista'">
-    <h3>Detalles del Especialista</h3>
-    <p><strong>Nombres:</strong> {{ user.persona.nombres }}</p>
-    <p><strong>Apellidos:</strong> {{ user.persona.apellidos }}</p>
-    <p><strong>Especialidad:</strong> {{ user.especialidad }}</p>
-    <p><strong>Experiencia:</strong> {{ user.experiencia }} años</p>
-    <p><strong>Fecha de Nacimiento:</strong> {{ user.persona.fecha_nacimiento }}</p>
-    <p><strong>Sexo:</strong> {{ user.persona.sexo }}</p>
-    <p><strong>Estado Civil:</strong> {{ user.persona.estado_civil }}</p>
-    <p><strong>Celular:</strong> {{ user.persona.celular }}</p>
-    <p><strong>Ubigeo:</strong> {{ user.persona.ubigeo }}</p>
-    <p><strong>Tipo de Persona:</strong> {{ user.persona.tipo_persona }}</p>
-    <p><strong>Email:</strong> {{ user.persona.usuario.email }}</p>
-    <p><strong>Tipo de Usuario:</strong> {{ user.persona.usuario.tipo_usuario }}</p>
-  </div>
+    <div *ngIf="user.persona.tipo_persona === 'especialista'" class="profile-specific">
+      <p class="profile-label">Especialidad: </p>
+      <p class="profile-dato">{{ user.especialidad }}</p>
+      
+      <p class="profile-label">Experiencia: </p>
+      <p class="profile-dato">{{ user.experiencia }}</p>
+    </div>
 
-  <div *ngIf="personaType === 'administrador'">
-    <h3>Detalles del Administrador</h3>
-    <p><strong>Nombre del Administrador:</strong> {{ user.nombre_admin }}</p>
-    <p><strong>Email:</strong> {{ user.usuario.email }}</p>
-    <p><strong>Tipo de Usuario:</strong> {{ user.usuario.tipo_usuario }}</p>
+    <div *ngIf="user.persona.usuario.tipo_usuario === 'administrador'" class="profile-specific">
+      <p class="profile-label">Nombre: </p>
+      <p class="profile-dato">{{ user.nombre_admin }}</p>
+    </div>
   </div>
-</div>
+</header>
+
