@@ -100,6 +100,11 @@ export class CustomSidenavComponent {
           label: 'Visualizar Cita',
           route: 'paciente/visualizar-cita',
         },
+        {
+          icon: 'book',
+          label:"Visualizar tests",
+          route:'paciente/visualizar-test-realizado',
+        },
       ]);
     } else if (usertype === 'especialista') {
       this.type = 'especialista';

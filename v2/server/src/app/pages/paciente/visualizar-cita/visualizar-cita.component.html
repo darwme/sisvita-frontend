@@ -1,1 +1,37 @@
-<p>visualizar-cita works!</p>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!-- Columna de Motivo -->
+    <ng-container matColumnDef="motivo">
+      <th mat-header-cell *matHeaderCellDef> Motivo </th>
+      <td mat-cell *matCellDef="let cita"> {{ cita.motivo }} </td>
+    </ng-container>
+  
+    <!-- Columna de Fecha de Agenda -->
+    <ng-container matColumnDef="fecha_agenda">
+      <th mat-header-cell *matHeaderCellDef> Fecha de Agenda </th>
+      <td mat-cell *matCellDef="let cita"> {{ cita.fecha_agenda | date }} </td>
+    </ng-container>
+  
+    <!-- Columna de Hora -->
+    <ng-container matColumnDef="hora">
+      <th mat-header-cell *matHeaderCellDef> Hora </th>
+      <td mat-cell *matCellDef="let cita"> {{ cita.hora }} </td>
+    </ng-container>
+  
+    <!-- Columna de Estado -->
+    <ng-container matColumnDef="estado">
+      <th mat-header-cell *matHeaderCellDef> Estado </th>
+      <td mat-cell *matCellDef="let cita"> {{ cita.estado }} </td>
+    </ng-container>
+  
+    <!-- Columna de Especialista -->
+    <ng-container matColumnDef="especialista">
+      <th mat-header-cell *matHeaderCellDef> Especialista </th>
+      <td mat-cell *matCellDef="let cita"> {{ cita.especialista }} </td>
+    </ng-container>
+  
+    <!-- Definición de filas y columnas -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let cita; columns: displayedColumns;"></tr>
+  </table>
+  

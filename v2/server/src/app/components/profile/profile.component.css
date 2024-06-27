@@ -1,20 +1,38 @@
-/* Estilos generales para el perfil */
 .profile-header {
-  background-color: #f0f0f0;
   padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
+  background-color: #f0f0f0;
+  border-bottom: 1px solid #ccc;
+}
+
+.titulo-profile {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.profile-sections {
+  display: flex;
+}
+
+.profile-section {
+  flex: 1;
+}
+
+.profile-left {
+  padding-right: 20px; /* Separación entre las dos secciones */
+}
+
+.profile-right {
+  padding-left: 20px; /* Separación entre las dos secciones */
 }
 
 .profile-text {
-  font-family: 'Arial', sans-serif;
+  display: flex;
+  flex-direction: column;
 }
 
 .profile-label {
   font-weight: bold;
   margin-bottom: 5px;
-  color: #4d4848;
 }
 
 .profile-dato {
@@ -22,18 +40,15 @@
 }
 
 .profile-specific {
-  margin-top: 10px;
+  margin-top: 15px;
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
 }
 
-/* Estilos específicos para diferentes tipos de datos */
-.profile-label.email {
-  color: #007bff; /* Color azul para el email */
+.profile-specific p {
+  margin-bottom: 5px;
 }
 
-.profile-label.antecedentes {
-  font-style: italic; /* Estilo cursiva para antecedentes */
-}
-
-.profile-dato.antecedentes {
-  padding-left: 20px; /* Añadir un poco de espacio para antecedentes */
+.hide-profile-text {
+  display: none; /* Oculta el contenido cuando sidenavCollapsed() devuelve true */
 }
