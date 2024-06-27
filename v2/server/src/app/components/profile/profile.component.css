@@ -1,0 +1,27 @@
+.profile-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+  
+  .profile-container h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .profile-container ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .profile-container li {
+    margin-bottom: 10px;
+  }
+  
+  .profile-container li strong {
+    font-weight: bold;
+    margin-right: 5px;
+  }
+  
