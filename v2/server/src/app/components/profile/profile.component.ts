@@ -1,4 +1,5 @@
 import { Component, signal } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { DeacoderService } from '../../services/deacoder.service';
@@ -7,11 +8,9 @@ import { DeacoderService } from '../../services/deacoder.service';
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [
-    CommonModule
-  ],
+  imports: [RouterOutlet, CommonModule],
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css'],
+  styleUrl: './profile.component.css',
 })
 export class ProfileComponent {
   type?: string;
