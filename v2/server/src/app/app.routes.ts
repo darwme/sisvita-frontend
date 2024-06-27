@@ -1,3 +1,5 @@
+import { VisualizarTestRealizadoComponent } from './pages/paciente/visualizar-test-realizado/visualizar-test-realizado.component';
+import { Component } from '@angular/core';
 import { Router, Routes } from '@angular/router';
 import { LayoutComponent } from './pages/layout/layout.component';
 import { IndexComponent } from './pages/index/index.component';
@@ -11,6 +13,7 @@ import { EspecialistaComponent } from './pages/dashboard/especialista/especialis
 import { AdminComponent } from './pages/dashboard/admin/admin.component';
 import { LogoutComponent } from './pages/auth/logout/logout.component';
 import { VisualizarCitaComponent } from './pages/paciente/visualizar-cita/visualizar-cita.component';
+
 
 import { ProfileComponent } from './components/profile/profile.component';
 import { GestionarPacientesComponent } from './pages/admin/gestionar-pacientes/gestionar-pacientes.component';
@@ -113,6 +116,10 @@ export const routes: Routes = [
           {
             path: 'visualizar-cita',
             component: VisualizarCitaComponent,
+          },
+          {
+            path: "visualizar-test-realizado",
+            component: VisualizarTestRealizadoComponent,
           },
         ],
       },

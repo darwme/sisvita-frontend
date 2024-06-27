@@ -1,115 +1,45 @@
 <app-header></app-header>
+
 <main>
-  <div class="container">
-    <h2 class="seccion">PREGUNTAS COGNITIVAS</h2>
+  <h2 class="seccion">PREGUNTAS COGNITIVAS</h2>
 
-    <div class="situacion-nombre">Situación:</div>
-    <p class="situacion">
-      Ante un examen en el que me juego mucho o si voy a ser entrevistado para
-      un trabajo importante.
-    </p>
-
-    <p class="pregunta">Me preocupo fácilmente.</p>
-    <div class="options">
-      <div class="option">
-        <input
-          type="radio"
-          id="casi-nunca-2"
-          name="preocupacion-2"
-          class="radio"
-        />
-        <label for="casi-nunca-2">Casi nunca</label>
-      </div>
-      <div class="option">
-        <input
-          type="radio"
-          id="pocas-veces-2"
-          name="preocupacion-2"
-          class="radio"
-        />
-        <label for="pocas-veces-2">Pocas veces</label>
-      </div>
-      <div class="option">
-        <input
-          type="radio"
-          id="unas-veces-2"
-          name="preocupacion-2"
-          class="radio"
-        />
-        <label for="unas-veces-2">Unas veces sí</label>
-      </div>
-      <div class="option">
-        <input
-          type="radio"
-          id="muchas-veces-2"
-          name="preocupacion-2"
-          class="radio"
-        />
-        <label for="muchas-veces-2">Muchas veces</label>
-      </div>
-      <div class="option">
-        <input
-          type="radio"
-          id="casi-siempre-2"
-          name="preocupacion-2"
-          class="radio"
-        />
-        <label for="casi-siempre-2">Casi siempre</label>
+  <!-- Iteración sobre las situaciones -->
+  <div *ngFor="let situacion of situaciones; let i = index" class="situacion-container">
+    <h3 class="num_situacion">Situación {{i + 1}}:</h3>
+    <h3 class="descripcion_situacion">{{ situacion.descripcion }}</h3>
+    
+    <!-- Iteración sobre las preguntas de cada situación -->
+    <div class="preguntas-container">
+      <div class="question" *ngFor="let pregunta of situacion.preguntas; let j = index">
+        <h4>{{ pregunta.pregunta }}</h4>
+        
+        <!-- Iteración sobre las opciones de respuesta de cada pregunta -->
+        <div class="options">
+          <label *ngFor="let opcion of pregunta.opciones; let k = index">
+            <input type="radio"
+                   [name]="'situacion' + situacion.id + 'pregunta' + (j + 1)"
+                   [value]="opcion.valor.toString()"
+                   (change)="registrarRespuesta(situacion.id, j, opcion.valor)">
+            {{ opcion.texto }}
+          </label>
+        </div>
       </div>
     </div>
-
-    <p class="pregunta">Me cuesta concentrarme.</p>
-    <div class="options">
-      <div class="option">
-        <input
-          type="radio"
-          id="casi-nunca-3"
-          name="concentracion"
-          class="radio"
-        />
-        <label for="casi-nunca-3">Casi nunca</label>
-      </div>
-      <div class="option">
-        <input
-          type="radio"
-          id="pocas-veces-3"
-          name="concentracion"
-          class="radio"
-        />
-        <label for="pocas-veces-3">Pocas veces</label>
-      </div>
-      <div class="option">
-        <input
-          type="radio"
-          id="unas-veces-3"
-          name="concentracion"
-          class="radio"
-        />
-        <label for="unas-veces-3">Unas veces sí</label>
-      </div>
-      <div class="option">
-        <input
-          type="radio"
-          id="muchas-veces-3"
-          name="concentracion"
-          class="radio"
-        />
-        <label for="muchas-veces-3">Muchas veces</label>
-      </div>
-      <div class="option">
-        <input
-          type="radio"
-          id="casi-siempre-3"
-          name="concentracion"
-          class="radio"
-        />
-        <label for="casi-siempre-3">Casi siempre</label>
-      </div>
-    </div>
-
-    <button class="botons" (click)="testFisiologico()">
-      Continuar Test Fisiologico
-    </button>
+    
+    <!-- Línea separadora -->
+    <hr class="separator">
   </div>
+
+  <!-- Mensaje de advertencia -->
+  <p class="mensaje-advertencia" [hidden]="formularioCompleto() || !mostrarAdvertencia">
+    Complete todas las preguntas antes de continuar por favor
+  </p>
+  
+
+  <!-- Botón para continuar al test fisiológico -->
+  <button class="botons" (click)="testFisiologico()">
+    CONTINUAR
+  </button>
 </main>
+
 <app-footer></app-footer>
