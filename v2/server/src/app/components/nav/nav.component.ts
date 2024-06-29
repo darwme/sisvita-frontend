@@ -27,9 +27,8 @@ export class NavComponent {
   public client = {
     one: [
       { name: 'Inicio', path: '' },
-      { name: 'Servicios', path: '/servicios' },
-      { name: 'Realizar Test', path: '/test' },
-      { name: 'Mi cuenta', path: '/cuenta' },
+      { name: 'Login', path: '/auth/login' },
+      { name: 'Registro', path: '/auth/register' },
     ],
   };
 }
