@@ -63,10 +63,6 @@ export const routes: Routes = [
         canActivate: [UserTypeGuard],
         children: [
           {
-            path: 'gestionar-pacientes',
-            component: GestionarPacientesComponent,
-          },
-          {
             path: 'gestionar-especialistas',
             component: GestionarEspecialistasComponent,
           },

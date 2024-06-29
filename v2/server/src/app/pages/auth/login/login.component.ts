@@ -45,7 +45,7 @@ import { DeacoderService } from '../../../services/deacoder.service';
   styleUrl: './login.component.css',
 })
 export class LoginComponent {
-  data?: LoginResponse;
+  data!: LoginResponse;
   loginForm: FormGroup;
   private readonly _formBuilder: FormBuilder;
   usuario!: Usuario;
@@ -104,15 +104,47 @@ export class LoginComponent {
           this.data = { ...res.data };
           localStorage.setItem('data', this.deacoderService.encrypt(this.data));
 
-          const tipo_usuario = res.data.paciente.persona.usuario.tipo_usuario;
-          const tipo_persona = res.data.paciente.persona.tipo_persona;
+          const especialista = res.data.especialista;
+          const paciente = res.data.paciente;
+          const mixto = res.data.mixto;
+          const admin = res.data.admin;
+
+          let tipo_usuario = '';
+          let tipo_persona = '';
+
+          console.log('especialista', especialista);
+          console.log('paciente', paciente);
+          console.log('mixto', mixto);
+
+          if (especialista) {
+            tipo_usuario = especialista.persona.usuario.tipo_usuario;
+            tipo_persona = especialista.persona.tipo_persona;
+          }
+
+          if (paciente) {
+            tipo_usuario = paciente.persona.usuario.tipo_usuario;
+            tipo_persona = paciente.persona.tipo_persona;
+          }
+
+          if (mixto) {
+            tipo_usuario = mixto.persona.usuario.tipo_usuario;
+            tipo_persona = mixto.persona.tipo_persona;
+          }
+
+          if (admin) {
+            tipo_usuario = admin.persona.usuario.tipo_usuario;
+          }
+
+          console.log('tipousuario-persona', tipo_usuario, tipo_persona);
+
+          localStorage.setItem('userType', tipo_usuario);
+          localStorage.setItem('personaType', tipo_persona);
+
           Swal.fire({
             icon: 'success',
             title: 'Bienvenido',
             text: 'Inicio de sesión exitoso',
           });
-          localStorage.setItem('userType', tipo_usuario);
-          localStorage.setItem('personaType', tipo_persona);
 
           this.redirectToDashboard(tipo_persona);
         } else {
