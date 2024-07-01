@@ -14,7 +14,6 @@ import { AdminComponent } from './pages/dashboard/admin/admin.component';
 import { LogoutComponent } from './pages/auth/logout/logout.component';
 import { VisualizarCitaComponent } from './pages/paciente/visualizar-cita/visualizar-cita.component';
 
-
 import { ProfileComponent } from './components/profile/profile.component';
 import { GestionarPacientesComponent } from './pages/admin/gestionar-pacientes/gestionar-pacientes.component';
 import { GestionarEspecialistasComponent } from './pages/admin/gestionar-especialistas/gestionar-especialistas.component';
@@ -63,10 +62,6 @@ export const routes: Routes = [
         component: AdminComponent,
         canActivate: [UserTypeGuard],
         children: [
-          {
-            path: 'gestionar-pacientes',
-            component: GestionarPacientesComponent,
-          },
           {
             path: 'gestionar-especialistas',
             component: GestionarEspecialistasComponent,
@@ -118,7 +113,7 @@ export const routes: Routes = [
             component: VisualizarCitaComponent,
           },
           {
-            path: "visualizar-test-realizado",
+            path: 'visualizar-test-realizado',
             component: VisualizarTestRealizadoComponent,
           },
         ],
