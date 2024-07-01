@@ -7,16 +7,12 @@ import {MatTableModule} from '@angular/material/table';
 export interface Cita {
   motivo: string;
   fecha_agenda: Date;
-  hora: string; // Aquí asumo que 'hora' es un string, ya que Angular no tiene un tipo 'Time' directo
-  estado: string; // Aquí asumo que 'estado' es un string
-  especialista: string; // Aquí asumo que 'especialista' es un string
+  hora: string; 
+  estado: string; 
+  especialista: string; 
 }
 
-const ELEMENT_DATA: Cita[] = []; // Inicializa los datos según la interfaz Cita
-/**
- * @title Basic use of `<table mat-table>`
- */
-
+const ELEMENT_DATA: Cita[] = []; 
 
 @Component({
   selector: 'app-visualizar-cita',

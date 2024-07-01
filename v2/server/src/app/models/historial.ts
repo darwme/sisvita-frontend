@@ -1,10 +1,9 @@
-import { Usuario } from './usuario';
-import { Test } from './test'
-
 export interface Historial {
-  usuario?: Usuario;
-  test: Test;
+  test: String;
   fecha_realizada: Date;
   puntajes: string;
   diagnosticos: string;
+  secciones: String;
 }
+
+

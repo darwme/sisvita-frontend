@@ -11,15 +11,7 @@ import { Historial } from '../models/historial';
 })
 export class PacienteServiceService {
 
-  service: string[] = [
-    'test',
-    'historial',
-  ];
-
-  BASE_URL: string | undefined;
-
   constructor() {}
-
 
 
 }
