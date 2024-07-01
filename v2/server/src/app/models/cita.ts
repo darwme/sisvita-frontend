@@ -1,4 +1,3 @@
-import { Especialista } from './../../../../../v1/server/src/app/model/especialista';
 import { Paciente } from './paciente';
 import { Especialista } from './especialista';
 import { Time } from '@angular/common';
@@ -9,23 +8,33 @@ export enum Estado {
   cancelada = 'cancelada',
 }
 
-export interface Especialista {
-  nombres: string;
+export interface EspecialistaCita {
+  id_especialista:number,
+  codigo_especialista: string,
+  nombres: string,
   apellidos: string,
+  especialidad: string,
+  experiencia: string,
+
 }
 
-export interface CitaPaciente {
+export interface PacienteCita {
+  id_paciente: number;
+  codigo_paciente: string;
+  nombres: string;
+  apellidos: string;
+  sexo: string;
+  fecha_nacimiento: Date;
+  celular: string,
+  antecedentes:string;
+}
+
+
+export interface Cita {
   motivo: string;
   fecha_agenda: Date;
   estado: Estado;
-  especialista: Especialista;
-}
-
-export interface CitaEspecialista {
-  motivo: string;
-  fecha_agenda: Date;
-  hora: Time;
-  estado: Estado;
-  paciente: Paciente;
+  especialista: EspecialistaCita;
+  paciente: PacienteCita;
 }
 
