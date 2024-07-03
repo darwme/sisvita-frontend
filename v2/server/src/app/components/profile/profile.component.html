@@ -1,49 +1,58 @@
 <header class="profile-header">
-  <h2 class="titulo-profile">Información</h2>
+  <h2 class="titulo-profile">Información del Usuario</h2>
   <div class="profile-sections">
+    <!-- Información Común para Todos los Usuarios -->
     <div class="profile-section profile-left">
-      <div class="profile-text" [class.hide-profile-text]="sidenavCollapsed()">
-        <p class="profile-label">Nombre: </p>
-        <p class="profile-dato">{{ user.persona.nombres }}</p>
+      <div class="profile-text" [class.hide-profile-text]="collapsed">
+        <p class="profile-label">Nombre:</p>
+        <p class="profile-dato">{{ user?.persona?.nombres }}</p>
         
-        <p class="profile-label">Email: </p>
-        <p class="profile-dato">{{ user.persona.usuario.email }}</p>
+        <p class="profile-label">Apellidos:</p>
+        <p class="profile-dato">{{ user?.persona?.apellidos }}</p>
+
+        <p class="profile-label">Email:</p>
+        <p class="profile-dato">{{ user?.persona?.usuario?.email }}</p>
+
+        <p class="profile-label">Ubigeo:</p>
+        <p class="profile-dato">{{ user?.persona?.ubigeo }}</p>
         
-        <p class="profile-label">Ubigeo: </p>
-        <p class="profile-dato">{{ user.persona.ubigeo}}</p>
+        <p class="profile-label">Fecha de Nacimiento:</p>
+        <p class="profile-dato">{{ user?.persona?.fecha_nacimiento | date }}</p>
         
-        <p class="profile-label">Fecha de Nacimiento: </p>
-        <p class="profile-dato">{{ user.persona.fecha_nacimiento | date }}</p>
+        <p class="profile-label">Sexo:</p>
+        <p class="profile-dato">{{ user?.persona?.sexo }}</p>
         
-        <p class="profile-label">Sexo: </p>
-        <p class="profile-dato">{{ user.persona.sexo }}</p>
+        <p class="profile-label">Estado Civil:</p>
+        <p class="profile-dato">{{ user?.persona?.estado_civil }}</p>
         
-        <p class="profile-label">Estado Civil: </p>
-        <p class="profile-dato">{{ user.persona.estado_civil }}</p>
-        
-        <p class="profile-label">Celular: </p>
-        <p class="profile-dato">{{ user.persona.celular }}</p>
+        <p class="profile-label">Celular:</p>
+        <p class="profile-dato">{{ user?.persona?.celular }}</p>
       </div>
     </div>
 
+    <!-- Información Específica Según el Tipo de Usuario -->
     <div class="profile-section profile-right">
-      <div class="profile-text" [class.hide-profile-text]="sidenavCollapsed()">
-        <div *ngIf="user.persona.tipo_persona === 'paciente'" class="profile-specific">
-          <p class="profile-label">Antecedentes: </p>
-          <p class="profile-dato">{{ user.antecedentes }}</p>
+      <div class="profile-text" [class.hide-profile-text]="collapsed">
+        
+        <!-- Datos Específicos del Paciente -->
+        <div *ngIf="user?.persona?.tipo_persona === 'paciente'" class="profile-specific">
+          <p class="profile-label">Antecedentes:</p>
+          <p class="profile-dato">{{ user?.antecedentes }}</p>
         </div>
     
-        <div *ngIf="user.persona.tipo_persona === 'especialista'" class="profile-specific">
-          <p class="profile-label">Especialidad: </p>
-          <p class="profile-dato">{{ user.especialidad }}</p>
+        <!-- Datos Específicos del Especialista -->
+        <div *ngIf="user?.persona?.tipo_persona === 'especialista'" class="profile-specific">
+          <p class="profile-label">Especialidad:</p>
+          <p class="profile-dato">{{ user?.especialidad }}</p>
           
-          <p class="profile-label">Experiencia: </p>
-          <p class="profile-dato">{{ user.experiencia }}</p>
+          <p class="profile-label">Experiencia (años):</p>
+          <p class="profile-dato">{{ user?.experiencia }}</p>
         </div>
     
-        <div *ngIf="user.persona.usuario.tipo_usuario === 'administrador'" class="profile-specific">
-          <p class="profile-label">Nombre: </p>
-          <p class="profile-dato">{{ user.nombre_admin }}</p>
+        <!-- Datos Específicos del Administrador -->
+        <div *ngIf="user?.persona?.usuario?.tipo_usuario === 'administrador'" class="profile-specific">
+          <p class="profile-label">Nombre de Administrador:</p>
+          <p class="profile-dato">{{ user?.nombre }}</p>
         </div>
       </div>
     </div>
