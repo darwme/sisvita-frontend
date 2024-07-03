@@ -86,29 +86,29 @@ export class CustomSidenavComponent {
           route: 'paciente',
         },
         {
-          icon: 'logout',
-          label: 'Logout',
-          route: '/auth/logout',
-        },
-        {
           icon: 'alarm',
           label: 'Realizar Test',
           route: 'paciente/realizar-test',
-        },
-        {
-          icon: 'calendar_today',
-          label: 'Visualizar Cita',
-          route: 'paciente/visualizar-cita',
         },
         {
           icon: 'book',
           label:"Visualizar tests",
           route:'paciente/visualizar-test-realizado',
         },
+        {
+          icon: 'logout',
+          label: 'Logout',
+          route: '/auth/logout',
+        },
       ]);
     } else if (usertype === 'especialista') {
       this.type = 'especialista';
       this.menuItems.set([
+        {
+          icon: 'account_circle',
+          label: 'Profile',
+          route: 'especialista/profile',
+        },
         {
           icon: 'test',
           label: 'Visualizar Tests',
