@@ -59,7 +59,6 @@ export const routes: Routes = [
 
       {
         path: 'admin',
-        component: AdminComponent,
         canActivate: [UserTypeGuard],
         children: [
           {
@@ -74,9 +73,13 @@ export const routes: Routes = [
       },
       {
         path: 'especialista',
-        component: EspecialistaComponent,
         canActivate: [UserTypeGuard],
         children: [
+          {
+            path: '',
+            redirectTo: 'profile',
+            pathMatch: 'full',
+          },
           {
             path: 'visualizar-tests-realizados',
             component: VisualizarTestsRealizadosComponent,

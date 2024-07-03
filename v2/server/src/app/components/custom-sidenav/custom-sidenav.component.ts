@@ -91,7 +91,7 @@ export class CustomSidenavComponent {
           route: '/auth/logout',
         },
         {
-          icon: 'alarm',
+          icon: 'assignment',
           label: 'Realizar Test',
           route: 'paciente/realizar-test',
         },
@@ -102,27 +102,37 @@ export class CustomSidenavComponent {
         },
         {
           icon: 'book',
-          label:"Visualizar tests",
-          route:'paciente/visualizar-test-realizado',
+          label: 'Visualizar tests',
+          route: 'paciente/visualizar-test-realizado',
         },
       ]);
     } else if (usertype === 'especialista') {
       this.type = 'especialista';
       this.menuItems.set([
         {
-          icon: 'test',
+          icon: 'account_circle',
+          label: 'Profile',
+          route: 'especialista/profile',
+        },
+        {
+          icon: 'dashboard',
+          label: 'Dashboard',
+          route: 'especialista',
+        },
+        {
+          icon: 'assignment',
+          label: 'Realizar Test',
+          route: 'especialista/realizar-test',
+        },
+        {
+          icon: 'view_compact',
           label: 'Visualizar Tests',
           route: 'dashboard/especialista/visualizar-tests',
         },
         {
-          icon: 'appointment',
+          icon: 'edit_calendar',
           label: 'Agendar Cita',
           route: '/especialista/agendar-cita',
-        },
-        {
-          icon: 'communication',
-          label: 'Comunicar con Paciente',
-          route: '/especialista/comunicar-paciente',
         },
         {
           icon: 'logout',
