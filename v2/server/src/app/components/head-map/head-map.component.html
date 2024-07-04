@@ -1,14 +1,21 @@
-<div>
-  <label for="emotion">Estado Emocional:</label>
-  <select id="emotion" (change)="onFilterChange($event)">
-    <option value="all">Todos</option>
-    <option value="happy">Alegre</option>
-    <option value="sad">Triste</option>
-    <option value="angry">Enojado</option>
-  </select>
+<h2 mat-dialog-title>MAPA DE CALOR</h2>
+<mat-dialog-content>
+  <div>
+    <label for="rango">Estado Emocional:</label>
+    <select id="rango" (change)="onFilterChange($event)">
+      <option value="all">Todos</option>
+      <option value="Ansiedad mínima">Minima</option>
+      <option value="Ansiedad moderada">Moderada</option>
+      <option value="Ansiedad severa">severa</option>
+      <option value="Ansiedad extrema">Extrema</option>
+    </select>
 
-  <label for="dateRange">Rango de Fechas:</label>
-  <input type="date" id="startDate" (change)="onFilterChange($event)" />
-  <input type="date" id="endDate" (change)="onFilterChange($event)" />
-</div>
-<div id="map" style="height: 500px"></div>
+    <label for="dateRange">Rango de Fechas:</label>
+    <input type="date" id="startDate" (change)="onFilterChange($event)" />
+    <input type="date" id="endDate" (change)="onFilterChange($event)" />
+  </div>
+  <div id="map" style="height: 500px"></div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>

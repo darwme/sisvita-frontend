@@ -1,1 +1,69 @@
-<p>evaluar aqui</p>
+<!-- paciente-form.component.html -->
+<div
+  style="
+    padding: 20px;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+  "
+>
+  <div class="left-column">
+    <!-- Apartado 1: Datos del Paciente -->
+    <div class="section">
+      <h3>Datos del Paciente</h3>
+      <div class="field">
+        <strong>Nombres y Apellidos:</strong> {{ this.data?.paciente.paciente }}
+      </div>
+      <div class="field">
+        <strong>Codigo:</strong>
+        {{ this.data?.paciente.codigo_paciente }}
+      </div>
+      <div class="field">
+        <strong>Tipo Test:</strong> {{ this.data?.paciente.test }}
+      </div>
+      <div class="field"><strong>Puntaje:</strong> {{ this.puntaje }}</div>
+      <div class="field">
+        <strong>DIAGNOSTICO:</strong>
+        {{ this.data?.paciente?.['diagnostico general'] }}
+      </div>
+
+          
+    </div>
+
+    <!-- Apartado 2: Datos del Test -->
+    <form class="example-form">
+      <h3>Evaluación Especialista:</h3>
+      <mat-form-field class="example-full-width">
+        <mat-label>Fundamento científico</mat-label>
+        <textarea
+          matInput
+          placeholder="Ex. De la contrariedad de sus emo..."
+        ></textarea>
+      </mat-form-field>
+
+      <h3>Del tratamiento:</h3>
+      <mat-form-field class="example-full-width">
+        <mat-label>Tratamiento</mat-label>
+        <input matInput placeholder="Ex. Realizar ejercicios de respiración" />
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Descripción del tratamiento</mat-label>
+        <textarea
+          matInput
+          placeholder="Ex. Puedes colocar los pasos..."
+        ></textarea>
+      </mat-form-field>
+
+      <h3>De la Comunicación:</h3>
+      <mat-form-field class="example-full-width">
+        <mat-label>Recomendaciones</mat-label>
+        <textarea
+          matInput
+          placeholder="Ex. Podrías colocar algunas recomendaciones a seguir..."
+        ></textarea>
+      </mat-form-field>
+    </form>
+  </div>
+</div>

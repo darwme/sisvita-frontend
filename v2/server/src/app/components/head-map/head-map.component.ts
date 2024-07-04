@@ -1,91 +1,101 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { enviroments } from '../../../../enviroments';
 import { Loader } from '@googlemaps/js-api-loader';
+import {
+  MatDialog,
+  MAT_DIALOG_DATA,
+  MatDialogTitle,
+  MatDialogContent,
+  MatDialogActions,
+  MatDialogClose,
+} from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { Historial_e } from '../../models/historial';
 
 interface Person {
-  lat: number;
-  lng: number;
-  emotion: 'happy' | 'sad' | 'angry';
-  createdAt: Date;
+  y: number;
+  x: number;
+  rango:
+    | 'Ansiedad mínima'
+    | 'Ansiedad moderada'
+    | 'Ansiedad severa'
+    | 'Ansiedad extrema';
+  fecha_realizada: Date;
+}
+
+interface FilterData {
+  nombre_completo: string;
+  test: string;
+  y: number;
+  x: number;
+  rango:
+    | 'Ansiedad mínima'
+    | 'Ansiedad moderada'
+    | 'Ansiedad severa'
+    | 'Ansiedad extrema';
+  fecha_realizada: Date;
 }
 
 @Component({
   selector: 'app-head-map',
   standalone: true,
-  imports: [GoogleMapsModule, CommonModule],
+  imports: [
+    GoogleMapsModule,
+    CommonModule,
+    MatButtonModule,
+    MatDialogTitle,
+    MatDialogContent,
+    MatButtonModule,
+    MatDialogActions,
+    MatDialogClose,
+  ],
   templateUrl: './head-map.component.html',
   styleUrl: './head-map.component.css',
 })
 export class HeadMapComponent implements OnInit {
   heatmapData: { location: google.maps.LatLng; weight: number }[] = [];
-  private people: Person[] = [
-    {
-      lat: 37.7749,
-      lng: -122.4194,
-      emotion: 'happy',
-      createdAt: new Date('2024-06-01'),
-    },
-    {
-      lat: 37.7748,
-      lng: -122.4195,
-      emotion: 'sad',
-      createdAt: new Date('2024-06-02'),
-    },
-    {
-      lat: 37.7747,
-      lng: -122.4196,
-      emotion: 'angry',
-      createdAt: new Date('2024-06-03'),
-    },
-    {
-      lat: 37.7746,
-      lng: -122.4197,
-      emotion: 'happy',
-      createdAt: new Date('2024-06-04'),
-    },
-    {
-      lat: 37.7745,
-      lng: -122.4198,
-      emotion: 'sad',
-      createdAt: new Date('2024-06-05'),
-    },
-    {
-      lat: 37.7744,
-      lng: -122.4199,
-      emotion: 'angry',
-      createdAt: new Date('2024-06-06'),
-    },
-    {
-      lat: 37.7743,
-      lng: -122.42,
-      emotion: 'happy',
-      createdAt: new Date('2024-06-07'),
-    },
-    {
-      lat: 37.7742,
-      lng: -122.4201,
-      emotion: 'sad',
-      createdAt: new Date('2024-06-08'),
-    },
-  ];
+  private people: Person[];
 
   private map: google.maps.Map | null = null;
   private heatmap: google.maps.visualization.HeatmapLayer | null = null;
 
-  private emotionWeights = {
-    happy: 1,
-    sad: 2,
-    angry: 3,
+  private rangoWeights = {
+    'Ansiedad mínima': 1,
+    'Ansiedad moderada': 2,
+    'Ansiedad severa': 3,
+    'Ansiedad extrema': 4,
   };
 
-  constructor() {}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
+    console.log('datoz recibidoz: ', this.data);
+    this.people = this.transformInputDataToListOfPerson(this.data);
+    console.log('people: ', this.people);
+  }
 
   ngOnInit(): void {
     this.loadMap();
+  }
+
+  transformInputDataToListOfPerson(inputData: any): Person[] {
+    // Paso 1: Verificar si la entrada es un objeto. Si no, retornar un array vacío.
+    if (typeof inputData !== 'object' || inputData === null) {
+      return [];
+    }
+
+    // Paso 2: Convertir el objeto de entrada en un array de sus valores.
+    const inputDataList = Object.values(inputData);
+
+    // Paso 3: Aplicar la transformación existente al array.
+    return inputDataList.map((inputData: any) => ({
+      y: inputData.ubicacion.y,
+      x: inputData.ubicacion.x,
+      rango: inputData['diagnostico general'],
+      fecha_realizada: new Date(inputData.fecha_realizada),
+    }));
   }
 
   private loadMap(): void {
@@ -99,7 +109,7 @@ export class HeadMapComponent implements OnInit {
       this.map = new google.maps.Map(
         document.getElementById('map') as HTMLElement,
         {
-          center: { lat: 37.7, lng: -122.4 },
+          center: { lat: -12, lng: -77 },
           zoom: 10,
         }
       );
@@ -107,12 +117,12 @@ export class HeadMapComponent implements OnInit {
       this.heatmap = new google.maps.visualization.HeatmapLayer({
         data: this.heatmapData,
         gradient: [
-          'rgba(0, 255, 0, 0)', //verde happy
-          'rgba(0, 255, 0, 1)', //verde
-          'rgba(255, 255, 0, 1)', //amarillo
-          'rgba(255, 0, 0, 1)', //rojo angry
+          'rgba(0, 255, 0, 0)', //verde minima
+          'rgba(0, 255, 0, 1)', //moderada
+          'rgba(255, 255, 0, 1)', //zevera
+          'rgba(255, 0, 0, 1)', //extrema
         ],
-        maxIntensity: 3,
+        maxIntensity: 4,
         radius: 20,
         dissipating: true,
       });
@@ -124,8 +134,8 @@ export class HeadMapComponent implements OnInit {
 
   private updateHeatmap(): void {
     this.heatmapData = this.people.map((person) => ({
-      location: new google.maps.LatLng(person.lat, person.lng),
-      weight: this.emotionWeights[person.emotion],
+      location: new google.maps.LatLng(person.x, person.y),
+      weight: this.rangoWeights[person.rango],
     }));
     if (this.heatmap) {
       this.heatmap.setData(this.heatmapData);
@@ -134,7 +144,7 @@ export class HeadMapComponent implements OnInit {
 
   onFilterChange(event: any): void {
     const emotionFilter = (
-      document.getElementById('emotion') as HTMLSelectElement
+      document.getElementById('rango') as HTMLSelectElement
     ).value;
     const startDate = (document.getElementById('startDate') as HTMLInputElement)
       .valueAsDate;
@@ -143,16 +153,16 @@ export class HeadMapComponent implements OnInit {
 
     const filteredPeople = this.people.filter((person) => {
       const isEmotionMatch =
-        emotionFilter === 'all' || person.emotion === emotionFilter;
+        emotionFilter === 'all' || person.rango === emotionFilter;
       const isDateMatch =
-        (!startDate || person.createdAt >= startDate) &&
-        (!endDate || person.createdAt <= endDate);
+        (!startDate || person.fecha_realizada >= startDate) &&
+        (!endDate || person.fecha_realizada <= endDate);
       return isEmotionMatch && isDateMatch;
     });
 
     this.heatmapData = filteredPeople.map((person) => ({
-      location: new google.maps.LatLng(person.lat, person.lng),
-      weight: this.emotionWeights[person.emotion],
+      location: new google.maps.LatLng(person.x, person.y),
+      weight: this.rangoWeights[person.rango],
     }));
     if (this.heatmap) {
       this.heatmap.setData(this.heatmapData);
