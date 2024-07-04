@@ -5,7 +5,7 @@ import { getConexionBackend } from '../utils/constants';
 import { Evaluacion } from '../models/evaluacion';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class EvaluacionService {
   private readonly BASE_URL: string;
@@ -15,9 +15,28 @@ export class EvaluacionService {
     this.BASE_URL = getConexionBackend('evaluacion');
   }
 
+<<<<<<< Updated upstream
   getEvaluacionTest(cod_historial: string): Observable<Evaluacion> {
     return this.http.get<Evaluacion>(`${this.BASE_URL}/ver_evaluacion/${cod_historial}`);
+=======
+  getHistorialByIdTest(cod_historial: string): Observable<Evaluacion> {
+    return this.http.get<Evaluacion>(
+      `${this.BASE_URL}/ver_evaluacion/${cod_historial}`
+    );
+>>>>>>> Stashed changes
   }
 
-
+  postEnviarEvaluacion(
+    evaluacion: Evaluacion,
+    codigo_especialista: string,
+    codigo_historial_test: string
+  ): Observable<Evaluacion> {
+    console.log('EN SERVICIO://enviando evaluacion: ', evaluacion);
+    console.log('codigo especialista: ', codigo_especialista);
+    console.log('codigo historial test: ', codigo_historial_test);
+    return this.http.post<Evaluacion>(
+      `${this.BASE_URL}/crear_evaluacion/${codigo_historial_test}/${codigo_especialista}`,
+      evaluacion
+    );
+  }
 }
