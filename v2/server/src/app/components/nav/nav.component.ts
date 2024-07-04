@@ -7,6 +7,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { LogoComponent } from '../logo/logo.component';
 
 @Component({
   selector: 'app-nav',
@@ -19,6 +20,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatIconModule,
     MatSidenavModule,
     MatListModule,
+    LogoComponent,
   ],
   templateUrl: './nav.component.html',
   styleUrl: './nav.component.css',

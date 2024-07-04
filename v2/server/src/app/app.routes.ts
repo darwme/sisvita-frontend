@@ -23,6 +23,7 @@ import { VisualizarTestsRealizadosComponent } from './pages/especialista/visuali
 import { UserTypeGuard } from './guards/user-type.guard';
 
 import { AuthGuard } from './guards/auth.guard';
+import { HeadMapComponent } from './components/head-map/head-map.component';
 
 export const routes: Routes = [
   {
@@ -83,6 +84,10 @@ export const routes: Routes = [
           {
             path: 'visualizar-tests-realizados',
             component: VisualizarTestsRealizadosComponent,
+          },
+          {
+            path: 'heat-map',
+            component: HeadMapComponent,
           },
           {
             path: 'agendar-cita',

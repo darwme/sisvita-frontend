@@ -8,6 +8,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { CustomSidenavComponent } from '../custom-sidenav/custom-sidenav.component';
 import { DataService } from '../../services/data.service';
 import { DeacoderService } from '../../services/deacoder.service';
+import { LogoComponent } from '../logo/logo.component';
 
 @Component({
   selector: 'app-sidebar',
@@ -20,6 +21,7 @@ import { DeacoderService } from '../../services/deacoder.service';
     MatButtonModule,
     MatSidenavModule,
     CustomSidenavComponent,
+    LogoComponent,
   ],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css',
