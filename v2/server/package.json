@@ -23,6 +23,7 @@
     "@angular/router": "^17.3.0",
     "@googlemaps/js-api-loader": "^1.16.6",
     "crypto-js": "^4.2.0",
+    "google-maps-api": "^2.0.1",
     "jwt-decode": "^4.0.0",
     "rxjs": "~7.8.0",
     "sweetalert2": "^11.6.13",
