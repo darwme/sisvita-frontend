@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { getConexionBackend } from '../utils/constants';
-import { Historial } from '../models/historial';
+import { Historial,Historial_e } from '../models/historial';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +19,7 @@ export class PacienteService {
     return this.http.get<Historial[]>(`${this.BASE_URL}/usuario/${id}`);
   }
 
-  getHistorialByIdTests(): Observable<Historial[]> {
-    return this.http.get<Historial[]>(`${this.BASE_URL}/listar`);
+  getHistorialByIdTests(): Observable<Historial_e[]> {
+    return this.http.get<Historial_e[]>(`${this.BASE_URL}/listar_h_pacientes`);
   }
 }

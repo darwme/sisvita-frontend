@@ -1,6 +1,6 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { MatTableModule } from '@angular/material/table'; // Importa MatTableDataSource
+import { MatTableModule } from '@angular/material/table'; 
 import { Historial } from '../../models/historial';
 
 
