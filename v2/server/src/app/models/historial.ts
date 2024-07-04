@@ -4,5 +4,5 @@ export interface Historial {
   fecha_realizada: Date;
   puntajes: string;
   diagnosticos: string;
-  secciones: string; 
+  secciones: string;
 }
