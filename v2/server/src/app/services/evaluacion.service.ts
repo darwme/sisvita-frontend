@@ -15,7 +15,7 @@ export class EvaluacionService {
     this.BASE_URL = getConexionBackend('evaluacion');
   }
 
-  getHistorialByIdTest(cod_historial: string): Observable<Evaluacion> {
+  getEvaluacionTest(cod_historial: string): Observable<Evaluacion> {
     return this.http.get<Evaluacion>(`${this.BASE_URL}/ver_evaluacion/${cod_historial}`);
   }
 

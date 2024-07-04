@@ -1,0 +1,79 @@
+/* Estilos generales del cuerpo del documento */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #f0f0f0;
+}
+
+/* Estilos del contenedor principal */
+.evaluacion-details {
+  font-family: Arial, sans-serif;
+  width: 90%;
+  max-width: 1000px; /* Ancho máximo del contenedor */
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  text-align: left; /* Centrar todo el contenido */
+}
+
+/* Estilos para los títulos dentro del contenedor */
+.evaluacion-details h2 {
+  color: #041a31; /* Color azul */
+  margin-bottom: 10px;
+}
+
+/* Estilos para la columna izquierda */
+.left-column {
+  grid-column: 1 / 2;
+}
+
+/* Estilos para la columna derecha */
+.right-column {
+  grid-column: 2 / 3;
+}
+
+/* Estilos para las secciones dentro del contenedor */
+.section {
+  padding: 15px;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-top:10px;
+}
+
+/* Estilos para los títulos de sección */
+.section h3 {
+  font-size: 15px;
+  color: #555555;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #cccccc;
+  padding-bottom: 8px;
+}
+
+/* Estilos para los campos dentro de las secciones */
+.field {
+  margin-bottom: 15px;
+}
+
+/* Estilos para elementos strong dentro de los campos */
+.field strong {
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+/* Estilos para la división entre secciones */
+.section-divider {
+  border: none;
+  border-top: 1px solid #dddddd;
+  grid-column: 1 / -1;
+  margin: 20px 0;
+}
