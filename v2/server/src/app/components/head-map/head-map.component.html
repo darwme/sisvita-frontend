@@ -1,0 +1,14 @@
+<div>
+  <label for="emotion">Estado Emocional:</label>
+  <select id="emotion" (change)="onFilterChange($event)">
+    <option value="all">Todos</option>
+    <option value="happy">Alegre</option>
+    <option value="sad">Triste</option>
+    <option value="angry">Enojado</option>
+  </select>
+
+  <label for="dateRange">Rango de Fechas:</label>
+  <input type="date" id="startDate" (change)="onFilterChange($event)" />
+  <input type="date" id="endDate" (change)="onFilterChange($event)" />
+</div>
+<div id="map" style="height: 500px"></div>

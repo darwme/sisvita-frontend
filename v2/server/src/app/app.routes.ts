@@ -23,6 +23,7 @@ import { VisualizarTestsRealizadosComponent } from './pages/especialista/visuali
 import { UserTypeGuard } from './guards/user-type.guard';
 
 import { AuthGuard } from './guards/auth.guard';
+import { HeadMapComponent } from './components/head-map/head-map.component';
 
 export const routes: Routes = [
   {
@@ -59,7 +60,6 @@ export const routes: Routes = [
 
       {
         path: 'admin',
-        component: AdminComponent,
         canActivate: [UserTypeGuard],
         children: [
           {
@@ -74,12 +74,20 @@ export const routes: Routes = [
       },
       {
         path: 'especialista',
-        component: EspecialistaComponent,
         canActivate: [UserTypeGuard],
         children: [
           {
+            path: '',
+            redirectTo: 'profile',
+            pathMatch: 'full',
+          },
+          {
             path: 'visualizar-tests-realizados',
             component: VisualizarTestsRealizadosComponent,
+          },
+          {
+            path: 'heat-map',
+            component: HeadMapComponent,
           },
           {
             path: 'agendar-cita',

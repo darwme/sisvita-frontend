@@ -86,14 +86,19 @@ export class CustomSidenavComponent {
           route: 'paciente',
         },
         {
-          icon: 'alarm',
+          icon: 'logout',
+          label: 'Logout',
+          route: '/auth/logout',
+        },
+        {
+          icon: 'assignment',
           label: 'Realizar Test',
           route: 'paciente/realizar-test',
         },
         {
           icon: 'book',
-          label:"Visualizar tests",
-          route:'paciente/visualizar-test-realizado',
+          label: 'Visualizar tests',
+          route: 'paciente/visualizar-test-realizado',
         },
         {
           icon: 'logout',
@@ -111,18 +116,23 @@ export class CustomSidenavComponent {
         },
         {
           icon: 'book',
+          label: 'Dashboard',
+          route: 'especialista',
+        },
+        {
+          icon: 'assignment',
+          label: 'Realizar Test',
+          route: 'especialista/realizar-test',
+        },
+        {
+          icon: 'view_compact',
           label: 'Visualizar Tests',
           route: 'especialista/visualizar-tests-realizados',
         },
         {
-          icon: 'appointment',
+          icon: 'edit_calendar',
           label: 'Agendar Cita',
           route: '/especialista/agendar-cita',
-        },
-        {
-          icon: 'communication',
-          label: 'Comunicar con Paciente',
-          route: '/especialista/comunicar-paciente',
         },
         {
           icon: 'logout',
