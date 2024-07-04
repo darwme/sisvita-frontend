@@ -1,0 +1,26 @@
+<table mat-table [dataSource]="detallesDiagnostico" class="mat-elevation-z8">
+
+  <!-- Seccion Column -->
+  <ng-container matColumnDef="seccion">
+    <th mat-header-cell *matHeaderCellDef> Sección </th>
+    <td mat-cell *matCellDef="let element"> {{ element.seccion }} </td>
+  </ng-container>
+
+  <!-- Puntaje Column -->
+  <ng-container matColumnDef="puntaje">
+    <th mat-header-cell *matHeaderCellDef> Puntaje </th>
+    <td mat-cell *matCellDef="let element"> {{ element.puntaje !== null ? element.puntaje : '-' }} </td>
+  </ng-container>
+
+  <!-- Diagnostico Column -->
+  <ng-container matColumnDef="diagnostico">
+    <th mat-header-cell *matHeaderCellDef> Diagnóstico </th>
+    <td mat-cell *matCellDef="let element"> {{ element.diagnostico !== null ? element.diagnostico : '-' }} </td>
+  </ng-container>
+
+  <!-- Header Row -->
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+  <!-- Data Rows -->
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

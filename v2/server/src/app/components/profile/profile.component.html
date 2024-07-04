@@ -1,51 +1,52 @@
-<header class="profile-header">
-  <h2 class="titulo-profile">Información</h2>
-  <div class="profile-sections">
-    <div class="profile-section profile-left">
-      <div class="profile-text" [class.hide-profile-text]="sidenavCollapsed()">
-        <p class="profile-label">Nombre: </p>
-        <p class="profile-dato">{{ user.persona.nombres }}</p>
-        
-        <p class="profile-label">Email: </p>
-        <p class="profile-dato">{{ user.persona.usuario.email }}</p>
-        
-        <p class="profile-label">Ubigeo: </p>
-        <p class="profile-dato">{{ user.persona.ubigeo }}</p>
-        
-        <p class="profile-label">Fecha de Nacimiento: </p>
-        <p class="profile-dato">{{ user.persona.fecha_nacimiento | date }}</p>
-        
-        <p class="profile-label">Sexo: </p>
-        <p class="profile-dato">{{ user.persona.sexo }}</p>
-        
-        <p class="profile-label">Estado Civil: </p>
-        <p class="profile-dato">{{ user.persona.estado_civil }}</p>
-        
-        <p class="profile-label">Celular: </p>
-        <p class="profile-dato">{{ user.persona.celular }}</p>
+<div class="container">
+  <!-- Perfil de Paciente -->
+  <mat-card class="profile-card" *ngIf="personaType === 'paciente'">
+    <mat-card-content>
+      <h1 class="titulo">Perfil de Paciente</h1>
+      <div>
+        <p><strong>Código de Paciente:</strong> {{ user.codigo_paciente }}</p>
+        <p><strong>Nombres:</strong> {{ user.persona.nombres }}</p>
+        <p><strong>Apellidos:</strong> {{ user.persona.apellidos }}</p>
+        <p><strong>Email:</strong> {{ user.persona.usuario.email }}</p>
+        <p><strong>Fecha de Nacimiento:</strong> {{ user.persona.fecha_nacimiento | date:'dd/MM/yyyy' }}</p>
+        <p><strong>Sexo:</strong> {{ user.persona.sexo }}</p>
+        <p><strong>Estado Civil:</strong> {{ user.persona.estado_civil }}</p>
+        <p><strong>Celular:</strong> {{ user.persona.celular }}</p>
+        <p><strong>Provincia:</strong> {{ user.persona.ubicacion.provincia }}</p>
+        <p><strong>Distrito:</strong> {{ user.persona.ubicacion.distrito }}</p>
+        <p><strong>Antecedentes:</strong> {{ user.antecedentes }}</p>
       </div>
-    </div>
+    </mat-card-content>
+  </mat-card>
 
-    <div class="profile-section profile-right">
-      <div class="profile-text" [class.hide-profile-text]="sidenavCollapsed()">
-        <div *ngIf="user.persona.tipo_persona === 'paciente'" class="profile-specific">
-          <p class="profile-label">Antecedentes: </p>
-          <p class="profile-dato">{{ user.antecedentes }}</p>
-        </div>
-    
-        <div *ngIf="user.persona.tipo_persona === 'especialista'" class="profile-specific">
-          <p class="profile-label">Especialidad: </p>
-          <p class="profile-dato">{{ user.especialidad }}</p>
-          
-          <p class="profile-label">Experiencia: </p>
-          <p class="profile-dato">{{ user.experiencia }}</p>
-        </div>
-    
-        <div *ngIf="user.persona.usuario.tipo_usuario === 'administrador'" class="profile-specific">
-          <p class="profile-label">Nombre: </p>
-          <p class="profile-dato">{{ user.nombre_admin }}</p>
-        </div>
+  <!-- Perfil de Especialista -->
+  <mat-card class="profile-card" *ngIf="personaType === 'especialista'">
+    <mat-card-content>
+      <h1 class="titulo">Perfil de Especialista</h1>
+      <div>
+        <p><strong>Nombres:</strong> {{ user.persona.nombres }}</p>
+        <p><strong>Apellidos:</strong> {{ user.persona.apellidos }}</p>
+        <p><strong>Email:</strong> {{ user.persona.usuario.email }}</p>
+        <p><strong>Fecha de Nacimiento:</strong> {{ user.persona.fecha_nacimiento | date:'dd/MM/yyyy' }}</p>
+        <p><strong>Sexo:</strong> {{ user.persona.sexo }}</p>
+        <p><strong>Estado Civil:</strong> {{ user.persona.estado_civil }}</p>
+        <p><strong>Celular:</strong> {{ user.persona.celular }}</p>
+        <p><strong>Provincia:</strong> {{ user.persona.ubicacion.provincia }}</p>
+        <p><strong>Distrito:</strong> {{ user.persona.ubicacion.distrito }}</p>
+        <p><strong>Especialidad:</strong> {{ user.especialidad }}</p>
+        <p><strong>Experiencia:</strong> {{ user.experiencia }} años</p>
       </div>
-    </div>
-  </div>
-</header>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Perfil de Administrador -->
+  <mat-card class="profile-card" *ngIf="personaType === 'administrador'">
+    <mat-card-content>
+      <h1 class="titulo">Perfil de Administrador</h1>
+      <div>
+        <p><strong>Nombre:</strong> {{ user.persona.nombre_admin }}</p>
+        <p><strong>Email:</strong> {{ user.persona.usuario.email }}</p>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

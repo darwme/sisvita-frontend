@@ -96,14 +96,14 @@ export class CustomSidenavComponent {
           route: 'paciente/realizar-test',
         },
         {
-          icon: 'calendar_today',
-          label: 'Visualizar Cita',
-          route: 'paciente/visualizar-cita',
-        },
-        {
           icon: 'book',
           label: 'Visualizar tests',
           route: 'paciente/visualizar-test-realizado',
+        },
+        {
+          icon: 'logout',
+          label: 'Logout',
+          route: '/auth/logout',
         },
       ]);
     } else if (usertype === 'especialista') {
@@ -115,7 +115,7 @@ export class CustomSidenavComponent {
           route: 'especialista/profile',
         },
         {
-          icon: 'dashboard',
+          icon: 'book',
           label: 'Dashboard',
           route: 'especialista',
         },
@@ -127,7 +127,7 @@ export class CustomSidenavComponent {
         {
           icon: 'view_compact',
           label: 'Visualizar Tests',
-          route: 'dashboard/especialista/visualizar-tests',
+          route: 'especialista/visualizar-tests-realizados',
         },
         {
           icon: 'edit_calendar',
