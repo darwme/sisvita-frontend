@@ -1,54 +1,34 @@
-.profile-header {
-  padding: 20px;
-  background-color: #f0f0f0;
-  border-bottom: 1px solid #ccc;
+.profile-card {
+  width: 100%;
+  margin: 20px; /* Ajusta el margen según tu diseño */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.titulo {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.titulo-profile {
-  font-size: 24px;
-  margin-bottom: 10px;
+
+.profile-card .mat-card-content {
+  padding: 16px;
 }
 
-.profile-sections {
-  display: flex;
+.profile-card .titulo {
+  font-size: 1.5rem;
+  margin-bottom: 16px;
 }
 
-.profile-section {
-  flex: 1;
+.profile-card .profile-details {
+  /* Estilos para cada detalle del perfil */
+  margin-bottom: 12px;
 }
 
-.profile-left {
-  padding-right: 20px; /* Separación entre las dos secciones */
+.profile-card p {
+  margin: 8px 0;
 }
 
-.profile-right {
-  padding-left: 20px; /* Separación entre las dos secciones */
-}
-
-.profile-text {
-  display: flex;
-  flex-direction: column;
-}
-
-.profile-label {
+.profile-card strong {
   font-weight: bold;
-  margin-bottom: 5px;
 }
 
-.profile-dato {
-  margin-bottom: 10px;
-}
-
-.profile-specific {
-  margin-top: 15px;
-  border-top: 1px solid #ccc;
-  padding-top: 10px;
-}
-
-.profile-specific p {
-  margin-bottom: 5px;
-}
-
-.hide-profile-text {
-  display: none; /* Oculta el contenido cuando sidenavCollapsed() devuelve true */
-}

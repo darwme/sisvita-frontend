@@ -1,9 +1,8 @@
 export interface Historial {
-  test: String;
+  codigo_historial_test: string;
+  test: string;
   fecha_realizada: Date;
   puntajes: string;
   diagnosticos: string;
-  secciones: String;
+  secciones: string; 
 }
-
-

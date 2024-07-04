@@ -18,14 +18,14 @@ export class ProfileGestionService {
   }
 
   getDatosPaciente(cod_paciente: string): Observable<Paciente> {
-    return this.http.get<Paciente>(`${this.BASE_URL}/v1/paciente/${cod_paciente}`)
+    return this.http.get<Paciente>(`${this.BASE_URL}/paciente/${cod_paciente}`)
       .pipe(
         catchError(this.handleError)
       );
   }
 
   getDatosEspecialista(cod_especialista: string): Observable<Especialista> {
-    return this.http.get<Especialista>(`${this.BASE_URL}/v1/especialista/${cod_especialista}`)
+    return this.http.get<Especialista>(`${this.BASE_URL}/especialista/${cod_especialista}`)
       .pipe(
         catchError(this.handleError)
       );

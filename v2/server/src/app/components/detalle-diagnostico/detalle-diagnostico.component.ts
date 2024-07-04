@@ -1,6 +1,7 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table'; // Importa MatTableDataSource
+import { Historial } from '../../models/historial';
 
 
 export interface DetalleDiagnostico {
@@ -17,13 +18,17 @@ export interface DetalleDiagnostico {
   styleUrl: './detalle-diagnostico.component.css'
 })
 
-
-export class DetalleDiagnosticoComponent {
+export class DetalleDiagnosticoComponent implements OnInit {
   detallesDiagnostico: DetalleDiagnostico[] = [];
   displayedColumns: string[] = ['seccion', 'puntaje', 'diagnostico'];
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
-    this.detallesDiagnostico = this.transformarDatos();
+  constructor(@Inject(MAT_DIALOG_DATA) public data: Historial) {}
+
+  ngOnInit(): void {
+    console.log(this.data)
+    if (this.data) {
+      this.detallesDiagnostico = this.transformarDatos();
+    }
   }
 
   transformarDatos(): DetalleDiagnostico[] {
@@ -40,6 +45,7 @@ export class DetalleDiagnosticoComponent {
       });
     }
 
+    // Agregar un detalle general si hay más puntajes que secciones
     if (puntajes.length > secciones.length) {
       const puntajeGeneral = parseFloat(puntajes[puntajes.length - 1].trim());
       const diagnosticoGeneral = diagnosticos[diagnosticos.length - 1].trim();

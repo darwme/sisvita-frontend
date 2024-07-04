@@ -6,16 +6,16 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { Historial } from '../../../models/historial';
-import { DetalleDiagnosticoComponent } from '../../../components/detalle-diagnostico/detalle-diagnostico.component';
 import { MatDialog } from '@angular/material/dialog';
 import { jwtDecode } from 'jwt-decode';
+import { DetalleDiagnosticoComponent } from '../../../components/detalle-diagnostico/detalle-diagnostico.component';
 
 @Component({
   selector: 'app-visualizar-test-realizado',
   standalone: true,
   imports: [CommonModule, MatCardModule, MatTableModule, MatPaginatorModule],
   templateUrl: './visualizar-test-realizado.component.html',
-  styleUrls: ['./visualizar-test-realizado.component.css']  // Nota el cambio aquí
+  styleUrls: ['./visualizar-test-realizado.component.css']  
 })
 
 
@@ -53,6 +53,7 @@ export class VisualizarTestRealizadoComponent {
     this.pacienteService.getHistorialByIdTest(id).subscribe(
       (response) => {
         this.dataSource.data = response; // Asigna los datos obtenidos al dataSource
+        console.log(this.dataSource)
         this.dataSource.paginator = this.paginator; // Configura el paginador después de recibir los datos
       },
       (error) => {
@@ -63,6 +64,7 @@ export class VisualizarTestRealizadoComponent {
   }
 
   abrirDetalleDiagnostico(element: Historial): void {
+    console.log(element)
     this.dialog.open(DetalleDiagnosticoComponent, {
       data: {
         puntajes: element.puntajes,
