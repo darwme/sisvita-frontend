@@ -34,19 +34,19 @@
             <td mat-cell *matCellDef="let element"> {{ element.estado }} </td>
           </ng-container>
 
+          <!-- Diagnóstico Column -->
+          <ng-container matColumnDef="diagnostico">
+            <th mat-header-cell *matHeaderCellDef> Detalle diagnostico </th>
+            <td mat-cell *matCellDef="let element">
+              <button mat-button (click)="abrirDetalleDiagnostico(element)" class="boton-ver">Ver diagnosticos</button>
+            </td>
+          </ng-container>
+
           <!-- Evaluación Column -->
           <ng-container matColumnDef="evaluacion">
             <th mat-header-cell *matHeaderCellDef> Evaluación </th>
             <td mat-cell *matCellDef="let element">
-              <button mat-button (click)="abrirDetalleEvaluacion(element.codigo_historial_test)" class="boton-ver">Ver evaluacion</button>
-            </td>
-          </ng-container>
-
-          <!-- Diagnóstico Column -->
-          <ng-container matColumnDef="diagnostico">
-            <th mat-header-cell *matHeaderCellDef> Diagnóstico </th>
-            <td mat-cell *matCellDef="let element">
-              <button mat-button (click)="abrirDetalleDiagnostico(element)" class="boton-ver">Ver diagnostico</button>
+              <button mat-button (click)="abrirDetalleEvaluacion(element.codigo_historial_test,element)" class="boton-ver">Ver evaluacion</button>
             </td>
           </ng-container>
 

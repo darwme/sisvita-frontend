@@ -21,7 +21,7 @@ import { EvaluacionDocComponent } from '../../../components/evaluacion-doc/evalu
 
 export class VisualizarTestRealizadoComponent {
   token: any = {};
-  displayedColumns: string[] = ['position', 'test', 'fecha', 'hora', 'estado', 'evaluacion', 'diagnostico'];
+  displayedColumns: string[] = ['position', 'test', 'fecha', 'hora', 'estado', 'diagnostico', 'evaluacion'];
   dataSource = new MatTableDataSource<Historial>();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -61,13 +61,16 @@ export class VisualizarTestRealizadoComponent {
     );
   }
 
-  abrirDetalleEvaluacion(codigoHistorialTest: string): void {
-    this.dialog.open(EvaluacionDocComponent, {
-      data: {
-        codigoHistorialTest: codigoHistorialTest
-      }
-    });
+  abrirDetalleEvaluacion(codigoHistorialTest: string, element: Historial): void {
+    if (element.estado === "evaluado") {
+      this.dialog.open(EvaluacionDocComponent, {
+        data: {
+          codigoHistorialTest: codigoHistorialTest
+        }
+      });
+    }
   }
+
 
   abrirDetalleDiagnostico(element: Historial): void {
     console.log(element);

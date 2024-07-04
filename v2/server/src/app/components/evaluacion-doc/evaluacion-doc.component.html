@@ -1,0 +1,65 @@
+<div class="evaluacion-details">
+  <h2>Evaluación Resultados Test</h2>
+
+  <div class="left-column">
+    <!-- Apartado 1: Datos del Paciente -->
+    <div class="section">
+      <h3>1. Datos del Paciente</h3>
+      <div class="field">
+        <strong>Paciente:</strong> {{ datos?.paciente.persona.nombres }} {{ datos?.paciente.persona.apellidos }}
+      </div>
+      <div class="field">
+        <strong>Test:</strong> {{ datos?.historial_test.test_nombre }}
+      </div>
+      <div class="field">
+        <strong>Fecha de Evaluación:</strong> {{ datos?.fecha_evaluacion | date: 'dd/MM/yyyy' }}
+      </div>
+    </div>
+
+    <!-- Apartado 2: Datos del Especialista -->
+    <div class="section">
+      <h3>2. Datos del Especialista</h3>
+      <div class="field">
+        <strong>Nombre del Especialista:</strong> {{ datos?.especialista.persona.nombres }} {{ datos?.especialista.persona.apellidos }}
+      </div>
+      <div class="field">
+        <strong>Especialidad:</strong> {{ datos?.especialista.especialidad }}
+      </div>
+    </div>
+  </div>
+
+  <div class="right-column">
+    <!-- Apartado 3: Evaluación del Especialista -->
+    <div class="section">
+      <h3>3. Evaluación del Especialista</h3>
+      <div class="field">
+        <strong>Diagnóstico general:</strong> {{ getLastDiagnosis(datos?.historial_test.diagnosticos) }}
+      </div>
+      <div class="field">
+        <strong>Fecha de test Realizada:</strong> {{ datos?.historial_test.fecha_realizada | date: 'dd/MM/yyyy' }}
+      </div>
+      <div class="field">
+        <strong>Fundamento Científico:</strong> {{ datos?.fundamento_cientifico }}
+      </div>
+    </div>
+
+    <!-- Apartado 4: Tratamiento -->
+    <div class="section">
+      <h3>4. Tratamiento</h3>
+      <div class="field">
+        <strong>Tratamiento:</strong> {{ datos?.tratamiento }}
+      </div>
+      <div class="field">
+        <strong>Descripción del tratamiento:</strong> {{ datos?.descripcion_tratamiento }}
+      </div>
+    </div>
+
+    <!-- Apartado 5: Comunicación -->
+    <div class="section">
+      <h3>5. Comunicación</h3>
+      <div class="field">
+        <strong>Comunicación:</strong> {{ datos?.comunicacion }}
+      </div>
+    </div>
+  </div>
+</div>
