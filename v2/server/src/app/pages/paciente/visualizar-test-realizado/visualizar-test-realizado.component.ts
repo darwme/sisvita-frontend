@@ -9,7 +9,7 @@ import { Historial } from '../../../models/historial';
 import { MatDialog } from '@angular/material/dialog';
 import { jwtDecode } from 'jwt-decode';
 import { DetalleDiagnosticoComponent } from '../../../components/detalle-diagnostico/detalle-diagnostico.component';
-
+import { EvaluacionDocComponent } from '../../../components/evaluacion-doc/evaluacion-doc.component';
 @Component({
   selector: 'app-visualizar-test-realizado',
   standalone: true,
@@ -20,9 +20,8 @@ import { DetalleDiagnosticoComponent } from '../../../components/detalle-diagnos
 
 
 export class VisualizarTestRealizadoComponent {
-
   token: any = {};
-  displayedColumns: string[] = ['position', 'test', 'fecha', 'hora', 'diagnostico'];
+  displayedColumns: string[] = ['position', 'test', 'fecha', 'hora', 'estado', 'evaluacion', 'diagnostico'];
   dataSource = new MatTableDataSource<Historial>();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -36,7 +35,7 @@ export class VisualizarTestRealizadoComponent {
     if (storedToken) {
       // Decodificar el token solo si existe
       this.token = jwtDecode(storedToken);
-      
+
       if (this.token && typeof this.token.sub === 'number') {
         const id_usuario = this.token.sub;
         this.getPacienteHistorial(id_usuario);
@@ -53,7 +52,6 @@ export class VisualizarTestRealizadoComponent {
     this.pacienteService.getHistorialByIdTest(id).subscribe(
       (response) => {
         this.dataSource.data = response; // Asigna los datos obtenidos al dataSource
-        console.log(this.dataSource)
         this.dataSource.paginator = this.paginator; // Configura el paginador después de recibir los datos
       },
       (error) => {
@@ -63,8 +61,16 @@ export class VisualizarTestRealizadoComponent {
     );
   }
 
+  abrirDetalleEvaluacion(codigoHistorialTest: string): void {
+    this.dialog.open(EvaluacionDocComponent, {
+      data: {
+        codigoHistorialTest: codigoHistorialTest
+      }
+    });
+  }
+
   abrirDetalleDiagnostico(element: Historial): void {
-    console.log(element)
+    console.log(element);
     this.dialog.open(DetalleDiagnosticoComponent, {
       data: {
         puntajes: element.puntajes,

@@ -110,9 +110,9 @@ export class CustomSidenavComponent {
           route: 'especialista/profile',
         },
         {
-          icon: 'test',
+          icon: 'book',
           label: 'Visualizar Tests',
-          route: 'dashboard/especialista/visualizar-tests',
+          route: 'especialista/visualizar-tests-realizados',
         },
         {
           icon: 'appointment',

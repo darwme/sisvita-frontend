@@ -18,4 +18,8 @@ export class PacienteService {
   getHistorialByIdTest(id: number): Observable<Historial[]> {
     return this.http.get<Historial[]>(`${this.BASE_URL}/usuario/${id}`);
   }
+
+  getHistorialByIdTests(): Observable<Historial[]> {
+    return this.http.get<Historial[]>(`${this.BASE_URL}/listar`);
+  }
 }

@@ -5,4 +5,5 @@ export interface Historial {
   puntajes: string;
   diagnosticos: string;
   secciones: string;
+  estado: string;
 }
