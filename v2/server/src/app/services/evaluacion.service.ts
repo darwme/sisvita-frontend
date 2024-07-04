@@ -15,15 +15,15 @@ export class EvaluacionService {
     this.BASE_URL = getConexionBackend('evaluacion');
   }
 
-<<<<<<< Updated upstream
   getEvaluacionTest(cod_historial: string): Observable<Evaluacion> {
-    return this.http.get<Evaluacion>(`${this.BASE_URL}/ver_evaluacion/${cod_historial}`);
-=======
+    return this.http.get<Evaluacion>(
+      `${this.BASE_URL}/ver_evaluacion/${cod_historial}`
+    );
+  }
   getHistorialByIdTest(cod_historial: string): Observable<Evaluacion> {
     return this.http.get<Evaluacion>(
       `${this.BASE_URL}/ver_evaluacion/${cod_historial}`
     );
->>>>>>> Stashed changes
   }
 
   postEnviarEvaluacion(
