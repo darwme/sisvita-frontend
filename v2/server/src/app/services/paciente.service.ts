@@ -20,6 +20,6 @@ export class PacienteService {
   }
 
   getHistorialByIdTests(): Observable<Historial_e[]> {
-    return this.http.get<Historial_e[]>(`${this.BASE_URL}/especialista/listar_h_test_pacientes`);
+    return this.http.get<Historial_e[]>(`${this.BASE_URL}/especialista/listar_h_pacientes`);
   }
 }

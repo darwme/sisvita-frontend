@@ -15,12 +15,12 @@ import { getConexionBackend } from './../utils/constants';
   providedIn: 'root',
 })
 export class UbicacionService {
-  service: string = 'gestor_ubicacion';
+  service: string = 'ubicaciones';
   BASE_URL: string = getConexionBackend(this.service);
   constructor(private http: HttpClient) {}
 
   getAllUbicaciones(): Observable<Ubicacion[]> {
-    return this.http.get<Ubicacion[]>(`${this.BASE_URL}/listar_ubicaciones`);
+    return this.http.get<Ubicacion[]>(`${this.BASE_URL}`);
   }
 
 }
