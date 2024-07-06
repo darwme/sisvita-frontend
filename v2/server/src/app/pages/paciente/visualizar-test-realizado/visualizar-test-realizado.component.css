@@ -13,24 +13,69 @@ table {
   margin-bottom: 20px; /* Espacio inferior */
 }
 
-/* Estilo para el botón Ver */
-/* Estilo para el botón Ver */
+
+
+/* Common button styles */
 .boton-ver {
-  color: #ffffff; /* Texto en color blanco */
-  background-color: #4CAF50; /* Fondo verde */
-  border: none; /* Sin borde */
-  padding: 6px 20px; /* Espaciado interno */
+  color: #ffffff; /* Text color */
+  border: none; /* No border */
+  padding: 6px 20px; /* Padding */
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 14px;
-  border-radius: 5px; /* Bordes redondeados */
+  border-radius: 5px; /* Rounded corners */
   cursor: pointer;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow */
 }
 
-/* Estilo para el botón Ver cuando se pasa el mouse por encima */
+/* Green button for "evaluado" */
+.boton-ver.evaluado {
+  background-color: #4CAF50; /* Green background */
+}
+
+/* Red button for "no evaluado" */
+.boton-ver.no-evaluado {
+  background-color: #F44336; /* Red background */
+}
+
+/* Hover effect */
 .boton-ver:hover {
-  opacity: 0.8; /* Reducción de opacidad al pasar el mouse */
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada al pasar el mouse */
+  opacity: 0.8; /* Reduce opacity on hover */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}
+
+
+/* Common button styles */
+.boton-diagnostico {
+  color: #ffffff; /* Text color white */
+  background-color: #cf6f00f6; /* Dark yellow background */
+  border: none; /* No border */
+  padding: 6px 20px; /* Padding */
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px; /* Font size */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow */
+}
+
+/* Hover effect */
+.boton-diagnostico:hover {
+  opacity: 0.8; /* Slightly reduce opacity on hover */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}
+
+/* Centra el contenido de las celdas */
+.mat-cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* Alinea los botones verticalmente */
+.mat-cell button {
+  margin: auto; /* Alinea los botones verticalmente */
 }

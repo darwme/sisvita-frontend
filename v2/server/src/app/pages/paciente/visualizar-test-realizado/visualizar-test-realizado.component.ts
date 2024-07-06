@@ -10,6 +10,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { jwtDecode } from 'jwt-decode';
 import { DetalleDiagnosticoComponent } from '../../../components/detalle-diagnostico/detalle-diagnostico.component';
 import { EvaluacionDocComponent } from '../../../components/evaluacion-doc/evaluacion-doc.component';
+import Swal from 'sweetalert2';
+
+
 @Component({
   selector: 'app-visualizar-test-realizado',
   standalone: true,
@@ -21,7 +24,7 @@ import { EvaluacionDocComponent } from '../../../components/evaluacion-doc/evalu
 
 export class VisualizarTestRealizadoComponent {
   token: any = {};
-  displayedColumns: string[] = ['position', 'test', 'fecha', 'hora', 'estado', 'diagnostico', 'evaluacion'];
+  displayedColumns: string[] = ['position', 'test', 'fecha', 'hora', 'diagnostico', 'evaluacion'];
   dataSource = new MatTableDataSource<Historial>();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -67,6 +70,13 @@ export class VisualizarTestRealizadoComponent {
         data: {
           codigoHistorialTest: codigoHistorialTest
         }
+      });
+    }
+    else {
+      Swal.fire({
+        title: 'Mensaje',
+        text: 'Este test no se ha evaluado todavia',
+        icon: 'info',
       });
     }
   }

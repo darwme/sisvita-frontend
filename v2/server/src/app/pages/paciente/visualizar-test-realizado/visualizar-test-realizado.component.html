@@ -25,28 +25,30 @@
           <!-- Hora Column -->
           <ng-container matColumnDef="hora">
             <th mat-header-cell *matHeaderCellDef> Hora </th>
-            <td mat-cell *matCellDef="let element"> {{ element.fecha_realizada | date:'HH:mm:ss' }} </td>
-          </ng-container>
-
-          <!-- Estado Column -->
-          <ng-container matColumnDef="estado">
-            <th mat-header-cell *matHeaderCellDef> Estado </th>
-            <td mat-cell *matCellDef="let element"> {{ element.estado }} </td>
+            <td mat-cell *matCellDef="let element"> {{ element.fecha_realizada | date:'HH:mm' }} </td>
           </ng-container>
 
           <!-- Diagnóstico Column -->
           <ng-container matColumnDef="diagnostico">
             <th mat-header-cell *matHeaderCellDef> Detalle diagnostico </th>
-            <td mat-cell *matCellDef="let element">
-              <button mat-button (click)="abrirDetalleDiagnostico(element)" class="boton-ver">Ver diagnosticos</button>
+            <td mat-cell *matCellDef="let element" class="boton-diagnostico-cell">
+              <button mat-button (click)="abrirDetalleDiagnostico(element)" class="boton-diagnostico">Ver</button>
             </td>
           </ng-container>
 
           <!-- Evaluación Column -->
           <ng-container matColumnDef="evaluacion">
             <th mat-header-cell *matHeaderCellDef> Evaluación </th>
-            <td mat-cell *matCellDef="let element">
-              <button mat-button (click)="abrirDetalleEvaluacion(element.codigo_historial_test,element)" class="boton-ver">Ver evaluacion</button>
+            <td mat-cell *matCellDef="let element" class="boton-ver-cell">
+              <button mat-button 
+                      (click)="abrirDetalleEvaluacion(element.codigo_historial_test, element)"
+                      class="boton-ver"
+                      [ngClass]="{
+                        'evaluado': element.estado === 'evaluado',
+                        'no-evaluado': element.estado === 'no evaluado'
+                      }">
+                {{ element.estado }}
+              </button>
             </td>
           </ng-container>
 
@@ -62,5 +64,6 @@
         </mat-paginator>
       </div>
     </mat-card-content>
+    
   </mat-card>
 </div>
