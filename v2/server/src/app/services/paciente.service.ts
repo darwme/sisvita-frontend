@@ -12,14 +12,14 @@ export class PacienteService {
 
   constructor(private http: HttpClient) {
     // Inicializa BASE_URL al construir el servicio.
-    this.BASE_URL = getConexionBackend('historial_test');
+    this.BASE_URL = getConexionBackend('gestor_historial_test');
   }
 
   getHistorialByIdTest(id: number): Observable<Historial[]> {
-    return this.http.get<Historial[]>(`${this.BASE_URL}/usuario/${id}`);
+    return this.http.get<Historial[]>(`${this.BASE_URL}/paciente/listar_h_test/${id}`);
   }
 
   getHistorialByIdTests(): Observable<Historial_e[]> {
-    return this.http.get<Historial_e[]>(`${this.BASE_URL}/listar_h_pacientes`);
+    return this.http.get<Historial_e[]>(`${this.BASE_URL}/especialista/listar_h_test_pacientes`);
   }
 }

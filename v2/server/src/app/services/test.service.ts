@@ -23,7 +23,8 @@ export class TestService {
     'pregunta',
     'opcion',
     'rango',
-    'gestion_test',
+    'gestor_realizar_test',
+    'gestor_test',
   ];
 
   BASE_URL: string | undefined;
@@ -44,8 +45,8 @@ export class TestService {
   }
 
   getTestsAdmin(): Observable<Test[]> {
-    const url = getConexionBackend('administrar');
-    return this.http.get<Test[]>(`${url}/enviar/test`);
+    const url = getConexionBackend(this.service[7]);
+    return this.http.get<Test[]>(`${url}/listar_tests`);
   }
 
   getTests(): Observable<Test[]> {

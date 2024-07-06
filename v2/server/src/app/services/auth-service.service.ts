@@ -10,7 +10,7 @@ import { Especialista } from '../models/especialista';
   providedIn: 'root',
 })
 export class AuthServiceService {
-  service: string = 'auth';
+  service: string = 'gestor_auth';
   BASE_URL: string | undefined;
 
   constructor(private http: HttpClient) {
@@ -26,9 +26,6 @@ export class AuthServiceService {
   }
 
   registrarEspecialista(especialista: Especialista): Observable<Especialista> {
-    return this.http.post<Especialista>(
-      `${this.BASE_URL}/register/especialista`,
-      especialista
-    );
+    return this.http.post<Especialista>(`${this.BASE_URL}/register/especialista`,especialista);
   }
 }

@@ -12,14 +12,16 @@ export class EvaluacionService {
 
   constructor(private http: HttpClient) {
     // Inicializa BASE_URL al construir el servicio.
-    this.BASE_URL = getConexionBackend('evaluacion');
+    this.BASE_URL = getConexionBackend('gestor_evaluacion');
   }
 
+  //ver el evaluacion test sel codigo del historial test
   getEvaluacionTest(cod_historial: string): Observable<Evaluacion> {
     return this.http.get<Evaluacion>(
       `${this.BASE_URL}/ver_evaluacion/${cod_historial}`
     );
   }
+  //para que?
   getHistorialByIdTest(cod_historial: string): Observable<Evaluacion> {
     return this.http.get<Evaluacion>(
       `${this.BASE_URL}/ver_evaluacion/${cod_historial}`
