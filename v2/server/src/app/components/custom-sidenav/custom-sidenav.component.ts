@@ -77,7 +77,7 @@ export class CustomSidenavComponent {
       this.menuItems.set([
         {
           icon: 'account_circle',
-          label: 'Profile',
+          label: 'Perfil',
           route: 'paciente/profile',
         },
         {
@@ -86,18 +86,13 @@ export class CustomSidenavComponent {
           route: 'paciente',
         },
         {
-          icon: 'logout',
-          label: 'Logout',
-          route: '/auth/logout',
-        },
-        {
           icon: 'assignment',
           label: 'Realizar Test',
           route: 'paciente/realizar-test',
         },
         {
           icon: 'book',
-          label: 'Visualizar tests',
+          label: 'Historial Test',
           route: 'paciente/visualizar-test-realizado',
         },
         {
@@ -111,7 +106,7 @@ export class CustomSidenavComponent {
       this.menuItems.set([
         {
           icon: 'account_circle',
-          label: 'Profile',
+          label: 'Perfil',
           route: 'especialista/profile',
         },
         {
@@ -126,13 +121,8 @@ export class CustomSidenavComponent {
         },
         {
           icon: 'view_compact',
-          label: 'Visualizar Tests',
+          label: 'Historial test',
           route: 'especialista/visualizar-tests-realizados',
-        },
-        {
-          icon: 'edit_calendar',
-          label: 'Agendar Cita',
-          route: '/especialista/agendar-cita',
         },
         {
           icon: 'logout',

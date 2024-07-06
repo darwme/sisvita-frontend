@@ -12,13 +12,11 @@ import { PacienteComponent } from './pages/dashboard/paciente/paciente.component
 import { EspecialistaComponent } from './pages/dashboard/especialista/especialista.component';
 import { AdminComponent } from './pages/dashboard/admin/admin.component';
 import { LogoutComponent } from './pages/auth/logout/logout.component';
-import { VisualizarCitaComponent } from './pages/paciente/visualizar-cita/visualizar-cita.component';
 
 import { ProfileComponent } from './components/profile/profile.component';
 import { GestionarPacientesComponent } from './pages/admin/gestionar-pacientes/gestionar-pacientes.component';
 import { GestionarEspecialistasComponent } from './pages/admin/gestionar-especialistas/gestionar-especialistas.component';
 import { GestionarTestsComponent } from './pages/admin/gestionar-tests/gestionar-tests.component';
-import { AgendarCitaComponent } from './pages/especialista/agendar-cita/agendar-cita.component';
 import { VisualizarTestsRealizadosComponent } from './pages/especialista/visualizar-tests-realizados/visualizar-tests-realizados.component';
 import { UserTypeGuard } from './guards/user-type.guard';
 
@@ -90,10 +88,6 @@ export const routes: Routes = [
             component: HeadMapComponent,
           },
           {
-            path: 'agendar-cita',
-            component: AgendarCitaComponent,
-          },
-          {
             path: 'profile',
             component: ProfileComponent,
           },
@@ -115,10 +109,6 @@ export const routes: Routes = [
           {
             path: 'profile',
             component: ProfileComponent,
-          },
-          {
-            path: 'visualizar-cita',
-            component: VisualizarCitaComponent,
           },
           {
             path: 'visualizar-test-realizado',
