@@ -62,7 +62,7 @@ export class VisualizarTestRealizadoComponent {
   }
 
   abrirDetalleEvaluacion(codigoHistorialTest: string, element: Historial): void {
-    if (element.estado === "evaluado") {
+    if (element.estado === "no evaluado") {
       this.dialog.open(EvaluacionDocComponent, {
         data: {
           codigoHistorialTest: codigoHistorialTest
