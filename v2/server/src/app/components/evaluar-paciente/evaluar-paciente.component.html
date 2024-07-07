@@ -1,78 +1,61 @@
-<!-- paciente-form.component.html -->
-<div
-  style="
-    padding: 20px;
-    width: 600px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    align-content: center;
-  "
->
-  <div class="left-column">
-    <!-- Apartado 1: Datos del Paciente -->
+<div class="container">
+  <h1 class="titulo_general">Evaluar paciente</h1>
+  <!-- Fila 1: Datos del Paciente -->
+  <div class="patient-data">
     <div class="section">
-      <h3>Datos del Paciente</h3>
+      <h3 class="titulo-1">Datos del Paciente</h3>
       <div class="field">
         <strong>Nombres y Apellidos:</strong> {{ this.data?.paciente.paciente }}
       </div>
       <div class="field">
-        <strong>Codigo:</strong>
-        {{ this.data?.paciente.codigo_paciente }}
+        <strong>Código:</strong> {{ this.data?.paciente.codigo_paciente }}
       </div>
       <div class="field">
         <strong>Tipo Test:</strong> {{ this.data?.paciente.test }}
       </div>
       <div class="field"><strong>Puntaje:</strong> {{ this.puntaje }}</div>
       <div class="field">
-        <strong>DIAGNOSTICO:</strong>
-        {{ this.data?.paciente?.['diagnostico general'] }}
+        <strong>Diagnóstico:</strong> {{ this.data?.paciente?.['diagnostico general'] }}
       </div>
+    </div>
+  </div>
 
-          
+  <!-- Fila 2 y 3: Evaluación -->
+  <div class="evaluation-data">
+    <!-- Fila 2 -->
+    <div class="section">
+      <form [formGroup]="evaluarForm" class="example-form">
+        <h3 class="titulo-1" >Evaluación Especialista:</h3>
+        <mat-form-field class="example-full-width">
+          <mat-label class="custom-label">Fundamento científico</mat-label>
+          <textarea matInput placeholder="Ex. De la contrariedad de sus emo..." formControlName="fundamento_cientifico"></textarea>
+        </mat-form-field>
+
+        <h3 class="titulo-1" >Del tratamiento:</h3>
+        <mat-form-field class="example-full-width">
+          <mat-label class="custom-label">Tratamiento</mat-label>
+          <input matInput placeholder="Ex. Realizar ejercicios de respiración" formControlName="tratamiento" />
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label class="custom-label">Descripción del tratamiento</mat-label>
+          <textarea matInput placeholder="Ex. Puedes colocar los pasos..." formControlName="descripcion_tratamiento"></textarea>
+        </mat-form-field>
+
+        <h3 class="titulo-1" >De la Comunicación:</h3>
+        <mat-form-field class="example-full-width">
+          <mat-label class="custom-label">Recomendaciones</mat-label>
+          <textarea matInput placeholder="Ex. Podrías colocar algunas recomendaciones a seguir..." formControlName="comunicacion"></textarea>
+        </mat-form-field>
+
+        <button mat-raised-button class="custom-button" (click)="this.onEvaluarTest()">REGISTRAR</button>
+
+
+      </form>
     </div>
 
-    <!-- Apartado 2: Datos del Test -->
-    <form [formGroup]="evaluarForm" class="example-form">
-      <h3>Evaluación Especialista:</h3>
-      <mat-form-field class="example-full-width">
-        <mat-label>Fundamento científico</mat-label>
-        <textarea
-          matInput
-          placeholder="Ex. De la contrariedad de sus emo..."
-          formControlName="fundamento_cientifico"
-        ></textarea>
-      </mat-form-field>
-
-      <h3>Del tratamiento:</h3>
-      <mat-form-field class="example-full-width">
-        <mat-label>Tratamiento</mat-label>
-        <input
-          matInput
-          placeholder="Ex. Realizar ejercicios de respiración"
-          formControlName="tratamiento"
-        />
-      </mat-form-field>
-      <mat-form-field class="example-full-width">
-        <mat-label>Descripción del tratamiento</mat-label>
-        <textarea
-          matInput
-          placeholder="Ex. Puedes colocar los pasos..."
-          formControlName="descripcion_tratamiento"
-        ></textarea>
-      </mat-form-field>
-
-      <h3>De la Comunicación:</h3>
-      <mat-form-field class="example-full-width">
-        <mat-label>Recomendaciones</mat-label>
-        <textarea
-          matInput
-          placeholder="Ex. Podrías colocar algunas recomendaciones a seguir..."
-          formControlName="comunicacion"
-        ></textarea>
-      </mat-form-field>
-
-      <button mat-button (click)="this.onEvaluarTest()">REGISTRAR</button>
-    </form>
+    <!-- Fila 3: Sección adicional (puedes agregar contenido aquí según necesites) -->
+    <div class="additional-section">
+      <!-- Contenido adicional -->
+    </div>
   </div>
 </div>

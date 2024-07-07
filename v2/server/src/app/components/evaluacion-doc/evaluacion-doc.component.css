@@ -1,53 +1,56 @@
-/* Estilos generales del cuerpo del documento */
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-  background-color: #f0f0f0;
-}
-
 /* Estilos del contenedor principal */
 .evaluacion-details {
   font-family: Arial, sans-serif;
-  width: 90%;
-  max-width: 1000px; /* Ancho máximo del contenedor */
-  margin: 20px auto;
+  width: 100%;
+  max-width: 1300px; /* Ancho máximo aumentado para una apariencia más ancha */
+  max-height: 500px; /* Altura máxima ajustada */
+  margin: 10px auto;
   padding: 20px;
   background-color: #ffffff;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  text-align: left; /* Centrar todo el contenido */
+  grid-template-columns: 1fr 1fr 2fr; /* Tres columnas, con la última más ancha */
+  gap: 10px; /* Espacio entre los bloques */
+  text-align: left;
 }
 
 /* Estilos para los títulos dentro del contenedor */
 .evaluacion-details h2 {
-  color: #041a31; /* Color azul */
+  color: #041a31;
   margin-bottom: 10px;
+  grid-column: 1 / -1; /* El título ocupa todo el ancho */
+  text-align: center; /* Centrar el título */
 }
 
-/* Estilos para la columna izquierda */
+/* Estilos para la columna izquierda (3 bloques) */
 .left-column {
-  grid-column: 1 / 2;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-column: 1 / 3; /* La columna izquierda ocupa las dos primeras columnas del grid principal */
+  gap: 10px;
 }
 
-/* Estilos para la columna derecha */
+/* Estilos para la columna derecha (2 bloques grandes) */
 .right-column {
-  grid-column: 2 / 3;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-column: 3 / 6; /* La columna derecha ocupa la tercera columna del grid principal */
+  gap: 10px;
 }
 
 /* Estilos para las secciones dentro del contenedor */
+/* Estilos para las secciones dentro del contenedor */
 .section {
-  padding: 15px;
+  padding: 10px;
   background-color: #f9f9f9;
   border: 1px solid #ccc;
   border-radius: 8px;
-  margin-top:10px;
+  margin-top: 10px;
+  width: calc(100% - 22px); /* Calcula el ancho restando el padding y el borde */
+  max-width: 100%; /* Ajusta el ancho máximo al 100% */
+  box-sizing: border-box; /* Incluye el padding y el borde en el cálculo del tamaño */
 }
 
 /* Estilos para los títulos de sección */
@@ -68,12 +71,4 @@ body {
 .field strong {
   margin-right: 10px;
   font-weight: bold;
-}
-
-/* Estilos para la división entre secciones */
-.section-divider {
-  border: none;
-  border-top: 1px solid #dddddd;
-  grid-column: 1 / -1;
-  margin: 20px 0;
 }

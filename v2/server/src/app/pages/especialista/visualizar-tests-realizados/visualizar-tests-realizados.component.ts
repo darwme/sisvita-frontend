@@ -17,6 +17,8 @@ import { jwtDecode } from 'jwt-decode';
 import { DetalleDiagnosticoComponent } from '../../../components/detalle-diagnostico/detalle-diagnostico.component';
 import { EvaluacionDocComponent } from '../../../components/evaluacion-doc/evaluacion-doc.component';
 import { HeadMapComponent } from '../../../components/head-map/head-map.component';
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-visualizar-tests-realizados',
   standalone: true,
@@ -32,7 +34,6 @@ export class VisualizarTestsRealizadosComponent {
     'fecha',
     'diagnostico general',
     'detalle diagnosticos',
-    'estado',
     'evaluacion',
     'evaluar',
   ];
@@ -78,12 +79,21 @@ export class VisualizarTestsRealizadosComponent {
     );
   }
 
-  abrirDetalleEvaluacion(codigoHistorialTest: string): void {
-    this.dialog.open(EvaluacionDocComponent, {
-      data: {
-        codigoHistorialTest: codigoHistorialTest,
-      },
-    });
+  abrirDetalleEvaluacion(codigoHistorialTest: string, element: Historial_e): void {
+    if (element.estado === "evaluado") {
+      this.dialog.open(EvaluacionDocComponent, {
+        data: {
+          codigoHistorialTest: codigoHistorialTest
+        }
+      });
+    }
+    else {
+      Swal.fire({
+        title: 'Mensaje',
+        text: 'Este test no se ha evaluado todavia',
+        icon: 'info',
+      });
+    }
   }
 
   abrirDetalleDiagnostico(element: Historial_e): void {
@@ -97,29 +107,39 @@ export class VisualizarTestsRealizadosComponent {
   }
 
   evaluar(element: Historial_e): void {
-    const dataa = localStorage.getItem('data');
-    console.log('element:', element);
-    if (dataa) {
-      const decodedToken: any = this.deacoderService.decrypt(dataa);
-      console.log('decodedToken:', decodedToken);
-      const codigoEspecialista = decodedToken.especialista.codigo_especialista;
-      console.log('codigoEspecialista:', codigoEspecialista);
-
-      this.dialog.open(EvaluarPacienteComponent, {
-        data: {
-          codigoHistorialTest: element.codigo_historial_test,
-          codigoEspecialista: codigoEspecialista,
-          paciente: element,
-        },
-      });
+    if (element.estado === "no evaluado") {
+      const dataa = localStorage.getItem('data');
+      console.log('element:', element);
+      if (dataa) {
+        const decodedToken: any = this.deacoderService.decrypt(dataa);
+        console.log('decodedToken:', decodedToken);
+        const codigoEspecialista = decodedToken.especialista.codigo_especialista;
+        console.log('codigoEspecialista:', codigoEspecialista);
+  
+        this.dialog.open(EvaluarPacienteComponent, {
+          data: {
+            codigoHistorialTest: element.codigo_historial_test,
+            codigoEspecialista: codigoEspecialista,
+            paciente: element,
+          },
+        });
+      } else {
+        console.error('Token no encontrado');
+      }
     } else {
-      console.error('Token no encontrado');
+      Swal.fire({
+        title: 'Mensaje',
+        text: 'Este test ya se ha evaluado',
+        icon: 'info',
+      });
     }
   }
+  
 
   obtenerUltimoDiagnostico(diagnosticos: string): string {
     if (!diagnosticos) return '';
     const diagnosArray = diagnosticos.split(',');
     return diagnosArray[diagnosArray.length - 1].trim();
   }
+
 }

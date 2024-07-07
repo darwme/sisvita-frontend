@@ -1,12 +1,12 @@
 .profile-card {
   width: 100%;
   margin: 20px; /* Ajusta el margen según tu diseño */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(1, 7, 59, 0.1);
   border-radius: 8px;
   overflow: hidden;
 }
 .titulo {
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  text-shadow: 2px 2px 4px rgba(1, 20, 59, 0.3);
 }
 
 
@@ -32,3 +32,6 @@
   font-weight: bold;
 }
 
+.strong {
+  color:rgb(10, 10, 61);
+}

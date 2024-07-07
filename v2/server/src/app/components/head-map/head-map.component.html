@@ -1,21 +1,23 @@
-<h2 mat-dialog-title>MAPA DE CALOR</h2>
-<mat-dialog-content>
-  <div>
-    <label for="rango">Estado Emocional:</label>
-    <select id="rango" (change)="onFilterChange($event)">
+<h2 mat-dialog-title class="dialog-title">MAPA DE CALOR</h2>
+<mat-dialog-content class="dialog-content">
+  <div class="filter-container">
+    <label for="rango" class="filter-label">Estado Emocional:</label>
+    <select id="rango" class="filter-select" (change)="onFilterChange($event)">
       <option value="all">Todos</option>
-      <option value="Ansiedad mínima">Minima</option>
+      <option value="Ansiedad mínima">Mínima</option>
       <option value="Ansiedad moderada">Moderada</option>
-      <option value="Ansiedad severa">severa</option>
+      <option value="Ansiedad severa">Severa</option>
       <option value="Ansiedad extrema">Extrema</option>
     </select>
 
-    <label for="dateRange">Rango de Fechas:</label>
-    <input type="date" id="startDate" (change)="onFilterChange($event)" />
-    <input type="date" id="endDate" (change)="onFilterChange($event)" />
+    <label for="startDate" class="filter-label">Fecha Inicial:</label>
+    <input type="date" id="startDate" class="filter-date" (change)="onFilterChange($event)" />
+
+    <label for="endDate" class="filter-label">Fecha Final:</label>
+    <input type="date" id="endDate" class="filter-date" (change)="onFilterChange($event)" />
   </div>
-  <div id="map" style="height: 500px"></div>
+  <div id="map" class="map-container"></div>
 </mat-dialog-content>
-<mat-dialog-actions>
-  <button mat-button mat-dialog-close>Close</button>
+<mat-dialog-actions class="dialog-actions">
+  <button mat-button mat-dialog-close class="close-button">Cerrar</button>
 </mat-dialog-actions>

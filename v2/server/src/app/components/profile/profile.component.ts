@@ -31,6 +31,7 @@ export class ProfileComponent {
   personaType?: string;
   sidenavCollapsed = signal(false);
   dataDecrypt?: any;
+  edad?: number; // Variable para almacenar la edad
   user?: Paciente | Especialista | any; // Acepta los tipos Paciente y Especialista
   @Input() set collapsed(value: boolean) {
     this.sidenavCollapsed.set(value);
@@ -76,6 +77,7 @@ export class ProfileComponent {
     this.profileGestionService.getDatosPaciente(codigo_paciente).subscribe(
       (paciente: Paciente) => {
         this.user = { ...this.user, ...paciente };
+        this.calculateAge(this.user.persona.fecha_nacimiento);
         console.log('Paciente Data:', this.user);
       },
       (error) => {
@@ -88,11 +90,24 @@ export class ProfileComponent {
     this.profileGestionService.getDatosEspecialista(codigo_especialista).subscribe(
       (especialista: Especialista) => {
         this.user = { ...this.user, ...especialista };
+        this.calculateAge(this.user.persona.fecha_nacimiento);
         console.log('Especialista Data:', this.user);
       },
       (error) => {
         console.error('Error fetching especialista data:', error);
       }
     );
+  }
+  calculateAge(birthdate: string): void {
+    const today = new Date();
+    const birthDate = new Date(birthdate);
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDiff = today.getMonth() - birthDate.getMonth();
+
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+      age--;
+    }
+
+    this.edad = age;
   }
 }

@@ -1,0 +1,68 @@
+.mat-dialog-container {
+    background-color: #f0f0f0; /* Color de fondo para todo el diálogo */
+  }
+  
+  .dialog-title {
+    font-size: 25px; /* Tamaño de fuente del título en píxeles */
+    color: #054b39; /* Color del texto */
+    text-align: center; /* Centrar el texto */
+    margin-bottom: 10px; /* Margen inferior */
+    font-weight: bold;
+  }
+  
+  .dialog-content {
+    padding: 14px; /* Ajuste de padding en píxeles */
+  }
+  
+  .filter-container {
+    display: flex; /* Utilizamos flexbox para alinear los elementos */
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan si no caben en una sola línea */
+    gap: 10px; /* Espacio entre elementos */
+  }
+  
+  .filter-label {
+    font-size: 13px; /* Tamaño de fuente de etiquetas en píxeles */
+    display: inline-block;
+    width: 120px;
+    margin-right: 10px; /* Margen derecho */
+    font-weight: bold;
+    color: #555; /* Color de texto para etiquetas */
+    padding: 5px;
+  }
+  
+  .filter-select, .filter-date {
+    padding: 8px; /* Padding ajustado en píxeles */
+    border: 1px solid #ccc;
+    border-radius: 6px; /* Bordes redondeados */
+    font-size: 13px; /* Tamaño de fuente en píxeles */
+    margin-bottom: 5px; /* Margen inferior */
+    background-color: #fff; /* Color de fondo para select e input */
+  }
+  
+  .map-container {
+    height: 500px; /* Altura del mapa en píxeles */
+    border: 2px solid #ccc;
+    border-radius: 8px; /* Bordes redondeados */
+    margin-bottom: 10px; /* Margen inferior */
+  }
+  
+  .dialog-actions {
+    justify-content: center; /* Centrar los botones */
+    padding: 16px; /* Padding en píxeles */
+  }
+  
+  .close-button {
+    background-color: #053f61;
+    color: white;
+    padding: 12px 24px; /* Padding ajustado en píxeles */
+    border-radius: 8px; /* Bordes redondeados */
+    font-size: 13px; /* Tamaño de fuente en píxeles */
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+  }
+  
+  .close-button:hover {
+    background-color: #039bb6;
+    color:#f0f0f0
+  }
+  

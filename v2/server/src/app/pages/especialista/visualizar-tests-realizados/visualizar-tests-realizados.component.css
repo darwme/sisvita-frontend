@@ -1,12 +1,12 @@
-/* Estilo para la tabla */
-table {
-  width: 100%;
+/* visualizar-test-realizado.component.css */
+
+.container {
+  padding: 20px;
 }
 
-/* Estilo para el título */
 .titulo {
   font-family: 'Roboto', sans-serif; /* Fuente limpia y moderna */
-  font-size: 24px; /* Tamaño del texto */
+  font-size: 20px; /* Tamaño del texto */
   font-weight: bold; /* Negrita */
   color: #3f51b5; /* Azul típico de Angular Material */
   text-align: center; /* Centrado horizontalmente */
@@ -14,45 +14,147 @@ table {
   margin-bottom: 20px; /* Espacio inferior */
 }
 
-/* Estilo para el botón Ver */
+
+.mat-elevation-z8 {
+  margin-top: 20px; /* Espacio superior */
+  border-radius: 5px; /* Bordes redondeados */
+  overflow: hidden; /* Oculta el desbordamiento */
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
+.mat-cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 8px 16px; /* Espaciado interno */
+}
+
+.mat-cell button {
+  margin: auto; /* Alinea los botones verticalmente */
+}
+
+/* Common button styles */
 .boton-ver {
-  color: #ffffff; /* Texto en color blanco */
-  background-color: #4CAF50; /* Fondo verde */
+  color: #ffffff; /* Texto blanco */
+  background-color: #094e86; /* Azul primario */
   border: none; /* Sin borde */
-  padding: 6px 20px; /* Espaciado interno */
+  padding: 8px 16px; /* Espaciado */
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 13px;
+  font-size: 14px; /* Tamaño de fuente */
   border-radius: 5px; /* Bordes redondeados */
   cursor: pointer;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+  margin:15px;
 }
 
-/* Estilo para el botón Ver cuando se pasa el mouse por encima */
+/* Hover effect */
 .boton-ver:hover {
-  opacity: 0.8; /* Reducción de opacidad al pasar el mouse */
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada al pasar el mouse */
+  opacity: 0.8; /* Opacidad reducida al pasar el mouse */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Sombra más intensa */
+}
+
+/* Green button for "evaluado" */
+.boton-ver.evaluado {
+  background-color: #0a750e; /* Verde */
+}
+
+/* Red button for "no evaluado" */
+.boton-ver.no-evaluado {
+  background-color: #7c120b; /* Rojo */
 }
 
 
-/* Estilo para el botón Evaluar */
-.boton {
-  color: #ffffff; /* Texto en color blanco */
-  background-color: #f44336; /* Fondo rojo */
+/* visualizar-test-realizado.component.css */
+
+.evaluar-cell {
+  text-align: center; /* Alinea el contenido al centro */
+}
+
+.evaluar-button {
+  color: #ffffff; /* Texto blanco */
+  background-color: #0a4d8f; /* Color azul de Angular Material */
   border: none; /* Sin borde */
-  padding: 6px 20px; /* Espaciado interno */
+  padding: 8px 16px; /* Espaciado interno */
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 13px;
+  font-size: 14px; /* Tamaño de fuente */
   border-radius: 5px; /* Bordes redondeados */
   cursor: pointer;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Sombra ligera */
 }
 
-/* Estilo para el botón Evaluar cuando se pasa el mouse por encima */
-.boton:hover {
-  opacity: 0.8; /* Reducción de opacidad al pasar el mouse */
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada al pasar el mouse */
+/* Hover effect */
+.evaluar-button:hover {
+  opacity: 0.8; /* Opacidad reducida al pasar el mouse */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Sombra más intensa */
+}
+
+
+/* visualizar-test-realizado.component.css */
+
+.mapa-calor-button-container {
+  text-align: right;
+  margin-bottom: 10px;
+}
+
+.mapa-calor-button {
+  color: #ffffff; /* Texto blanco */
+  background-color: #086981; /* Color de fondo naranja */
+  border: none; /* Sin borde */
+  padding: 8px 16px; /* Espaciado interno */
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px; /* Tamaño de fuente */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
+/* Hover effect */
+.mapa-calor-button:hover {
+  opacity: 0.8; /* Opacidad reducida al pasar el mouse */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Sombra más intensa */
+}
+
+
+
+/* Estilo para el contenedor del círculo y el texto */
+.circle-container {
+  display: flex;
+  align-items: center; /* Alinea verticalmente */
+}
+
+/* Estilos para diferentes tipos de círculo */
+.circulo {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 5px; /* Espacio entre el círculo y el texto */
+  display: inline-block;
+}
+
+.circulo-minima {
+  background-color: #00FF00; /* Color para Ansiedad mínima (verde) */
+}
+
+.circulo-moderada {
+  background-color: #FFFF00; /* Color para Ansiedad moderada (amarillo) */
+}
+
+.circulo-severa {
+  background-color: #FFA500; /* Color para Ansiedad severa (naranja) */
+}
+
+.circulo-extrema {
+  background-color: #FF0000; /* Color para Ansiedad extrema (rojo) */
+}
+
+/* Estilo para el texto del diagnóstico general */
+.diagnostico-text {
+  margin-top: -2px; /* Ajuste fino para alinear verticalmente con el círculo */
 }
